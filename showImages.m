@@ -1,12 +1,12 @@
-## Copyright (C) 2014 Jin-Hwa Kim
-##
-## Author: Jin-Hwa Kim
-## Created: Jan 12 2014
-##
-## It shows the multiple images in a table.
-##
-## usage: showImages(X(:,:,:,1:10:90))
-##        (X is a 32 * 32 * 3 * N matrix)
+% Copyright (C) 2014 Jin-Hwa Kim
+%
+% Author: Jin-Hwa Kim
+% Created: Jan 12 2014
+%
+% It shows the multiple images in a table.
+%
+% usage: showImages(X(:,:,:,1:10:90))
+%        (X is a 32 * 32 * 3 * N matrix)
 function showImages(X)
 
 w = size(X, 1);
