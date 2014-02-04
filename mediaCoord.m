@@ -25,6 +25,7 @@ for i = 1 : N
     % and translate x using sSize and mSize
     x = x + 0;
 
+    % save the media coordinations.
     mCoord[i] = [x, y];
 end
 
