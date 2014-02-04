@@ -26,7 +26,8 @@ for i = 1 : N
     x = x + 0;
 
     % save the media coordinations.
-    mCoord[i] = [x, y];
+    mCoord(i,:) = [x y];
+
 end
 
 end
