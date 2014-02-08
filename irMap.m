@@ -8,6 +8,9 @@
 function irMap = irMap()
 MAX_NUM_OF_IR_MARKERS = 30;
 irMap = zeros(MAX_NUM_OF_IR_MARKERS, 2);
+for i = 1:MAX_NUM_OF_IR_MARKERS
+    irMap(i,:) = [-100, -100];
+end
 irMap(30,:) = [0, 0];
 irMap(11,:) = [0.25, 0];
 irMap(15,:) = [0.75, 0];
