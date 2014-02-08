@@ -25,12 +25,12 @@ mCoord = mediaCoord(sCoords, irCoords, irMap, sSize, mSize);
 EPSILON = 0.05;
 q1 = mCoord(1,:);
 a1 = [0.185, 1.216];
-d1 = distance(q1, a1);
+d1 = pdist([q1; a1]);
 q2 = mCoord(1001, :);
 a2 = [0.364, 0.253];
-d2 = distance(q2, a2);
+d2 = pdist([q2; a2]);
 
-if d1 < EPSILON && d2 < EPSILON
+if (d1 < EPSILON) && (d2 < EPSILON)
     fprintf('You did!\n');
 else
     fprintf('Wrong! Distance is %d and %d\n', d1, d2);
