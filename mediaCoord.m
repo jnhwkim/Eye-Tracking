@@ -16,7 +16,7 @@ function mCoord = mediaCoord(sCoords, irCoords, irMap, sSize, mSize)
 %% Fixed variables
 LT_MEDIA_FRCOORD =  [0.19 0.1]; % Position of media's left top corner in Frame coordinate
 FR2ME =             mSize ./ [0.62 0.8]; % Conversion factor : Frame to Media
-NO_OUTPUT =         [-1 -1];
+NO_OUTPUT =         [-1 -1]; % Denoting "Unanalyzable" or "Out of media range"
 FRAME_SPACING =     [4 2];
 N =                 size(sCoords, 1);
 
@@ -82,7 +82,12 @@ for i = 1 : N
     mCoord_temp = mCoord_temp .* FR2ME; % Conversion into Media pixel
 
     %% Incert calculated value
-    mCoord(i,:) = mCoord_temp;
+    isRange = (mCoord_temp <= mSize) .* (mCoord_temp >= [0 0]); % On media area?
+    if isRange(1) && isRange(2)
+        mCoord(i,:) = mCoord_temp;
+    else % calculated coordinate is out of media range
+        mCoord(i,:) = NO_OUTPUT;
+    end
 end
 
 end
