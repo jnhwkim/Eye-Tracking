@@ -1,11 +1,11 @@
 %% Load the data
 % Note that (the number of row - 1) 33.3 means a time point in millseconds.
-if isempty(irCoords)
+if ~exist('irCoords')
     irCoords = importIRMarkersFile('Maisy/maisy1_ir_markers.tsv',1, 11043);
 end
 % It consumes your precious 13 seconds on the modern computer.
 % IRMarkerIDs can be used to validate the IRMarkers data.
-if isempty(sCoords)
+if ~exist('sCoords')
     [sCoords, IRMarkerIDs] = importEyeTrackingFile('Maisy/maisy1_eye_tracking_jhkim.tsv', 2, 11044);
 end
 
