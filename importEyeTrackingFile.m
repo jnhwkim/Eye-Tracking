@@ -58,7 +58,7 @@ Y = dataArray{:, 3};
 IRMarkerID = dataArray{:, 4};
 
 
-%% Make an array for IR Marker IDs
+%% Make an array for IR Marker IDs (10 sec)
 MAX_NUM_OF_IR_MARKERS = 30;
 N = size(IRMarkerID, 1);
 IRMarkerIDs = zeros(N, MAX_NUM_OF_IR_MARKERS);
