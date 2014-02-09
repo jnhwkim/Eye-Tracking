@@ -1,7 +1,7 @@
 % Copyright (C) 2014 Jin-Hwa Kim
 %
 % Author: Jin-Hwa Kim
-% Created: Feb 4 2014
+% Created: Feb 9 2014
 %
 % It converted screen coordinations (640x480) to the given media 
 % coordinations by using the infrared markers' locations.
@@ -15,56 +15,79 @@
 function mCoord = mediaCoord(sCoords, irCoords, irMap, sSize, mSize)
 
 % # of rows check for sCoord, irCoords
+N = size(sCoords, 1);
+if N ~= size(irCoords, 1)
+    error('The number of rows are mismatched!');
+end
 
+% Initialization
 mCoord = zeros(size(sCoords));
+FAIL = [-1, -1];
+BACK_RECOVERY_STEP = 30;
 
-for i = 1 : size(irCoords, 1)
+for i = 1 : N
+    % Counting IR Markers whose Media Cooridnate is available.
+    % Find nonzero indexes of IR Markers
+    mIndexes = find(irCoords(i,:,1));
+    nzCoords = irCoords(i,mIndexes,:);
+    M = size(nzCoords, 2);
+    scMat = zeros(3, M);
+    mcMat = zeros(3, M);
+    count = 1;
     
-    % Counting IR Markers whose Media Cooridnate is available
-    markCount = 0;
-    for j = 1 : size(irCoords, 2)
-        if irCoords(i, j, 1) ~= 0
-            if irMap(irCoords(i,j,1),1) ~= -1 && irMap(irCoords(i,j,1),2) ~= -1
-               markCount = markCount + 1; 
-            end
+    % Check the alignment of IR Markers
+    if isempty(nzCoords(1,:,1))
+        % fprintf('No IR Marker position at %d!\n', i);
+        step = 1;
+        while step < BACK_RECOVERY_STEP && i-step > 1 && isempty(nzCoords(1,:,1))
+            mIndexes = find(irCoords(i-step,:,1));
+            nzCoords = irCoords(i-step,mIndexes,:);
+            step = step - 1;
+        end
+        if isempty(nzCoords(1,:,1))
+            fprintf('Delayed recovery failed at %d.', i);
+            mCoord(i,:) = FAIL;
+            continue;
         end
     end
-    
-    if markCount ~= 0
-        markSCoord = zeros(3, markCount);
-        markMCoord = zeros(3, markCount);
-        mindex = 1;
-        for k = 1 : size(irCoords, 2)
-            if irCoords(i, k, 1) ~= 0
-                if irMap(irCoords(i,k,1),1) ~= -1 && irMap(irCoords(i,k,1),2) ~= -1
-                    markSCoord(:, mindex) = [irCoords(i, k, 2); irCoords(i, k ,3); 1];
-                    markMCoord(:, mindex) = [irMap(irCoords(i, k, 1), 1); irMap(irCoords(i, k, 1), 2); 1];
-                    mindex = mindex + 1;
-                end
-            end
+    if isFailedAlignment(irMap(nzCoords(1,:,1), :))
+        fprintf('Bad IR Marker positions at %d!\n', i);
+        mCoord(i,:) = FAIL;
+        continue;
+    end
+        
+    for j = 1 : M
+        irIndex = nzCoords(1,j,1);
+        irX = nzCoords(1,j,2);
+        irY = nzCoords(1,j,3);
+        if irMap(irIndex,1) ~= -1 && irMap(irIndex,2) ~= -1
+            scMat(:, count) = [irX; irY; 1];
+            mcMat(:, count) = [irMap(irIndex, 1); irMap(irIndex, 2); 1];
+            count = count + 1;
         end
-
-        TempMat = markSCoord * transpose(markSCoord);
-        if det(TempMat) ~= 0
-            AMat = markMCoord * transpose(markSCoord) * inv(TempMat);
-        else 
-            AMat = markMCoord * transpose(markSCoord) * pinv(TempMat);
-        end
-        MMat = AMat * [sCoords(i,1); sCoords(i,2); 1];
-        mCoord(i,:) = [MMat(1,1), MMat(2,1)];
-    else
-        mCoord(i,:) = [-2, -2];
     end
 
+    % Find the affine matrix A.
+    Q = scMat * scMat';
+    if det(Q) ~= 0
+        A = mcMat * scMat' / Q; % b * inv(A) => b / A
+    else 
+        A = mcMat * scMat' * pinv(Q);
+    end
     
     % Find x and y in a unit space.
-
+    X = A * [sCoords(i,1); sCoords(i,2); 1];
+    mCoord(i,:) = [X(1,1), X(2,1)];
 
     % and translate x using sSize and mSize
+end
+end
 
-
-    % save the media coordinations.
-
-% No markers on the same line
-selectedIDs = -2;
+function flag = isFailedAlignment(irMapCoords)
+flag = false;
+if range(irMapCoords(:,1)) == 0 || range(irMapCoords(:,2)) == 0
+    flag = true;
+elseif size(irMapCoords, 1) < 3
+    flag = true;
+end
 end
