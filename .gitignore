@@ -1,1 +1,3 @@
 SVHN/*.mat
+*.m~
+*.asv
