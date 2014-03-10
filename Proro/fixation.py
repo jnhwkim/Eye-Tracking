@@ -89,7 +89,7 @@ def getUnitCoord(Tr, x, y):
 # encapsulate to a coordinate
 # It follows the linear algebra library convention.
 def encapsulateCoord(x, y):
-    return np.array([x, y])
+    return np.array([x, y, 1])
 
 # encapsulate to a coordinate matrix
 # It follows the linear algebra library convention.
@@ -172,10 +172,12 @@ def _printFixations(f, timestamp, fixations):
 # Get the transformation matrix for Tobbi data.
 def getTobbiTransformationMatrix():
     SCALING_FACTOR = 0.1716
-    a = encapsulateCoords([[159,158],[1120,178],[1080,700],[175,686]])
-    b = encapsulateCoords([[-SCALING_FACTOR,0],[1+SCALING_FACTOR,0],\
-                           [1+SCALING_FACTOR,1],[-SCALING_FACTOR,1]])
+    a = encapsulateCoords([[159,158,1],[1120,178,1],[1080,700,1],[175,686,1]])
+    b = encapsulateCoords([[-SCALING_FACTOR,0,1],[1+SCALING_FACTOR,0,1],\
+                           [1+SCALING_FACTOR,1,1],[-SCALING_FACTOR,1,1]])
     Tr = getTransformationMatrix(a,b)
+    print "[00] Tr = ",
+    print(Tr)
     return Tr
 
 def main():
@@ -191,10 +193,11 @@ def main():
 
 def debug():
     # Check the transformation matrix
-    a = encapsulateCoords([[-10,-50],[300,-10],[310,290],[10,310]])
-    b = encapsulateCoords([[0,0],[1,0],[1,1],[0,1]])
+    a = encapsulateCoords([[-10,-50,1],[300,-10,1],[310,290,1],[10,310,1]])
+    b = encapsulateCoords([[0,0,1],[1,0,1],[1,1,1],[0,1,1]])
     Tr = getTransformationMatrix(a,b)
     ans = getUnitCoord(Tr, 150, 150)
+    print "[00] ans = ",
     print(ans)
 
 if __name__ == "__main__":
