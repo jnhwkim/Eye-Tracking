@@ -1,3 +1,4 @@
 SVHN/*.mat
 *.m~
 *.asv
+*.pyc
