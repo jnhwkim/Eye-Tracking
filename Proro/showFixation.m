@@ -7,16 +7,17 @@
 %
 function showFixation(time, fixations)
 
-figure;
-%data = imread(strcat('pororo_1_',time,'.bmp'));
-%imagesc([0,1],[0,1], data);
-data = imread(strcat('pororo_1_3069.bmp'));
+data = imread(strcat('screenshots/pororo_1_',time,'.bmp'));
 imagesc([0,1],[0,1], data);
+intensity = 1;
 
 hold on;
 for i=1:size(fixations,1)
    if abs(fixations(i,1) - str2double(time)) < 34
-       plot(fixations(i,2), fixations(i,3), '+');
+       plot(fixations(i,2), fixations(i,3), 'o', ...
+           'MarkerSize', 10, ...
+           'MarkerFaceColor', [intensity, 0, 0]);
+       intensity = max(intensity - 0.2, 0);
    end
 end
 

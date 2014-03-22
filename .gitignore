@@ -2,3 +2,4 @@ SVHN/*.mat
 *.m~
 *.asv
 *.pyc
+*/screenshots/*
