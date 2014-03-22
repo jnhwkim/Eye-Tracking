@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+
 #
 # KidsVideo
 # Extract fixation points from eye-tracking exported data
@@ -97,7 +97,7 @@ def encapsulateCoords(listOfXYs):
     return np.transpose(np.array(listOfXYs))
 
 # print a set of fixations with regard to timestamps.
-def printFixations(tobbiFilename, timings, skip):
+def printFixations(tobbiFilename, timings, interval, skip):
     idx = 0
     fixations = []
     originalFixations = []
@@ -119,18 +119,20 @@ def printFixations(tobbiFilename, timings, skip):
             #    print idx+1, len(timings), timestamp, timings[idx+1], event
             # process conditions
             if idx < len(timings):
-                if int(timestamp) < int(timings[idx]):
+                # Check if it's within interval.
+                if interval > abs(int(timestamp) - int(timings[idx])):
                     pass
                 else:
                     if (DEBUG): 
                         print "[03] Process", len(fixations), "fixations for", \
                             timestamp 
-                    _printFixations(w, timestamp, fixations)
-                    fixations = []
-                    originalFixations = []
-                    idx = idx + 1
+                    if 0 < len(fixations):
+                        _printFixations(w, timestamp, fixations)
+                        fixations = []
+                        originalFixations = []
+                        idx = idx + 1
 
-                # queue a fixation coordinate
+                # Queue a fixation coordinate
                 if event == "Fixation":
                     try:
                         fixation = getUnitCoord(Tr, int(fixX), int(fixY))
@@ -188,8 +190,8 @@ def main():
     # Check getting Timings from smi file
     timings = changeFormatAsTobbiTimestamp(getTimings(SUBTITLE_FILENAME))
 
-    # print fixations
-    printFixations(TOBBI_ET_FILENAME, timings, 0)
+    # print fixations with interval 2 sec, skip = 0.
+    printFixations(TOBBI_ET_FILENAME, timings, 2000, 0)
 
 def debug():
     # Check the transformation matrix
