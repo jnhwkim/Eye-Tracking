@@ -3,3 +3,4 @@ SVHN/*.mat
 *.asv
 *.pyc
 */screenshots/*
+*/*.avi

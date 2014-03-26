@@ -203,7 +203,7 @@ def printList(f, list):
 def main():
     # Define Filenames
     SUBTITLE_FILENAME = "data/pororo_1.smi"
-    TOBBI_ET_FILENAME = "data/proro1-29min.tsv"
+    TOBBI_ET_FILENAME = "data/pororo_s03p01_jhkim.tsv"
 
     # Check getting Timings from smi file
     timings = changeFormatAsTobbiTimestamp(getTimings(SUBTITLE_FILENAME))
