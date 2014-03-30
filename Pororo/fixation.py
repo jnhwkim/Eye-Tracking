@@ -1,5 +1,3 @@
-
-#
 # KidsVideo
 # Extract fixation points from eye-tracking exported data
 # with regard to timestamps of subtitle information.
@@ -12,9 +10,10 @@
 # @date   2014.03.02. logic update
 # @author Jin-Hwa Kim (jhkim@bi.snu.ac.kr)
 
-import sys
+import sys, os
 import numpy as np
 from sets import Set
+import common
 
 DEBUG = True
 
@@ -64,48 +63,17 @@ def changeFormatAsTobbiTimestamp(timings):
     else:
         return timings
 
-# Get the transformation matrix for mapping Tobbi Snapshot coordinate system 
-# to a unit space coordinate system.
-# @param snapshotCoords np.array of x, y pairs
-# @param unitCoords np.array of x, y pairs
-def getTransformationMatrix(snapshotCoords, unitCoords):
-    # AX = y; A = yX'pinv(XX')
-    # Using a linear algebra library
-    Q = np.dot(snapshotCoords, np.transpose(snapshotCoords))
-    Tr = np.dot(np.dot(unitCoords, np.transpose(snapshotCoords)), \
-         np.linalg.pinv(Q))
-    return Tr
-
-# Get a transformed coordinate using a given transformation matrix.
-def getUnitCoord(Tr, x, y):
-    # Encapsulate x and y to a x, y pair
-    coord = encapsulateCoord(x, y)
-
-    # Matrix * matrix
-    unitCoord = np.dot(Tr, coord)
-    
-    return unitCoord
-
-# encapsulate to a coordinate
-# It follows the linear algebra library convention.
-def encapsulateCoord(x, y):
-    return np.array([x, y, 1])
-
-# encapsulate to a coordinate matrix
-# It follows the linear algebra library convention.
-def encapsulateCoords(listOfXYs):
-    return np.transpose(np.array(listOfXYs))
-
 # print a set of fixations with regard to timestamps.
-def printFixations(tobbiFilename, timings, prior, post, skip):
+def printFixations(source_filename, timings, prior, post, skip):
     idx = 0
     fixations = []
     originalFixations = []
     timestamps = []
 
-    Tr = getTobbiTransformationMatrix()
+    (path, filename, name, extension) = common.pfne(source_filename)
 
-    with open(tobbiFilename, 'rU') as f, open('fixation.out', 'w') as w:
+    with open(source_filename, 'rU') as f, \
+         open(path + os.sep + name + ".fix", 'w') as w:
         # Print a header for the output file.
         _printHeader(w)
 
@@ -130,8 +98,7 @@ def printFixations(tobbiFilename, timings, prior, post, skip):
                     if (DEBUG): 
                         print "[03] Process", len(fixations), "fixations for", \
                             timings[idx] 
-                    _printFixations(w, timings[idx], timestamps, \
-                        fixations, originalFixations)
+                    _printFixations(w, timings[idx], timestamps, fixations)
                     fixations = []
                     originalFixations = []
                     timestamps = []
@@ -140,8 +107,7 @@ def printFixations(tobbiFilename, timings, prior, post, skip):
                 # Queue a fixation coordinate
                 if diff > prior and event == "Fixation":
                     try:
-                        fixation = getUnitCoord(Tr, int(fixX), int(fixY))
-                        originalFixation = [fixX, fixY]
+                        fixation = [fixX, fixY]
                     except ValueError:
                         # Caution: Missing one of x, y fixation points.
                         if (DEBUG): print "[03] Missing fixation point of x:", \
@@ -149,10 +115,9 @@ def printFixations(tobbiFilename, timings, prior, post, skip):
                         # Exclude missing fixation data.
                         continue
 
-                    if 0 == len(originalFixations) or \
-                        originalFixations[-1] != [fixX, fixY]:
+                    if 0 == len(fixations) or \
+                        fixations[-1] != fixation:
                         fixations.append(fixation)
-                        originalFixations.append(originalFixation)
                         timestamps.append(timestamp)
 
             # process reminders
@@ -176,25 +141,12 @@ def _printHeader(f):
             .format("Time", "Record", "Normalized_X", "Normalized_Y", "X", "Y"))
 
 # Print fixations for a given file description.
-def _printFixations(f, t_ts, o_ts, fixations, originalFixations):
+def _printFixations(f, t_ts, o_ts, fixations):
     for i in range(len(fixations)):
         fixX = fixations[i][0]
         fixY = fixations[i][1]
-        oFixX = originalFixations[i][0]
-        oFixY = originalFixations[i][1]
-        f.write("{}\t{}\t{}\t{}\t{}\t{}\n" \
-            .format(t_ts, o_ts[i], fixX, fixY, oFixX, oFixY))
-
-# Get the transformation matrix for Tobbi data.
-def getTobbiTransformationMatrix():
-    SCALING_FACTOR = 0.1716
-    a = encapsulateCoords([[159,158,1],[1120,178,1],[1080,700,1],[175,686,1]])
-    b = encapsulateCoords([[-SCALING_FACTOR,0,1],[1+SCALING_FACTOR,0,1],\
-                           [1+SCALING_FACTOR,1,1],[-SCALING_FACTOR,1,1]])
-    Tr = getTransformationMatrix(a,b)
-    print "[00] Tr = ",
-    print(Tr)
-    return Tr
+        f.write("{}\t{}\t{}\t{}\n" \
+            .format(t_ts, o_ts[i], fixX, fixY))
 
 def printList(f, list):
     for e in list:
@@ -202,7 +154,7 @@ def printList(f, list):
 
 def main():
     # Define Filenames
-    SUBTITLE_FILENAME = "data/pororo_1.smi"
+    SUBTITLE_FILENAME = "raw/pororo_1.smi"
     TOBBI_ET_FILENAME = "data/pororo_s03p01_jhkim.tsv"
 
     # Check getting Timings from smi file
@@ -213,17 +165,7 @@ def main():
         printList(f, timings)
 
     # print fixations with interval prior=1s, post=1s, skip=2530ms.
-    printFixations(TOBBI_ET_FILENAME, timings, -1000, 1000, 2530)
-
-def debug():
-    # Check the transformation matrix
-    a = encapsulateCoords([[-10,-50,1],[300,-10,1],[310,290,1],[10,310,1]])
-    b = encapsulateCoords([[0,0,1],[1,0,1],[1,1,1],[0,1,1]])
-    Tr = getTransformationMatrix(a,b)
-    ans = getUnitCoord(Tr, 150, 150)
-    print "[00] ans = ",
-    print(ans)
+    printFixations(TOBBI_ET_FILENAME, timings, -1000, 1000, 0)
 
 if __name__ == "__main__":
-    debug()
     main()

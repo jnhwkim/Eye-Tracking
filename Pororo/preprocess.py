@@ -6,6 +6,7 @@
 import os, sys, getopt, glob
 import numpy as np
 from sets import Set
+import common
 
 # default options
 verbose = False
@@ -47,7 +48,7 @@ def encapsulateCoords(listOfXYs):
 # Add MCx MCy to a given data.
 def preprocess(source_filename, output_filename, snapshotCoords, length, delay, skip = 0):
 
-    (path, filename, name, extension) = pfne(source_filename)
+    (path, filename, name, extension) = common.pfne(source_filename)
 
     idx = 0
     
@@ -157,41 +158,6 @@ def getTobbiTransformationMatrix(snapshotCoords):
     
     return Tr
 
-# Get the data from a given file.
-def readData(filename, delimiter = '\t', header = False, verbose = False):
-    data = []
-    with open(filename, 'rU') as f:
-        header = f.readline()
-        if header == True:
-            data.append(header)
-        wholefile = f.readlines()
-        for line in wholefile:
-            data.append(line.split('\n')[0].split(delimiter))
-
-    if verbose :
-        print "[00] readData =>", data
-
-    return data
-
-def findOne(value, data):
-
-    for row in data:
-        if row[0] == value:
-            return row[1:]
-
-    print "Not found", value, "!"
-    print data
-    sys.exit(1)
-
-def printList(f, list):
-    for e in list:
-        f.write("{}\n".format(e))
-
-def pfne(fullname):
-    (path, filename) = fullname.rsplit(os.sep, 1)
-    (name, extension) = filename.rsplit(".", 1)
-    return path, filename, name, extension
-
 def usage():
     print "Usage: preprocess [OPTION]\n" +\
         "Transform given Active Display Coordinates (ADC) to Media Coordinates (MC).\n"+\
@@ -235,23 +201,23 @@ def main():
     # get file name list
     filenameList = glob.glob(source)
 
-    snapshotCoordsList = readData(SNAPSHOT_FILENAME, '\t', False, verbose)
-    delayList = readData(DELAY_FILENAME, '\t', False, verbose)
+    snapshotCoordsList = common.readData(SNAPSHOT_FILENAME, '\t', False, verbose)
+    delayList = common.readData(DELAY_FILENAME, '\t', False, verbose)
 
     for fullname in filenameList:
         
         print "[01] Reading", fullname
 
-        (path, filename, name, extension) = pfne(fullname)
+        (path, filename, name, extension) = common.pfne(fullname)
 
         # snapshot coords
-        snapshotCoords = findOne(name, snapshotCoordsList)
+        snapshotCoords = common.findOne(name, snapshotCoordsList)
         tuples = []
 
         for i in range(4):
             tuples.append([float(snapshotCoords[i*2+0]), float(snapshotCoords[i*2+1])])
 
-        length, delay, skip = [int(i) for i in findOne(name, delayList)]
+        length, delay, skip = [int(i) for i in common.findOne(name, delayList)]
         if verbose:
             print "delay => ", delay, "skip => ", skip, "length =>", length
 
