@@ -45,7 +45,7 @@ def encapsulateCoords(listOfXYs):
     return np.transpose(np.array(listOfXYs))
 
 # Add MCx MCy to a given data.
-def preprocess(source_filename, output_filename, snapshotCoords, skip):
+def preprocess(source_filename, output_filename, snapshotCoords, length, delay, skip = 0):
 
     (path, filename, name, extension) = pfne(source_filename)
 
@@ -65,29 +65,39 @@ def preprocess(source_filename, output_filename, snapshotCoords, skip):
 
             # parse the line
             timestamp, event, fixX, fixY, gzX, gzY = parseTobbiLine(header, line.split('\n')[0])
-            
+
             # skip
             if int(timestamp) < skip :
+                continue            
+
+            # delay
+            if int(timestamp) < delay :
                 continue
             else :
-                timestamp = int(timestamp) - skip
+                timestamp = int(timestamp) - delay
+
+            # length
+            if timestamp > length :
+                break
+
+            # Print
+            origin = line.split('\n')[0].split('\t')[1:]
+            # try :
+            w.write("{}\t{}".format(timestamp, '\t'.join(origin)))
 
             # Transformation
             try :
                 fixation = getUnitCoord(Tr, int(fixX), int(fixY))
+                w.write("\t{0:.3f}\t{1:.3f}".format(fixation[0], fixation[1]))
             except ValueError :
-                fixation = [-1, -1]
-            
+                fixation = ['', '']
+                w.write("\t\t")
             try :
                 gaze = getUnitCoord(Tr, int(gzX), int(gzY))
+                w.write("\t{0:.3f}\t{1:.3f}\n".format(gaze[0], gaze[1]))
             except ValueError :
-                gaze = [-1, -1]
-
-            # Print
-            origin = line.split('\n')[0].split('\t')[1:]
-            w.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(timestamp, \
-                    '\t'.join(origin), \
-                    fixation[0], fixation[1], gaze[0], gaze[1]))
+                gaze = ['', '']
+                w.write("\t\t\n")
 
 # Parse Tobbi eye-tracking data to extract the required fields.
 def parseTobbiLine(header, line, delimiter = "\t"):
@@ -159,7 +169,7 @@ def readData(filename, delimiter = '\t', header = False, verbose = False):
             data.append(line.split('\n')[0].split(delimiter))
 
     if verbose :
-        print data
+        print "[00] readData =>", data
 
     return data
 
@@ -184,7 +194,7 @@ def pfne(fullname):
 
 def usage():
     print "Usage: preprocess [OPTION]\n" +\
-        "Transform given Active Display Coordinate (ADC) to Media Coordinate (MC).\n"+\
+        "Transform given Active Display Coordinates (ADC) to Media Coordinates (MC).\n"+\
         "\n"+\
         "  -s, --source               Specifies source directory\n"+\
         "                             default: ./raw\n"+\
@@ -198,9 +208,9 @@ def main():
     # Define Filenames
     DELAY_FILENAME = "raw/delay.tsv"
     SNAPSHOT_FILENAME = "raw/snapshot.tsv"
-    source = "raw/"
+    source = "raw/pororo*.tsv"
     output = "data/"
-    verbose = False
+    verbose = True
 
     try:
         opts, args = \
@@ -223,7 +233,7 @@ def main():
             output = value
 
     # get file name list
-    filenameList = glob.glob(source+"/pororo*.tsv")
+    filenameList = glob.glob(source)
 
     snapshotCoordsList = readData(SNAPSHOT_FILENAME, '\t', False, verbose)
     delayList = readData(DELAY_FILENAME, '\t', False, verbose)
@@ -241,13 +251,15 @@ def main():
         for i in range(4):
             tuples.append([float(snapshotCoords[i*2+0]), float(snapshotCoords[i*2+1])])
 
-        delay = int(findOne(name, delayList)[0])
+        delay, skip, length = [int(i) for i in findOne(name, delayList)]
+        if verbose:
+            print "delay => ", delay, "skip => ", skip, "length =>", length
 
         # Do prepocess and store to a given output filename.
         if verbose:
-            print "preprocess({}, {}, snapshotCoords, {})"\
-                .format(source + filename, output + filename, delay)
-        preprocess(source + filename, output + filename, tuples, delay)
+            print "preprocess({}, {}, snapshotCoords, {}, {})"\
+                .format(path + os.sep + filename, output + filename, length, delay, skip)
+        preprocess(path + os.sep + filename, output + filename, tuples, length, delay, skip)
 
 if __name__ == "__main__":
     main()

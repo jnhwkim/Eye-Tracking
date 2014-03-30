@@ -1,3 +1,3 @@
-filename	delay
-pororo_s03p01_jhkim	2530
-pororo_s03p02_jhkim	-1000
+filename	delay	skip	length
+pororo_s03p01_jhkim	2530	0	4070866
+pororo_s03p02_jhkim	-1716906	11500	4070866
