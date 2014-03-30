@@ -251,7 +251,7 @@ def main():
         for i in range(4):
             tuples.append([float(snapshotCoords[i*2+0]), float(snapshotCoords[i*2+1])])
 
-        delay, skip, length = [int(i) for i in findOne(name, delayList)]
+        length, delay, skip = [int(i) for i in findOne(name, delayList)]
         if verbose:
             print "delay => ", delay, "skip => ", skip, "length =>", length
 

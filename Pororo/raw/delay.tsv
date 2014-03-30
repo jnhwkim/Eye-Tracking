@@ -1,3 +1,4 @@
-filename	delay	skip	length
-pororo_s03p01_jhkim	2530	0	4070866
-pororo_s03p02_jhkim	-1716906	11500	4070866
+filename	length	delay	skip
+pororo_s03p01_jhkim	4070866	2530	0
+pororo_s03p02_jhkim	4070866	-1716906	11500
+pororo_s03p01_kwon	4070866	5033	0
