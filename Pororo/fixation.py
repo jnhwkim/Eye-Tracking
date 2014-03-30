@@ -137,8 +137,8 @@ def parseTobbiLine(header, line, delimiter = "\t"):
 
 # Print a header for a given file description.
 def _printHeader(f):
-    f.write("{}\t{}\t{}\t{}\t{}\t{}\n" \
-            .format("Time", "Record", "Normalized_X", "Normalized_Y", "X", "Y"))
+    f.write("{}\t{}\t{}\t{}\n" \
+            .format("Time", "Record", "X", "Y"))
 
 # Print fixations for a given file description.
 def _printFixations(f, t_ts, o_ts, fixations):
@@ -155,7 +155,7 @@ def printList(f, list):
 def main():
     # Define Filenames
     SUBTITLE_FILENAME = "raw/pororo_1.smi"
-    TOBBI_ET_FILENAME = "data/pororo_s03p01_jhkim.tsv"
+    TOBBI_ET_FILENAME = "data/pororo_s03p01_kwon.tsv"
 
     # Check getting Timings from smi file
     timings = changeFormatAsTobbiTimestamp(getTimings(SUBTITLE_FILENAME))

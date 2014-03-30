@@ -1,6 +1,6 @@
 %% Read files
-[Time,Record,Normalized_X,Normalized_Y,X,Y] = importfile('fixation.out');
-fixations = [Time Normalized_X Normalized_Y];
+[Time,Record,X,Y] = importfile('data/pororo_s03p01_kwon.fix');
+fixations = [Time X Y];
 timings = load('timings.txt');
 
 figure;
