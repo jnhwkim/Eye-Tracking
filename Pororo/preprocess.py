@@ -82,7 +82,8 @@ def preprocess(source_filename, output_filename, snapshotCoords, length, delay, 
                 break
 
             # Print
-            origin = line.split('\n')[0].split('\t')[1:]
+            # The number of Origin's columns is 9.
+            origin = line.split('\n')[0].split('\t')[1:9]
             # try :
             w.write("{}\t{}".format(timestamp, '\t'.join(origin)))
 
@@ -102,7 +103,7 @@ def preprocess(source_filename, output_filename, snapshotCoords, length, delay, 
 
 # Parse Tobbi eye-tracking data to extract the required fields.
 def parseTobbiLine(header, line, delimiter = "\t"):
-    header = header.split(delimiter)
+    header = header.replace("\xef\xbb\xbf", "").split(delimiter)
     line = line.split(delimiter)
     timestamp = line[header.index('RecordingTimestamp')]
     gazeEventType = line[header.index('GazeEventType')]

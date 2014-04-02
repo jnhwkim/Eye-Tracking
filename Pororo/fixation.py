@@ -10,12 +10,12 @@
 # @date   2014.03.02. logic update
 # @author Jin-Hwa Kim (jhkim@bi.snu.ac.kr)
 
-import sys, os
+import sys, os, glob
 import numpy as np
 from sets import Set
 import common
 
-DEBUG = True
+DEBUG = False
 
 # Get timestamps from a given SMI subtitle file.
 # from capture.py by Seungyeon Kim (sykim@bi.snu.ac.kr)
@@ -122,8 +122,7 @@ def printFixations(source_filename, timings, prior, post, skip):
 
             # process reminders
             else:
-                _printFixations(w, timings[idx], timestamps, \
-                    fixations, originalFixations)
+                _printFixations(w, timings[idx], timestamps, fixations)
 
 # Parse Tobbi eye-tracking data to extract the required fields.
 def parseTobbiLine(header, line, delimiter = "\t"):
@@ -155,17 +154,24 @@ def printList(f, list):
 def main():
     # Define Filenames
     SUBTITLE_FILENAME = "raw/pororo_1.smi"
-    TOBBI_ET_FILENAME = "data/pororo_s03p01_kwon.tsv"
+    SRC = "data/pororo_s03p01*.tsv"
 
     # Check getting Timings from smi file
     timings = changeFormatAsTobbiTimestamp(getTimings(SUBTITLE_FILENAME))
 
     # Print timings to a file.
-    with open('timings.txt', 'w') as f:
-        printList(f, timings)
+    # with open('timings.txt', 'w') as f:
+    #    printList(f, timings)
 
-    # print fixations with interval prior=1s, post=1s, skip=2530ms.
-    printFixations(TOBBI_ET_FILENAME, timings, -1000, 1000, 0)
+    # get file name list
+    filenameList = glob.glob(SRC)
+
+    for fullname in filenameList:
+        
+        print "[01] Reading", fullname
+
+        # print fixations with interval prior=1s, post=1s, skip=0ms.
+        printFixations(fullname, timings, -1000, 1000, 0)
 
 if __name__ == "__main__":
     main()

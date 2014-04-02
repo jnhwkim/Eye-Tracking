@@ -1,5 +1,5 @@
 %% Read files
-[Time,Record,X,Y] = importfile('data/pororo_s03p01_kwon.fix');
+[Time,Record,X,Y] = importfile('data/pororo_s03p01_yrseo.fix');
 fixations = [Time X Y];
 timings = load('timings.txt');
 
