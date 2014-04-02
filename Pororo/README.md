@@ -1,5 +1,5 @@
-Visual Attention Model for KidsVideo
-====================================
+PororoS3 - Visual Attention Data 
+=================================
 
 ## Usage
 
