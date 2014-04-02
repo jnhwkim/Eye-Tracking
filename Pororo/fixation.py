@@ -64,7 +64,7 @@ def changeFormatAsTobbiTimestamp(timings):
         return timings
 
 # print a set of fixations with regard to timestamps.
-def printFixations(source_filename, timings, prior, post, skip):
+def printFixations(source_filename, output_dir, timings, prior, post, skip):
     idx = 0
     fixations = []
     originalFixations = []
@@ -73,7 +73,7 @@ def printFixations(source_filename, timings, prior, post, skip):
     (path, filename, name, extension) = common.pfne(source_filename)
 
     with open(source_filename, 'rU') as f, \
-         open(path + os.sep + name + ".fix", 'w') as w:
+         open(output_dir + os.sep + name + ".fix", 'w') as w:
         # Print a header for the output file.
         _printHeader(w)
 
@@ -153,14 +153,15 @@ def printList(f, list):
 
 def main():
     # Define Filenames
-    SUBTITLE_FILENAME = "raw/pororo_1.smi"
+    SUBTITLE_FILENAME = "info/pororo_1.smi"
     SRC = "data/pororo_s03p01*.tsv"
+    OUT = "fix/"
 
     # Check getting Timings from smi file
     timings = changeFormatAsTobbiTimestamp(getTimings(SUBTITLE_FILENAME))
 
     # Print timings to a file.
-    # with open('timings.txt', 'w') as f:
+    # with open('info/timings.txt', 'w') as f:
     #    printList(f, timings)
 
     # get file name list
@@ -171,7 +172,7 @@ def main():
         print "[01] Reading", fullname
 
         # print fixations with interval prior=1s, post=1s, skip=0ms.
-        printFixations(fullname, timings, -1000, 1000, 0)
+        printFixations(fullname, OUT, timings, -1000, 1000, 0)
 
 if __name__ == "__main__":
     main()

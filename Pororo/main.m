@@ -1,15 +1,26 @@
 %% Read files
-[Time,Record,X,Y] = importfile('data/pororo_s03p01_yrseo.fix');
-fixations = [Time X Y];
-timings = load('timings.txt');
+filenames = dir('fix/*.fix');
 
-figure;
-N = 10;
-fixations = fixations(fixations(:,1)<=timings(N * N),:);
+for i = 1 : size(filenames, 1)
+    
+    filename = filenames(i).name
+    
+    [Time,Record,X,Y] = importfile(strcat('fix/', filename));
+    fixations = [Time X Y];
+    timings = load('timings.txt');
 
-for i = 1 : N * N
-    subplot('Position', [mod(i-1,N)/N, 1-1/N-floor((i-1)/N)/N, 1/N, 1/N]);
-    time = int2str(timings(i));
-    showFixation(time, fixations);
-    axis off;
+    fig0 = figure;
+
+    N = 10;
+    fixations = fixations(fixations(:,1)<=timings(N * N),:);
+
+    for i = 1 : N * N
+        subplot('Position', [mod(i-1,N)/N, 1-1/N-floor((i-1)/N)/N, 1/N, 1/N]);
+        time = int2str(timings(i));
+        showFixation(time, fixations);
+        axis off;
+    end
+
+    saveas(fig0, strcat('img/', strrep(filename, '.fix', '.jpg')));
+    close(fig0);
 end

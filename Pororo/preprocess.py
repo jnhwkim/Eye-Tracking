@@ -173,8 +173,8 @@ def usage():
 
 def main():
     # Define Filenames
-    DELAY_FILENAME = "raw/delay.tsv"
-    SNAPSHOT_FILENAME = "raw/snapshot.tsv"
+    DELAY_FILENAME = "info/delay.tsv"
+    SNAPSHOT_FILENAME = "info/snapshot.tsv"
     source = "raw/pororo*.tsv"
     output = "data/"
     verbose = True
