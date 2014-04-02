@@ -903,42 +903,40 @@ MathJax.Hub.Config({
 });
 </script>
 <title>README</title></head><body><h1>
-<a name="visual-attention-model-for-kidsvideo" class="anchor" href="#visual-attention-model-for-kidsvideo"><span class="octicon octicon-link"></span></a>Visual Attention Model for KidsVideo</h1>
+<a name="user-content-pororos3---visual-attention-data-" class="anchor" href="#pororos3---visual-attention-data-"><span class="octicon octicon-link"></span></a>PororoS3 - Visual Attention Data </h1>
 
 <h2>
-<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+<a name="user-content-usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
 
 <h3>
-<a name="step-1-fixationpy" class="anchor" href="#step-1-fixationpy"><span class="octicon octicon-link"></span></a>Step 1. fixation.py</h3>
+<a name="user-content-step-1-fixationpy" class="anchor" href="#step-1-fixationpy"><span class="octicon octicon-link"></span></a>Step 1. fixation.py</h3>
 
 <p>Get the Tobbi Glasses' fixation data aligned to the subtitles' timestamps.</p>
 
 <h4>
-<a name="input" class="anchor" href="#input"><span class="octicon octicon-link"></span></a>Input</h4>
+<a name="user-content-input" class="anchor" href="#input"><span class="octicon octicon-link"></span></a>Input</h4>
 
 <ul>
 <li>
-<em>data/pororo_s03p01_jhkim.tsv</em> - Tobbi Glasses' exported data. <strong>(I1)</strong>
+<em>raw/pororo_s03p01_jhkim.tsv</em> - Tobbi Glasses' exported data. <strong>(I1)</strong>
 </li>
 <li>
-<em>data/pororo_1.smi</em> - SMI subtitles file for Pororo Season 3. <strong>(I2)</strong>
+<em>info/pororo_1.smi</em> - SMI subtitles file for Pororo Season 3. <strong>(I2)</strong>
 </li>
 </ul><h4>
-<a name="output" class="anchor" href="#output"><span class="octicon octicon-link"></span></a>Output</h4>
+<a name="user-content-output" class="anchor" href="#output"><span class="octicon octicon-link"></span></a>Output</h4>
 
 <ul>
 <li>
-<em>timings.txt</em> - Subtitles' start time in millisecond. <strong>(O1)</strong>
+<em>info/timings.txt</em> - Subtitles' start time in millisecond. <strong>(O1)</strong>
 </li>
 <li>
-<em>fixation.out</em> - Tobbi Glasses' data aligned to the subtitiles' timestamps. <strong>(O2)</strong>
+<em>fix/pororo_s03p01_jhkim.fix</em> - Tobbi Glasses' data aligned to the subtitiles' timestamps. <strong>(O2)</strong>
 </li>
 </ul><table>
 <thead><tr>
 <th>Time</th>
 <th>Record</th>
-<th>Normalized_X</th>
-<th>Normalized_Y</th>
 <th>X</th>
 <th>Y</th>
 </tr></thead>
@@ -947,14 +945,12 @@ MathJax.Hub.Config({
 <td>Fixation's Timestamp</td>
 <td>Normalized X</td>
 <td>Normalized Y</td>
-<td>Raw X</td>
-<td>Raw Y</td>
 </tr></tbody>
 </table><h3>
-<a name="step-2-showfixationm" class="anchor" href="#step-2-showfixationm"><span class="octicon octicon-link"></span></a>Step 2. showFixation.m</h3>
+<a name="user-content-step-2-mainm-dependents-on-showfixationm-importfilem" class="anchor" href="#step-2-mainm-dependents-on-showfixationm-importfilem"><span class="octicon octicon-link"></span></a>Step 2. main.m (dependents on showFixation.m, importfile.m)</h3>
 
 <h4>
-<a name="input-1" class="anchor" href="#input-1"><span class="octicon octicon-link"></span></a>Input</h4>
+<a name="user-content-input-1" class="anchor" href="#input-1"><span class="octicon octicon-link"></span></a>Input</h4>
 
 <ul>
 <li>
@@ -963,23 +959,29 @@ MathJax.Hub.Config({
 <em>screenshots/pororo_1_XXXXX.bmp</em> - Screenshot images by <em>capture.py</em>.</li>
 </ul><p>It shows the fixation data on the screenshot images. The below image is 100 screenshots and its fixations. Pure red dot means the first fixation in 2 sec time span (from 1 sec before to 1 sec after) and, more darker as time goes.</p>
 
-<p><a href="file:///Users/calvin/workspace-git/VFS/Proro/100_samples.jpg" target="_blank"><img src="file:///Users/calvin/workspace-git/VFS/Proro/100_samples.jpg" alt="100 screenshots and its fixations" style="max-width:100%;"></a></p>
+<h3>
+<a name="user-content-output-1" class="anchor" href="#output-1"><span class="octicon octicon-link"></span></a>Output</h3>
+
+<ul>
+<li>
+<strong>img/pororo_s03p01_jhkim.jpg</strong> - 100 screenshots and its fixations</li>
+<li>Default colormap is <em>Jet</em>. <strong>jet</strong> ranges from blue to red, and passes through the colors cyan, yellow, and orange. It is a variation of the hsv colormap.</li>
+</ul><p><a href="file:///Users/calvin/workspace-git/VFS/Pororo/doc/jet.png" target="_blank"><img src="file:///Users/calvin/workspace-git/VFS/Pororo/doc/jet.png" alt="Jet colormap" style="max-width:100%;"></a></p>
 
 <h2>
-<a name="protocol" class="anchor" href="#protocol"><span class="octicon octicon-link"></span></a>Protocol</h2>
+<a name="user-content-protocol" class="anchor" href="#protocol"><span class="octicon octicon-link"></span></a>Protocol</h2>
 
 <ol>
 <li><p>Prepare Tobbi Glasses to have <strong>enough battery life</strong>. 
 (Approximately 70 min when fully charged.)</p></li>
 <li><p>Check the IR markers' <strong>battery status</strong>. You can also check the markers in Tobbi Snapshot preview at <em>Step 3</em>.
-(Green 90%, Yellow 50%, Red 10%)</p></li>
-<li><p>Let the subject sit in front of screen after finishing the calibration with more than 3 stars. Using the mobile device, <strong>take a snapshot</strong> to make sure the all markers' health is okay and in later, to use as a coordinate indicator for eye movements in the screen.</p></li>
+(Refer to Tobbi Glasses manual)</p></li>
+<li><p>Check that the Fixation Filter is <strong>I-VT</strong>.</p></li>
+<li><p>Let the subject sit in front of screen after finishing the calibration with more than 3 stars. Using the mobile device, <strong>take a snapshot</strong> to make sure the all markers' health is okay and in later, to use as a coordinate indicator for eye movements in the screen. (<em>We recommend to tag on the screen with the name of the participant</em> to prevent a mistake on the assessment.)</p></li>
 <li>
 <p>When finishing the recording, save the tsv data (format is below.) with the Glasses' recorded video and snapshot at <em>Step 3</em>.</p>
 
 <ul>
-<li>MediaWidth</li>
-<li>MediaHeight</li>
 <li>RecordingTimestamp</li>
 <li>FixationIndex</li>
 <li>SaccadeIndex</li>
@@ -991,4 +993,14 @@ MathJax.Hub.Config({
 <li>GazePointY (ADCSpx)</li>
 </ul>
 </li>
-</ol></body></html>
+</ol><h2>
+<a name="user-content-experiment-outputs" class="anchor" href="#experiment-outputs"><span class="octicon octicon-link"></span></a>Experiment Outputs</h2>
+
+<ul>
+<li>
+<em>pororo_s03p01_jhkim.tsv</em> - In <em>Step 4</em>.</li>
+<li>
+<em>pororo_s03p01_jhkim.jpg</em> - Tobbi Snapshot used in the recording.</li>
+<li>
+<em>pororo_s03p01_jhkim.avi</em> - Visualization video at least 20 sec from the beginning to sync with the media.</li>
+</ul></body></html>
