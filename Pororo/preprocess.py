@@ -173,7 +173,7 @@ def usage():
 
 def main():
     # Define Filenames
-    DELAY_FILENAME = "info/delay.tsv"
+    DELAY_FILENAME = "info/delay.csv"
     SNAPSHOT_FILENAME = "info/snapshot.tsv"
     source = "raw/pororo*.tsv"
     output = "data/"
@@ -203,7 +203,7 @@ def main():
     filenameList = glob.glob(source)
 
     snapshotCoordsList = common.readData(SNAPSHOT_FILENAME, '\t', False, verbose)
-    delayList = common.readData(DELAY_FILENAME, '\t', False, verbose)
+    delayList = common.readData(DELAY_FILENAME, ',', False, verbose)
 
     for fullname in filenameList:
         

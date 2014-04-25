@@ -7,16 +7,17 @@ for i = 1 : size(filenames, 1)
     
     [Time,Record,X,Y] = importfile(strcat('fix/', filename));
     fixations = [Time X Y];
-    timings = load('timings.txt');
+    timings = load('info/timings.txt');
 
     fig0 = figure;
 
     N = 10;
-    fixations = fixations(fixations(:,1)<=timings(N * N),:);
+    skip = 400;
+    fixations = fixations(fixations(:,1)<=timings(N * N + skip),:);
 
     for i = 1 : N * N
         subplot('Position', [mod(i-1,N)/N, 1-1/N-floor((i-1)/N)/N, 1/N, 1/N]);
-        time = int2str(timings(i));
+        time = int2str(timings(i + skip));
         showFixation(time, fixations);
         axis off;
     end

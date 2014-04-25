@@ -122,7 +122,7 @@ def printFixations(source_filename, output_dir, timings, prior, post, skip):
 
             # process reminders
             else:
-                _printFixations(w, timings[idx], timestamps, fixations)
+                _printFixations(w, timings[idx-1], timestamps, fixations)
 
 # Parse Tobbi eye-tracking data to extract the required fields.
 def parseTobbiLine(header, line, delimiter = "\t"):
