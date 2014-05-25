@@ -94,6 +94,8 @@ def printFixations(source_filename, output_dir, timings, prior, post, skip):
             if idx < len(timings):
                 # Check if it's within interval.
                 diff = int(timestamp) - int(timings[idx])
+                if (DEBUG):
+                    print "[03] timestamp=", timestamp, ", timings[idx]=", timings[idx]
                 if diff > post and 0 < len(fixations):
                     if (DEBUG): 
                         print "[03] Process", len(fixations), "fixations for", \
@@ -103,9 +105,15 @@ def printFixations(source_filename, output_dir, timings, prior, post, skip):
                     originalFixations = []
                     timestamps = []
                     idx = idx + 1
+                # Sliding for the case of the part 2 data.
+                elif diff > -prior:
+                    while int(timestamp) - int(timings[idx]) > -prior and idx < len(timings):
+                        idx = idx + 1
+                    if (DEBUG):
+                        print "[03] Increase idx as", idx, "(", timings[idx], ")."
 
                 # Queue a fixation coordinate
-                if diff > prior and event == "Fixation":
+                if diff <= -prior and diff >= -post and event == "Fixation":
                     try:
                         fixation = [fixX, fixY]
                     except ValueError:
@@ -119,6 +127,9 @@ def printFixations(source_filename, output_dir, timings, prior, post, skip):
                         fixations[-1] != fixation:
                         fixations.append(fixation)
                         timestamps.append(timestamp)
+                        if (DEBUG):
+                            print "[03] Queue a fixation."
+                
 
             # process reminders
             else:
@@ -154,7 +165,7 @@ def printList(f, list):
 def main():
     # Define Filenames
     SUBTITLE_FILENAME = "info/pororo_1.smi"
-    SRC = "data/pororo_s03p01*.tsv"
+    SRC = "data/pororo_s03p01_*.tsv"
     OUT = "fix/"
 
     # Check getting Timings from smi file

@@ -4,3 +4,4 @@ SVHN/*.mat
 *.pyc
 */screenshots/*
 */*.avi
+Pororo/fix_bak/*
