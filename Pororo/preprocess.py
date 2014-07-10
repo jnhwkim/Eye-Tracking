@@ -1,4 +1,5 @@
 # Transform given Active Display Coordinate (ADC) to Media Coordinate (MC).
+# raw/pororo*.tsv -> data/pororo*.tsv
 #
 # @date   2014-03-30 
 # @author Jin-Hwa Kim (jhkim@bi.snu.ac.kr)
