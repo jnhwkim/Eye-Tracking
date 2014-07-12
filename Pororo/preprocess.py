@@ -177,7 +177,7 @@ def main():
     # Define Filenames
     DELAY_FILENAME = "info/delay.csv" if not GAT else "info/gat.csv"
     SNAPSHOT_FILENAME = "info/snapshot.tsv"
-    source = "raw/pororo_s03p01_eskim_170.tsv"
+    source = "raw/pororo_*.tsv"
     output = "data/"
     verbose = True
 

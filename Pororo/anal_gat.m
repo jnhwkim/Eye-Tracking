@@ -1,14 +1,9 @@
 %% Read files
-filenames = dir('data/*GAT_eskim_170.tsv');
+filenames = dir('data/*GAT_eskim.tsv');
 fixation_all = [];
 No = size(filenames, 1);
-IS_RAW = false;
 MEDIAN_RECALIBRATION = false;
-if(IS_RAW)
-    w = 1280; h = 960;
-else
-    w = 1.0; h = 1.0;
-end
+w = 1.0; h = 1.0;
 
 %% Preprocessing
 for i = 1 : No
@@ -30,14 +25,9 @@ for i = 1 : No
             GazePointXADCSpx, GazePointYADCSpx, ...
             FixationPointXMCSpx, FixationPointYMCSpx, ...
             GazePointXMCSpx, GazePointYMCSpx    ] = ...
-                import_data(strcat('data/pororo_s03p01_eskim_170.tsv'));
+                import_data(strcat('data/pororo_s03p01_eskim.tsv'));
         
-        if(IS_RAW)
-            fixation_raw = [FixationIndex FixationPointXADCSpx FixationPointYADCSpx];
-        else
-            fixation_raw = [FixationIndex FixationPointXMCSpx FixationPointYMCSpx];
-        end
-        
+        fixation_raw = [FixationIndex FixationPointXMCSpx FixationPointYMCSpx];
         fixation_raw = fixation_raw(~isnan(fixation_raw(:,1)),:);
         fixation_raw = fixation_raw(~isnan(fixation_raw(:,2)),:);
         
@@ -80,20 +70,13 @@ for i = 1 : No
     end
         
     %% Fixations
-    figure(1);
+%     figure(1);
     %subplot('Position', [mod(i-1,N)/N, 1-1/N-floor((i-1)/N)/N, 1/N, 1/N]);
-    screenshot_filename = strcat('info/gat.jpg');
-    screenshot = imread(screenshot_filename);
-
-    hold on;
-    if(IS_RAW) 
-        imshow(screenshot); 
-        scatter(x,y); % image coordinates
-    else
-        scatter(x,-y+h); % vertical inverted coordinates
-    end
+%     hold on;
+    scatter(x, h-y, 'blue', 'o'); % Notice the y-inverted coordinates.
+    grid on;
+    set(gca,'XTick',0:w/4:w, ...
+            'YTick',0:h/4:h);
     axis([0 w 0 h]);
-    title(sprintf('median = [%.3f %.3f]', median(x), median(y)));
-    hold off;
     
 end
