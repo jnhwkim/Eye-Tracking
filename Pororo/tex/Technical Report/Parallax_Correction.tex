@@ -14,7 +14,7 @@
 % CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Technical Report on the recalibration of Tobii Glasses Eye Tracker.
+% Technical Report on Parallax Correction of Tobii Glasses Eye Tracker.
 %
 % Author:
 % Jin-Hwa Kim (jhkim@bi.snu.ac.kr)        07/10/2014
@@ -39,8 +39,8 @@
 % DOCUMENT INFORMATION
 %----------------------------------------------------------------------------------------
 
-\title{Technical Report on the Median Recalibration \\
-for Eye Tracking Data on Watching Video.} % Title
+\title{Technical Report on Parallax Correction \\
+of Tobii Glasses Eye Tracker} % Title
 
 \author{Jin-Hwa \textsc{Kim}} % Author name
 
@@ -70,10 +70,7 @@ Instructor: & Professor Byoung-Tak Zhang % Instructor/supervisor
 
 \section{Objective}
 
-To determine that the recalibration using the difference vector between the center of the screen and the median of fixation points is effective to minimize the error of the calibration. All gaze points are adjusted by adding the vector which is the difference vector $v$.
-
-\begin{center}${p}' \leftarrow p + v, $\\
-$v \leftarrow p_{center} - p_{median}$\end{center}
+To determine that the effectiveness of the parallax correction as the post calibration procedure. 
 
 % If you have more than one objective, uncomment the below:
 %\begin{description}
@@ -91,7 +88,7 @@ $v \leftarrow p_{center} - p_{median}$\end{center}
 The calibration procedure manually moved the calibration point for the acquirement of the accurate gaze points. This internal calibration point is only valid while the glasses are not removed from the participant's head. Accuracy depends on the variety factors, which are right distance, exact points and light conditions, during the calibration procedure.
 
 \item[Recalibration]
-Tobii Glasses eye tracker, which is used by our experiment, provides the post calibration which can be conducted the calibration procedure after the eye movement recording. This is called as \textit{Post calibration} or \textit{recalibration}. However, in this technical report, we define the \textit{recalibration} as the procedure for the refinement of the previous device calibration.
+Tobii Glasses eye tracker, which is used by our experiment, provides the post calibration which can be conducted the calibration procedure after the eye movement recording. This is called as \textit{Post calibration} or \textit{recalibration}. In this technical report, we specifically define the \textit{Post calibration} or \textit{recalibration} as the procedure for the parallax correction.
 
 \item[Gaze Point]
 Gaze point means literally the location that the participant gazes.
@@ -107,13 +104,28 @@ Fixation point means the location that the participant fixes his or her gaze poi
 
 \section{Experiments}
 
-To verify the improvement of the median recalibration method, we used the gaze accuracy test in advance of the watching the video. The gaze accuracy test will show us how much accurate before and after the recalibration.
+To verify the improvement of the measurement of gaze points after the parallax correction, we used the gaze accuracy test in advance of the watching the video. The gaze accuracy test will show us how much accurate before and after the recalibration.
 
 \subsection{Gaze Accuracy Test}
 For the measurement of the accuracy of the gaze point, we prepared the test video which has the moving dot on the lattice background. Participants are instructed to patiently fixate on the dot while it is stationary. You can check the video on YouTube at \citet{GAT}.
 
 \subsection{Material}
-We used the portion of episodes in the kids video, \textit{Pororo Season 3}, as the material to get the median point of fixations. The playing time is approximately 30 minutes, which yields about 3,000 to 6,000 fixations. Though the gaze accuracy test is given to only two participants among 18 participants, we will observe the median recalibration results on all 18 participants, who watched the video.
+We used the portion of episodes in the kids video, \textit{Pororo Season 3}, as the material to get the median point of fixations. The playing time is approximately 30 minutes, which yields about 3,000 to 6,000 fixations.
+
+\subsection{Method}
+Before the recording of the participant's eye movements, we took the snapshot from the eye tracker. This snapshot contains the information of the IR makers' location and its identities via the function of the device. For this, we can obtain coordinates of gaze points on the snapshot image. After applying the affine transformation featured by the snapshot, finally, we can get the media coordinates, which represents the positions on the video screen. The coordinates on the snapshot image $\mathbf{x}$ is transformed to the coordinates on the video screen $\mathbf{x^\ast}$ via the affine transformation matrix $\mathbf{A}$ is defined as the algebraic equation, 
+
+\begin{center}
+$\mathbf{x^\ast} = \mathbf{Ax},$\\
+\end{center}
+
+and the affine transformation matrix $\mathbf{A}$ is defined by the salient positions $\mathbf{X}$, for example, the positions of four corners, and its corresponding coordinates on the video screen $\mathbf{y}$ as
+
+\begin{center}
+$\mathbf{A} = \mathbf{yX'}pinv(\mathbf{XX'})$.
+\end{center}
+
+
 
 %----------------------------------------------------------------------------------------
 % SECTION 3
@@ -121,13 +133,12 @@ We used the portion of episodes in the kids video, \textit{Pororo Season 3}, as 
 
 \section{Results and Conclusions}
 
-The atomic weight of magnesium is concluded to be \SI{24}{\gram\per\mol}, as determined by the stoichiometry of its chemical combination with oxygen. This result is in agreement with the accepted value.
+We recorded eye movements during 45 seconds for the Gaze Accuracy Test. All five locations, four corners of a quarter sized square centered in the screen and the center point, are visited three times each, and each visit holds three seconds to fixate on it. Through this, we got 1158 fixation points in the test. Figure~\ref{fig:parallax-correction} shows the parallax correction (blue circles) improves the accuracy in comparison with the not applied one.
 
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=0.65\textwidth]{placeholder} % Include the image placeholder.png
-\caption{Figure caption.}
-\end{center}
+\begin{figure}
+  \centerline{\includegraphics[width=86mm,trim=10mm 10mm 10mm 10mm]{./eps/parallax_correction.eps}}
+  \caption{\textit{Parallax Correction} improves overall accuracy. We recorded 45 seconds of eye movements on the Gaze Accuracy Test. All five locations are visited three times, and each visit holds three seconds to fixate on it. Through this, we got 1158 fixation points in the test. Red crosses mean the fixation points without the parallax correction, which are recorded at 170 cm in front of the screen. Blue circles are with the parallax correction.}
+  \label{fig:parallax-correction}
 \end{figure}
 
 %----------------------------------------------------------------------------------------
@@ -167,7 +178,7 @@ The \emph{units of atomic weight} are two-fold, with an identical numerical valu
 
 \bibliographystyle{apalike}
 
-\bibliography{Median_Recalibration}
+\bibliography{Parallax_Correction}
 
 %----------------------------------------------------------------------------------------
 
