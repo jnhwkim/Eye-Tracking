@@ -4,7 +4,7 @@
 # @date   2014-03-30 
 # @author Jin-Hwa Kim (jhkim@bi.snu.ac.kr)
 
-import os, sys, getopt, glob
+import os, sys, getopt, glob, re
 import numpy as np
 from sets import Set
 import common
@@ -173,10 +173,11 @@ def usage():
         "  -v, --verbose              View more details\n"
 
 def main():
+    GAT = False
     # Define Filenames
-    DELAY_FILENAME = "info/delay.csv"
+    DELAY_FILENAME = "info/delay.csv" if not GAT else "info/gat.csv"
     SNAPSHOT_FILENAME = "info/snapshot.tsv"
-    source = "raw/pororo*.tsv"
+    source = "raw/pororo_s03p01_eskim_170.tsv"
     output = "data/"
     verbose = True
 
@@ -223,11 +224,18 @@ def main():
         if verbose:
             print "delay => ", delay, "skip => ", skip, "length =>", length
 
+        if GAT:
+            _splited = re.split('s03p0\d', filename)
+            output_filename = _splited[0] + 'GAT' + _splited[1]
+        else:
+            output_filename = filename
+
         # Do prepocess and store to a given output filename.
         if verbose:
             print "preprocess({}, {}, snapshotCoords, {}, {})"\
-                .format(path + os.sep + filename, output + filename, length, delay, skip)
-        preprocess(path + os.sep + filename, output + filename, tuples, length, delay, skip)
+                .format(path + os.sep + filename, output + output_filename, length, delay, skip)
+        
+        preprocess(path + os.sep + filename, output + output_filename, tuples, length, delay, skip)
 
 if __name__ == "__main__":
     main()
