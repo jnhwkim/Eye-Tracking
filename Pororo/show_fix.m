@@ -42,15 +42,27 @@ timely_fixations = fixations(abs(fixations(:,1) - time) ...
                              < threshold, 2:end);
 timely_fixations = unique(timely_fixations,'rows');
 
+% column 3 indicates the number of subject for coloring.
+if size(timely_fixations, 2) < 3
+    timely_fixations = [timely_fixations, ones(size(timely_fixations, 1))];
+end
+
 N = size(timely_fixations,1);
 hold on;
 
 for i=1:N
-   %cm = colormap(jet(N));
-   cm = colormap(jet(17));
+   cm = colormap(jet(N));
    plot(timely_fixations(i,1), timely_fixations(i,2), 'o', ...
-       'MarkerSize', 8, ...
-       'MarkerFaceColor', cm(mod(timely_fixations(i,3)-1,17)+1,:)); %cm(i,:));
+       'MarkerSize', 3, ...
+       'MarkerFaceColor', cm(i,:));
 end
+
+% for i=1:N
+%    %cm = colormap(jet(N));
+%    cm = colormap(jet(17));
+%    plot(timely_fixations(i,1), timely_fixations(i,2), 'o', ...
+%        'MarkerSize', 8, ...
+%        'MarkerFaceColor', cm(mod(timely_fixations(i,3)-1,17)+1,:));
+% end
 
 end
