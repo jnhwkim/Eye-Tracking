@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 # Transform given Active Display Coordinate (ADC) to Media Coordinate (MC).
 # raw/pororo*.tsv -> data/pororo*.tsv
 #
@@ -233,9 +234,9 @@ def main():
         # Do prepocess and store to a given output filename.
         if verbose:
             print "preprocess({}, {}, snapshotCoords, {}, {})"\
-                .format(path + os.sep + filename, output + output_filename, length, delay, skip)
+                .format(path + '/' + filename, output + output_filename, length, delay, skip)
         
-        preprocess(path + os.sep + filename, output + output_filename, tuples, length, delay, skip)
+        preprocess(path + '/' + filename, output + output_filename, tuples, length, delay, skip)
 
 if __name__ == "__main__":
     main()
