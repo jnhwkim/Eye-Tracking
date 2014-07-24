@@ -1,5 +1,5 @@
 %% Read files
-filenames = dir('data/*GAT_eskim.tsv');
+filenames = dir('data/*GAT_kwon.tsv');
 fixation_all = [];
 No = size(filenames, 1);
 MEDIAN_RECALIBRATION = false;
@@ -47,12 +47,7 @@ for i = 1 : No
         GazePointXMCSpx, GazePointYMCSpx    ] = ...
             import_data(strcat('data/', filename));
 
-    if(IS_RAW)
-        fixation_raw = [FixationIndex FixationPointXADCSpx FixationPointYADCSpx];
-    else
-        fixation_raw = [FixationIndex FixationPointXMCSpx FixationPointYMCSpx];
-    end
-    
+    fixation_raw = [FixationIndex FixationPointXMCSpx FixationPointYMCSpx];
     fixation_raw = fixation_raw(~isnan(fixation_raw(:,1)),:);
 
     % Scope defined as [x_min,x_max; y_min,y_max];
@@ -72,7 +67,7 @@ for i = 1 : No
     %% Fixations
 %     figure(1);
     %subplot('Position', [mod(i-1,N)/N, 1-1/N-floor((i-1)/N)/N, 1/N, 1/N]);
-%     hold on;
+    hold on;
     scatter(x, h-y, 'blue', 'o'); % Notice the y-inverted coordinates.
     grid on;
     set(gca,'XTick',0:w/4:w, ...
