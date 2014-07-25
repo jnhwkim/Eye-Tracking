@@ -3,9 +3,18 @@ filenames = dir('data/*.tsv');
 FIXS_FILENAME = 'tmp/fixations_all.mat';
 DURA_FILENAME = 'tmp/durations_all.mat';
 LONG_FILENAME = 'tmp/long_ts_all.mat';
-LONG = 3000;
-MEDIAN_ADJUSTMENT = true;
+if ispc
+    PATH_TO_PORORO_VIDEO = 'd:\Movies/pororo_1.avi';
+else
+    PATH_TO_PORORO_VIDEO = '/Users/calvin/Desktop/Pororo/pororo_1.avi';
+end
+LONG = 2000;
 
+%% Running Options
+MEDIAN_ADJUSTMENT = true;
+VERBOSE = false;
+
+%% Run a script
 if ~exist(DURA_FILENAME, 'file') || ...
    ~exist(LONG_FILENAME, 'file') || ...
    ~exist(FIXS_FILENAME, 'file')
@@ -69,28 +78,35 @@ else
     load(LONG_FILENAME);
 end
     
-% Show the long fixation recording timestamps
+%% Show the long fixation recording timestamps
 THRESHOLD = 12; % ref. possible_max(hi) = 17*30 = 510
-SEG = 5;
+SEG = 5; % It means the window size of sampling is 200 ms.
 max_ts = ceil(max(long_ts_all) / 1000 * SEG);
 hi = hist(long_ts_all, max_ts);
-%plot([1:max_ts], hi);
+if VERBOSE 
+    plot([1:max_ts], hi);
+end
 ts = find(hi>=THRESHOLD);
 
+%% Get a period table
+period_table = [];
+period_start = -1;
+period_temp = -1;
+for i = 1:size(ts, 2)
+    if i == 1
+        % notice that each frame has width 1.
+        period_start = ts(1, i) - 1;
+    elseif period_temp - ts(1, i) < -2
+        period_table = [period_table; period_start, period_temp]; %#ok<AGROW>
+        period_start = ts(1, i) - 1;
+    end
+    period_temp = ts(1, i)
+end
+period_table = [period_table; period_start, period_temp];
+    
 % The periods those're over the threshold and longer than 2 seconds.
 % [start_sec, end_sec; ...]
-period = [
-          %94, 109;
-          132, 148;
-          %189, 210;
-          %232, 259;
-          427, 442;
-          1154.1 1168; %1154 1168; % to avoid the blackout frame
-          %3733 3746;
-          4637 4653;
-          10265 10281;
-          15940 15955];
-          %15940 15960];
+period = period_table;
 period = period / SEG;
       
 % Get the screenshots
@@ -99,7 +115,9 @@ FRAME_PER_SEC = 2;
 COL = round(MAX_INTERVAL * FRAME_PER_SEC + 1);
 ROW = size(period,1);
 SECOND_UNIT = 1000;
-%tic();M = VideoReader('/Users/calvin/Desktop/Pororo/pororo_1.avi');toc();
+if ~exist('M', 'var')
+    M = VideoReader(PATH_TO_PORORO_VIDEO);
+end
 fixations = fixations_all(fixations_all(:,2)>=LONG,3:6);
 threshold = SECOND_UNIT / SEG / 2;
 
