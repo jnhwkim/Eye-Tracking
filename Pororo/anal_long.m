@@ -12,5 +12,6 @@ seconds = 2000;
 % Hz
 unit = 30;
 
-[period_table, fixations] = get_long(filenames, seconds, threshold, unit);
-show_period(fixations, seconds, period_table, unit);
+[period_table, fixations, hi, max_ts] = get_long(filenames, seconds, threshold, unit);
+%show_period(fixations, seconds, period_table, unit);
+plot([1:max_ts], hi);

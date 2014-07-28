@@ -5,7 +5,7 @@
 %
 % Find time intervals for given constraints.
 
-function [period_table, fixations] = get_long(filenames, seconds, threshold, unit)
+function [period_table, fixations, hi, max_ts] = get_long(filenames, seconds, threshold, unit)
 
 %% filenames = dir('data/*.tsv');
 %% seconds using the fixations whose duration are longer than this.
@@ -88,7 +88,7 @@ function [period_table, fixations] = get_long(filenames, seconds, threshold, uni
     %% Show the long fixation recording timestamps
     max_ts = ceil(max(long_ts_all) / 1000 * unit);
     hi = hist(long_ts_all, max_ts);
-    if VERBOSE || true
+    if VERBOSE
         plot([1:max_ts], hi);
     end
     ts = find(hi>=threshold);
