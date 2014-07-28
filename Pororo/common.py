@@ -3,7 +3,7 @@
 # @date   2014.03.30.
 # @author Jin-Hwa Kim (jhkim@bi.snu.ac.kr)
 
-import os
+import os, sys
 
 # Get the data from a given file.
 def readData(filename, delimiter = '\t', header = False, verbose = False):
@@ -36,6 +36,7 @@ def printList(f, list):
         f.write("{}\n".format(e))
 
 def pfne(fullname):
-    (path, filename) = fullname.rsplit('/', 1)
+    print fullname
+    (path, filename) = fullname.rsplit(os.sep, 1)
     (name, extension) = filename.rsplit(".", 1)
     return path, filename, name, extension
