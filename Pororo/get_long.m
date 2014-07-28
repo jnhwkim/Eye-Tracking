@@ -102,7 +102,9 @@ function [period_table, fixations] = get_long(filenames, seconds, threshold, uni
             % notice that each frame has width 1.
             period_start = ts(1, i) - 1;
         elseif period_temp - ts(1, i) < -0.4 * unit
-            period_table = [period_table; period_start, period_temp]; %#ok<AGROW>
+            if (period_temp - period_start) > unit % longer than 1 second
+                period_table = [period_table; period_start, period_temp]; %#ok<AGROW>
+            end
             period_start = ts(1, i) - 1;
         end
         period_temp = ts(1, i);

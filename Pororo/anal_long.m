@@ -1,7 +1,15 @@
-%% Read files
+% Copyright (C) 2014 Jin-Hwa Kim
+%
+% Author: Jin-Hwa Kim (jhkim@bi.snu.ac.kr)
+% Created: July 28 2014
+%
+% For all data, 
 filenames = dir('data/pororo_s03p0*.tsv');
+% three participants commonly fix on the same sequences 
+threshold = 3; 
+% longer than 2 seconds.
 seconds = 2000;
-threshold = 3;
+% Hz
 unit = 30;
 
 [period_table, fixations] = get_long(filenames, seconds, threshold, unit);
