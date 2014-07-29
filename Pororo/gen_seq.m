@@ -8,12 +8,12 @@
 
 function gen_seq(filename, isFixed, out)
 
-    LONG_FIXATION = 1000;
+    LONG_FIXATION = 1500;
     UNIT = 30;
+    filename = strrep(filename, 's03p01', 's03p0*');
 
     if isFixed
        period_table = get_long(dir(filename), LONG_FIXATION, 1, UNIT, true);
        period_table = uint32(period_table * 1000 / UNIT)
     end
-
 end
