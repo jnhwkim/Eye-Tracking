@@ -5,7 +5,7 @@
 %
 % Find time intervals for given constraints.
 
-function [period_table, fixations, hi, max_ts] = get_long(filenames, seconds, threshold, unit)
+function [period_table, fixations, hi, max_ts] = get_long(filenames, seconds, threshold, unit, nocache)
 
 %% filenames = dir('data/*.tsv');
 %% seconds using the fixations whose duration are longer than this.
@@ -22,7 +22,7 @@ function [period_table, fixations, hi, max_ts] = get_long(filenames, seconds, th
     VERBOSE = false;
     
     %% Run Script
-    if ~exist(DURA_FILENAME, 'file') || ...
+    if nocache || ~exist(DURA_FILENAME, 'file') || ...
        ~exist(LONG_FILENAME, 'file') || ...
        ~exist(FIXS_FILENAME, 'file')
 
@@ -87,7 +87,9 @@ function [period_table, fixations, hi, max_ts] = get_long(filenames, seconds, th
     
     %% Show the long fixation recording timestamps
     max_ts = ceil(max(long_ts_all) / 1000 * unit);
-    hi = hist(long_ts_all, max_ts);
+    long_ts_all = [long_ts_all; 1];
+    hi = hist(long_ts_all, max_ts); % Notice: first bin has extra one for shaphing.
+    hi(1) = hi(1) - 1;
     if VERBOSE
         plot([1:max_ts], hi);
     end
