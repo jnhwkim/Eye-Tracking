@@ -4,16 +4,33 @@
 % Created: July 30 2014
 %
 % Generate three type of animated-gif, which are 
-% 1) long fixation sequences 
+% 1) long fixation sequences *
 % 2) non-fixation sequences
 % 3) control sequences from the other similar movie.
 
 function gen_long_seq
 
+    %% Switch the function is here.
+    PERIOD_TYPE = 'S'; % Type can be L or S.
+    
+    %% The period getter selection
+    if 'L' == PERIOD_TYPE
+        periodGetter = @get_long; % get long fixation period table.
+        disp('*** gen_long_seq ***');
+    elseif 'S' == PERIOD_TYPE
+        periodGetter = @get_short; % get long fixation period table.
+        disp('*** gen_short_seq ***');
+    end
+
     %% Constants
     NUM_FIX_SEQ = 8;
-    THRESHOLD_INIT = 2000;
-    THRESHOLD_STEP = 200;
+    if 'L' == PERIOD_TYPE
+        THRESHOLD_INIT = 2000;
+        THRESHOLD_STEP = 200;
+    elseif 'S' == PERIOD_TYPE
+        THRESHOLD_INIT = 150;
+        THRESHOLD_STEP = -10;
+    end
     SPAN_LENGTH = 3000;
     SPANING = true;
     UNIT = 30;
@@ -21,21 +38,16 @@ function gen_long_seq
     FRAME_PER_SEC = 10;
     % Notice that this script expands to include the second part of recordings.
     % refer to line 42.
-    filenames = dir('data/pororo_s03p01_cekim.tsv');
+    filenames = dir('data/pororo_s03p01_*.tsv');
     
     %% Video Inforamtion
     if ispc
         PATH_TO_PORORO3_VIDEO = 'd:\Movies\pororo_1.avi';
-        PATH_TO_PORORO2_VIDEO = 'd:\Movies\Pororo_ENGLISH2_1.avi';
     else
         PATH_TO_PORORO3_VIDEO = '/Users/calvin/Desktop/Pororo/pororo_1.avi';
-        PATH_TO_PORORO2_VIDEO = '/Users/calvin/Desktop/Pororo/Pororo_ENGLISH2_1.avi';
     end
     if ~exist('M_1', 'var')
         M_1 = VideoReader(PATH_TO_PORORO3_VIDEO);
-    end
-    if ~exist('M_2', 'var')
-        M_2 = VideoReader(PATH_TO_PORORO2_VIDEO);
     end
     
     %% Main
@@ -45,7 +57,7 @@ function gen_long_seq
         threshold = THRESHOLD_INIT + THRESHOLD_STEP;
         while count < NUM_FIX_SEQ && threshold > 0
             threshold = threshold - THRESHOLD_STEP;
-            period_table = get_long(dir(filename), threshold, 1, UNIT, true);
+            period_table = periodGetter(dir(filename), threshold, 1, UNIT, true);
             period_table = uint32(period_table * 1000 / UNIT);
             count = size(period_table, 1);
             if VERBOSE
@@ -79,7 +91,8 @@ function gen_long_seq
                 fprintf('\t%.3f => %.3f\n', start_ts, end_ts);
             end
             frames = get_interval_frame(M_1, start_ts, end_ts, FRAME_PER_SEC);
-            out = strcat('img/animated_gif/', participant_id, '/L_', int2str(order), '.gif');
+            out = strcat('img/animated_gif/', participant_id, '/', ...
+                PERIOD_TYPE, '_', int2str(order), '.gif');
             order = order + 1;
             imout = uint8(zeros(272, 360, 1, size(frames, 4)));
            %% Colormap for animated-gif
