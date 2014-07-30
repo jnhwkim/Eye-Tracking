@@ -33,7 +33,9 @@ function [period_table, fixations, hi, max_ts] = get_long(filenames, seconds, th
         for i = 1 : size(filenames, 1)
 
             filename = filenames(i).name;
-            disp(filename);
+            if VERBOSE
+                disp(filename);
+            end
 
             warning('off','MATLAB:iofun:UnsupportedEncoding');
             [   RecordingTimestamp, ...
