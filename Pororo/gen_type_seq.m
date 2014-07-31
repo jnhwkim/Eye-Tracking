@@ -8,10 +8,12 @@
 % 2) non-fixation sequences
 % 3) control sequences from the other similar movie.
 
-function gen_type_seq(movie, target)
+function gen_type_seq(mode, movie, target)
 
     %% Switch the function is here.
-    PERIOD_TYPE = 'C'; % Type can be L or S or C.
+    if nargin < 1
+        mode = 'C'; % Type can be L or S or C.
+    end
     
     %% Target files.
     % Notice that this script expands to include the second part of recordings.
@@ -22,23 +24,23 @@ function gen_type_seq(movie, target)
     filenames = dir(sprintf('data/pororo_s03p01_%s.tsv', target));
     
     %% The period getter selection
-    if 'L' == PERIOD_TYPE
+    if 'L' == mode
         periodGetter = @get_long; % get long fixation period table.
         disp('*** gen_long_seq ***');
-    elseif 'S' == PERIOD_TYPE
+    elseif 'S' == mode
         periodGetter = @get_short; % get long fixation period table.
         disp('*** gen_short_seq ***');
-    elseif 'C' == PERIOD_TYPE
+    elseif 'C' == mode
         periodGetter = @get_const; % get the predefined period table.
         disp('*** gen_const_seq ***');
     end
 
     %% Constants
-    if 'L' == PERIOD_TYPE
+    if 'L' == mode
         THRESHOLD_INIT = 2000; THRESHOLD_STEP = 200; NUM_FIX_SEQ = 8;
-    elseif 'S' == PERIOD_TYPE
-        THRESHOLD_INIT = 150; THRESHOLD_STEP = -10; NUM_FIX_SEQ = 8;
-    elseif 'C' == PERIOD_TYPE
+    elseif 'S' == mode
+        THRESHOLD_INIT = 150; THRESHOLD_STEP = -10; NUM_FIX_SEQ = 10;
+    elseif 'C' == mode
         THRESHOLD_INIT = 1; THRESHOLD_STEP = 0; NUM_FIX_SEQ = 4;
     end
     SPAN_LENGTH = 3000; SPANING = true;
@@ -57,7 +59,7 @@ function gen_type_seq(movie, target)
     %% Pass it as an argument.
     if nargin < 1
         disp('Reading a video..');
-        if 'C' == PERIOD_TYPE
+        if 'C' == mode
             movie = VideoReader(PATH_TO_PORORO2_VIDEO);
         else
             movie = VideoReader(PATH_TO_PORORO3_VIDEO);
@@ -107,15 +109,15 @@ function gen_type_seq(movie, target)
             end
             frames = get_interval_frame(movie, start_ts, end_ts, FRAME_PER_SEC);
             out = strcat('img/animated_gif/', participant_id, '/', ...
-                PERIOD_TYPE, '_', int2str(order), '.gif');
+                mode, '_', int2str(order), '.gif');
             order = order + 1;
             
            %% Generate animated-gifs
-           if 'C' == PERIOD_TYPE
+           if 'C' == mode
                % Aspect fill and remove the black line of the bottom.
                preprocessor = @(im) (imresize(im(1:400, round((720-720*416/544)/2):720-round((720-720*416/544)/2), :), [272, 360]));
            else
-               proprocessor = @(im) (imresize(im, 0.5));
+               preprocessor = @(im) (imresize(im, 0.5));
            end
            gen_anigif(frames, FRAME_PER_SEC, out, preprocessor);
         end
