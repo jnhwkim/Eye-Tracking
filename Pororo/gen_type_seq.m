@@ -8,7 +8,7 @@
 % 2) non-fixation sequences
 % 3) control sequences from the other similar movie.
 
-function gen_long_seq
+function gen_type_seq
 
     %% Switch the function is here.
     PERIOD_TYPE = 'S'; % Type can be L or S.
