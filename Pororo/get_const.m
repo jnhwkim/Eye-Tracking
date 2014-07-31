@@ -13,10 +13,7 @@ function [period_table] = get_short(filenames, seconds, threshold, unit, nocache
     VERBOSE = false;
     
     %% Run Script
-    period_table = [    900000  930000;
-                       1900000 1930000;
-                       2900000 2930000;
-                       3900000 3930000  ];
+    period_table = [[100000:60000:3940000]' [103000:60000:3943000]'];
 
     period_table = period_table * unit / 1000;
     

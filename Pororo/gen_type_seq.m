@@ -4,14 +4,22 @@
 % Created: July 30 2014
 %
 % Generate three type of animated-gif, which are 
-% 1) long fixation sequences *
+% 1) long fixation sequences
 % 2) non-fixation sequences
 % 3) control sequences from the other similar movie.
 
-function gen_type_seq
+function gen_type_seq(movie, target)
 
     %% Switch the function is here.
-    PERIOD_TYPE = 'S'; % Type can be L or S.
+    PERIOD_TYPE = 'C'; % Type can be L or S or C.
+    
+    %% Target files.
+    % Notice that this script expands to include the second part of recordings.
+    % refer to line 42.
+    if nargin < 2
+        target = '*';
+    end
+    filenames = dir(sprintf('data/pororo_s03p01_%s.tsv', target));
     
     %% The period getter selection
     if 'L' == PERIOD_TYPE
@@ -20,34 +28,41 @@ function gen_type_seq
     elseif 'S' == PERIOD_TYPE
         periodGetter = @get_short; % get long fixation period table.
         disp('*** gen_short_seq ***');
+    elseif 'C' == PERIOD_TYPE
+        periodGetter = @get_const; % get the predefined period table.
+        disp('*** gen_const_seq ***');
     end
 
     %% Constants
-    NUM_FIX_SEQ = 8;
     if 'L' == PERIOD_TYPE
-        THRESHOLD_INIT = 2000;
-        THRESHOLD_STEP = 200;
+        THRESHOLD_INIT = 2000; THRESHOLD_STEP = 200; NUM_FIX_SEQ = 8;
     elseif 'S' == PERIOD_TYPE
-        THRESHOLD_INIT = 150;
-        THRESHOLD_STEP = -10;
+        THRESHOLD_INIT = 150; THRESHOLD_STEP = -10; NUM_FIX_SEQ = 8;
+    elseif 'C' == PERIOD_TYPE
+        THRESHOLD_INIT = 1; THRESHOLD_STEP = 0; NUM_FIX_SEQ = 4;
     end
-    SPAN_LENGTH = 3000;
-    SPANING = true;
-    UNIT = 30;
-    VERBOSE = true;
-    FRAME_PER_SEC = 10;
-    % Notice that this script expands to include the second part of recordings.
-    % refer to line 42.
-    filenames = dir('data/pororo_s03p01_*.tsv');
+    SPAN_LENGTH = 3000; SPANING = true;
+    UNIT = 30; VERBOSE = true; FRAME_PER_SEC = 10;
     
     %% Video Inforamtion
     if ispc
         PATH_TO_PORORO3_VIDEO = 'd:\Movies\pororo_1.avi';
+        PATH_TO_PORORO2_VIDEO = 'd:\Movies\Pororo_ENGLISH2_1.avi';
     else
         PATH_TO_PORORO3_VIDEO = '/Users/calvin/Desktop/Pororo/pororo_1.avi';
+        PATH_TO_PORORO2_VIDEO = '/Users/calvin/Desktop/Pororo/Pororo_ENGLISH2_1.avi';
     end
-    if ~exist('M_1', 'var')
-        M_1 = VideoReader(PATH_TO_PORORO3_VIDEO);
+    
+    %% Reading the whole video is very slow. 
+    %% Pass it as an argument.
+    if nargin < 1
+        disp('Reading a video..');
+        if 'C' == PERIOD_TYPE
+            movie = VideoReader(PATH_TO_PORORO2_VIDEO);
+        else
+            movie = VideoReader(PATH_TO_PORORO3_VIDEO);
+        end
+        disp('doen.');
     end
     
     %% Main
@@ -81,7 +96,7 @@ function gen_type_seq
             
         order = 1;
         for j = randsample(1:count, NUM_FIX_SEQ)
-            %% Using parameters
+           %% Using parameters
             start_ts = period_table(j,1); end_ts = period_table(j,2);
             if SPANING
                 start_ts = start_ts + (end_ts - start_ts) / 2 - SPAN_LENGTH / 2;
@@ -90,27 +105,19 @@ function gen_type_seq
             if VERBOSE
                 fprintf('\t%.3f => %.3f\n', start_ts, end_ts);
             end
-            frames = get_interval_frame(M_1, start_ts, end_ts, FRAME_PER_SEC);
+            frames = get_interval_frame(movie, start_ts, end_ts, FRAME_PER_SEC);
             out = strcat('img/animated_gif/', participant_id, '/', ...
                 PERIOD_TYPE, '_', int2str(order), '.gif');
             order = order + 1;
-            imout = uint8(zeros(272, 360, 1, size(frames, 4)));
-            %% Colormap for animated-gif
-            for k = 1 : size(frames, 4)
-                im = imresize(squeeze(frames(:,:,:,k)), 0.5);
-                if ~exist('imcat', 'var')
-                    imcat = uint8(zeros(size(im, 1) * size(frames, 4), size(im, 2), 3));
-                end
-                imcat((size(im, 1) * (k - 1) + 1):size(im, 1) * k, ...
-                    :, :) = im;
-            end
-            [imind, cm] = rgb2ind(imcat, 256,'nodither');
-            %% Making the frames for animation 
-            for k = 1 : size(frames, 4)
-                im = imresize(squeeze(frames(:,:,:,k)), 0.5);
-                imout(:,:,1,k) = rgb2ind(im, cm,'nodither');
-            end
-            imwrite(imout, cm, out, 'DelayTime', 1.0/FRAME_PER_SEC, 'LoopCount', inf);
+            
+           %% Generate animated-gifs
+           if 'C' == PERIOD_TYPE
+               % Aspect fill and remove the black line of the bottom.
+               preprocessor = @(im) (imresize(im(1:400, round((720-720*416/544)/2):720-round((720-720*416/544)/2), :), [272, 360]));
+           else
+               proprocessor = @(im) (imresize(im, 0.5));
+           end
+           gen_anigif(frames, FRAME_PER_SEC, out, preprocessor);
         end
     end
 end
