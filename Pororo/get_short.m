@@ -94,7 +94,9 @@ function [period_table, fixations, hi, max_ts] = get_short(filenames, seconds, t
     end
     
     %% Output
-    period_table = [period_table; period_start, period_temp];
+    if period_temp < 4000.900 * unit
+        period_table = [period_table; period_start, period_temp];
+    end
     fixations = fixations_all;
 end
 

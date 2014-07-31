@@ -81,7 +81,7 @@ function gen_long_seq
             
         order = 1;
         for j = randsample(1:count, NUM_FIX_SEQ)
-           %% Using parameters
+            %% Using parameters
             start_ts = period_table(j,1); end_ts = period_table(j,2);
             if SPANING
                 start_ts = start_ts + (end_ts - start_ts) / 2 - SPAN_LENGTH / 2;
@@ -95,7 +95,7 @@ function gen_long_seq
                 PERIOD_TYPE, '_', int2str(order), '.gif');
             order = order + 1;
             imout = uint8(zeros(272, 360, 1, size(frames, 4)));
-           %% Colormap for animated-gif
+            %% Colormap for animated-gif
             for k = 1 : size(frames, 4)
                 im = imresize(squeeze(frames(:,:,:,k)), 0.5);
                 if ~exist('imcat', 'var')
@@ -105,7 +105,7 @@ function gen_long_seq
                     :, :) = im;
             end
             [imind, cm] = rgb2ind(imcat, 256,'nodither');
-           %% Making the frames for animation 
+            %% Making the frames for animation 
             for k = 1 : size(frames, 4)
                 im = imresize(squeeze(frames(:,:,:,k)), 0.5);
                 imout(:,:,1,k) = rgb2ind(im, cm,'nodither');

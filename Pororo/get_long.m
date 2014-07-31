@@ -5,7 +5,7 @@
 %
 % Find time intervals for given constraints.
 
-function [period_table, fixations, hi, max_ts] = get_long(filenames, seconds, threshold, unit, nocache)
+function [period_table] = get_long(filenames, seconds, threshold, unit, nocache)
 
 %% filenames = dir('data/*.tsv');
 %% seconds using the fixations whose duration are longer than this.
