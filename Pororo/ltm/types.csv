@@ -1,0 +1,13 @@
+participant_id,L1,L2,L3,L4,L5,L6,L7,L8
+hhkim,Successive,Successive,Tilting,Unclassified,Successive,Stationary,Stationary,Stationary
+jkim,Stationary,Successive,Alert,Successive,Stationary,Stationary,Alert,Successive
+swlee,Successive,Stationary,Successive,Successive,Successive,Stationary,Successive,Stationary
+jhryu,Stationary,Successive,Successive,Stationary,Alert,Successive,Successive,Contrast
+dsbaek,Successive,Successive,Stationary,Stationary,Stationary,Stationary,Successive,Alert
+kwpark,Successive,Stationary,Successive,Successive,Alert,Contrast,Alert,Alert
+yspark,Alert,Stationary,Successive,Successive,Successive,Alert,Successive,Stationary
+mhseo,Alert,Alert,Successive,Successive,Successive,Tilting,Stationary,Zoom-out
+yhlee,Zoom-out,Successive,Successive,Successive,Stationary,Successive,Stationary,Alert
+jhlee,Contrast,Stationary,Stationary,Successive,Stationary,Stationary,Successive,Successive
+bjlee,Successive,Stationary,Successive,Successive,Stationary,Successive,Alert,Alert
+cekim,Stationary,Stationary,Alert,Alert,Stationary,Stationary,Alert,Alert
