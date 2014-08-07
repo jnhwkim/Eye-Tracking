@@ -28,12 +28,12 @@ function anal_ltm()
     end
     
     %% For a report
-    sem = [std(mean(L,2)),std(mean(S,2)),std(mean(C,2))];
-    m = [mean(mean(L,2)),mean(mean(S,2)),mean(mean(C,2))];
+    sem = [std(mean(L,2)),std(mean(S,2)),std(mean(C,2))]
+    m = [mean(mean(L,2)),mean(mean(S,2)),mean(mean(C,2))]
     
-%     barwitherr(sem, m, 0.5);
-%     Labels = {'Long','Short','Control'};
-%     set(gca, 'XTick', 1:3, 'XTickLabel', Labels);
+    barwitherr(sem, m, 0.5);
+    Labels = {'Long','Short','Control'};
+    set(gca, 'XTick', 1:3, 'XTickLabel', Labels);
     
     %% Long Fixation Types
     [participant_id,L1,L2,L3,L4,L5,L6,L7,L8] = import_types('types.csv');
