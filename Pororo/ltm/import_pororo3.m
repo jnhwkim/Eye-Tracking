@@ -56,6 +56,7 @@ fileID = fopen(filename,'r');
 % This call is based on the structure of the file used to generate this
 % code. If an error occurs for a different file, try regenerating the code
 % from the Import Tool.
+warning off MATLAB:iofun:UnsupportedEncoding;
 dataArray = textscan(fileID, formatSpec, endRow(1)-startRow(1)+1, 'Delimiter', delimiter, 'HeaderLines', startRow(1)-1, 'ReturnOnError', false);
 for block=2:length(startRow)
     frewind(fileID);

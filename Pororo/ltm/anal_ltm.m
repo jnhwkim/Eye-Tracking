@@ -17,31 +17,61 @@ function anal_ltm()
     S = [S_1,S_2,S_3,S_4,S_5,S_6,S_7,S_8];
     C = [C_1,C_2,C_3,C_4];
     
+    sample_size = [size(L,2), size(S,2), size(C,2)]
+    
     %% Clear unused variables
     clear('participant_id'); clear('regtime');
-    for i = 1:8
+    for i = 1:sample_size(1,1)
         clear(strcat('L_', int2str(i)));
         clear(strcat('S_', int2str(i)));
-        if i <= 4
+        if i <= sample_size(1,3)
             clear(strcat('C_', int2str(i)));
         end
     end
     
     %% For a report
-    sem = [std(mean(L,2)),std(mean(S,2)),std(mean(C,2))]
+    sem = [std(mean(L,2))/sqrt(sample_size(1)),...
+            std(mean(S,2))/sqrt(sample_size(2)),...
+            std(mean(C,2))/sqrt(sample_size(3))]
     m = [mean(mean(L,2)),mean(mean(S,2)),mean(mean(C,2))]
     
     barwitherr(sem, m, 0.5);
     Labels = {'Long','Short','Control'};
     set(gca, 'XTick', 1:3, 'XTickLabel', Labels);
+    axis([0.5 3.5 0 5]);
     
     %% Long Fixation Types
     [participant_id,L1,L2,L3,L4,L5,L6,L7,L8] = import_types('types.csv');
     types = [L1,L2,L3,L4,L5,L6,L7,L8];
 
     %% Clear unused variables
-    for i = 1:8
+    for i = 1:sample_size(1,1)
         clear(strcat('L', int2str(i)));
     end
     
+    %% Classify and count
+    labels = {'Successive', 'Tilting', 'Unclassified', 'Stationary', 'Alert', 'Contrast'};
+    elements = cell(size(labels, 2),1);
+    for i = 1:size(labels, 2)
+        [row,col]=find(strcmp(types, labels{i}));
+        for j = 1:size(row,1)
+            elements{i} = [elements{i}; L(row(j),col(j))];
+        end
+    end
+    
+    m = zeros(size(elements));
+    n = zeros(size(elements));
+    for i = 1:size(elements)
+        m(i) = mean(elements{i});
+        n(i) = size(elements{i},1);
+    end
+    
+    [m,n]
+    
+    % Tilting and Alert = 4.5
+    mean([elements{2};elements{5}])
+    
+    % Else = 3.8378
+    mean([elements{1};elements{3};elements{4};elements{6}])
+        
 end
