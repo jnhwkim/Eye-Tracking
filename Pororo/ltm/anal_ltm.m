@@ -30,12 +30,12 @@ function anal_ltm()
     end
     
     %% For a report
-    sem = [std(mean(L,2))/sqrt(sample_size(1)),...
+    types_sem = [std(mean(L,2))/sqrt(sample_size(1)),...
             std(mean(S,2))/sqrt(sample_size(2)),...
             std(mean(C,2))/sqrt(sample_size(3))]
-    m = [mean(mean(L,2)),mean(mean(S,2)),mean(mean(C,2))]
+    types_m = [mean(mean(L,2)),mean(mean(S,2)),mean(mean(C,2))]
     
-    barwitherr(sem, m, 0.5);
+    barwitherr(types_sem, types_m, 0.5);
     Labels = {'Long','Short','Control'};
     set(gca, 'XTick', 1:3, 'XTickLabel', Labels);
     axis([0.5 3.5 0 5]);
@@ -50,7 +50,7 @@ function anal_ltm()
     end
     
     %% Classify and count
-    labels = {'Successive', 'Tilting', 'Unclassified', 'Stationary', 'Alert', 'Contrast'};
+    labels = {'Alert', 'Successive', 'Stationary', 'Contrast', 'Tilting', 'Unclassified'};
     elements = cell(size(labels, 2),1);
     for i = 1:size(labels, 2)
         [row,col]=find(strcmp(types, labels{i}));
@@ -60,18 +60,17 @@ function anal_ltm()
     end
     
     m = zeros(size(elements));
+    sem = zeros(size(elements));
     n = zeros(size(elements));
+    p = zeros(size(elements));
+    h = zeros(size(elements));
     for i = 1:size(elements)
         m(i) = mean(elements{i});
+        sem(i) = std(elements{i}) / size(elements{i},1);
         n(i) = size(elements{i},1);
+        [h(i), p(i)] = ztest(elements{i}, types_m(1), types_sem(1));
     end
     
-    [m,n]
-    
-    % Tilting and Alert = 4.5
-    mean([elements{2};elements{5}])
-    
-    % Else = 3.8378
-    mean([elements{1};elements{3};elements{4};elements{6}])
+    [m,s,n,h,p]
         
 end
