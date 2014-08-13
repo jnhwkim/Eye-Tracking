@@ -17,23 +17,25 @@ function anal_ltm()
     S = [S_1,S_2,S_3,S_4,S_5,S_6,S_7,S_8];
     C = [C_1,C_2,C_3,C_4];
     
-    sample_size = [size(L,2), size(S,2), size(C,2)]
-    
     %% Clear unused variables
     clear('participant_id'); clear('regtime');
-    for i = 1:sample_size(1,1)
+    for i = 1:size(L,2)
         clear(strcat('L_', int2str(i)));
         clear(strcat('S_', int2str(i)));
-        if i <= sample_size(1,3)
+        if i <= size(C,2)
             clear(strcat('C_', int2str(i)));
         end
     end
     
     %% For a report
-    types_sem = [std(mean(L,2))/sqrt(sample_size(1)),...
-            std(mean(S,2))/sqrt(sample_size(2)),...
-            std(mean(C,2))/sqrt(sample_size(3))]
-    types_m = [mean(mean(L,2)),mean(mean(S,2)),mean(mean(C,2))]
+    L1 = reshape(L, size(L,1) * size(L,2), 1);
+    S1 = reshape(S, size(S,1) * size(S,2), 1);
+    C1 = reshape(C, size(C,1) * size(C,2), 1);
+    types_m = [mean(L1),mean(S1),mean(C1)]
+    types_std = [std(L1), std(S1), std(C1)];
+    types_sem = [std(L1) / sqrt(size(L1,1)),...
+            std(S1) / sqrt(size(S1,1)),...
+            std(C1) / sqrt(size(C1,1))]
     
     barwitherr(types_sem, types_m, 0.5);
     Labels = {'Long','Short','Control'};
@@ -45,7 +47,7 @@ function anal_ltm()
     types = [L1,L2,L3,L4,L5,L6,L7,L8];
 
     %% Clear unused variables
-    for i = 1:sample_size(1,1)
+    for i = 1:size(L,2)
         clear(strcat('L', int2str(i)));
     end
     
@@ -68,9 +70,11 @@ function anal_ltm()
         m(i) = mean(elements{i});
         sem(i) = std(elements{i}) / size(elements{i},1);
         n(i) = size(elements{i},1);
-        [h(i), p(i)] = ztest(elements{i}, types_m(1), types_sem(1));
+        [h(i), p(i)] = ztest(mean(elements{i}), types_m(1), types_sem(1));
     end
     
-    [m,s,n,h,p]
+    [m,sem,n,h,p]
+    
+    %barwitherr(sem, m, 0.5);
         
 end
