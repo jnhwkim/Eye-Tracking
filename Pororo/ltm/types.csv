@@ -4,10 +4,10 @@ jkim,Stationary,Successive,Alert,Successive,Stationary,Stationary,Alert,Successi
 swlee,Successive,Stationary,Successive,Successive,Successive,Stationary,Successive,Stationary
 jhryu,Stationary,Successive,Successive,Stationary,Alert,Successive,Successive,Contrast
 dsbaek,Successive,Successive,Alert,Stationary,Stationary,Stationary,Successive,Alert
-kwpark,Successive,Stationary,Successive,Successive,Alert,Contrast,Alert,Alert
+kwpark,Successive,Stationary,Successive,Successive,Alert,Contrast,Alert,Zoom
 yspark,Alert,Stationary,Successive,Successive,Successive,Alert,Successive,Stationary
-mhseo,Alert,Alert,Successive,Successive,Successive,Tilting,Stationary,Zoom-out
-yhlee,Zoom-out,Successive,Successive,Successive,Stationary,Successive,Stationary,Alert
+mhseo,Alert,Alert,Successive,Successive,Successive,Tilting,Stationary,Zoom
+yhlee,Zoom,Successive,Successive,Successive,Stationary,Successive,Stationary,Alert
 jhlee,Contrast,Stationary,Stationary,Successive,Stationary,Stationary,Successive,Successive
 bjlee,Successive,Stationary,Successive,Successive,Stationary,Successive,Alert,Alert
 cekim,Stationary,Stationary,Alert,Alert,Stationary,Stationary,Alert,Alert
