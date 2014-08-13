@@ -28,16 +28,19 @@ function anal_ltm()
     end
     
     %% For a report
-    L1 = reshape(L, size(L,1) * size(L,2), 1);
-    S1 = reshape(S, size(S,1) * size(S,2), 1);
-    C1 = reshape(C, size(C,1) * size(C,2), 1);
-    types_m = [mean(L1),mean(S1),mean(C1)]
-    types_std = [std(L1), std(S1), std(C1)];
-    types_sem = [std(L1) / sqrt(size(L1,1)),...
-            std(S1) / sqrt(size(S1,1)),...
-            std(C1) / sqrt(size(C1,1))]
+    L_vec = reshape(L, size(L,1) * size(L,2), 1);
+    S_vec = reshape(S, size(S,1) * size(S,2), 1);
+    C_vec = reshape(C, size(C,1) * size(C,2), 1);
+    types_m = [mean(L_vec),mean(S_vec),mean(C_vec)]
+    types_std = [std(L_vec), std(S_vec), std(C_vec)];
+    types_sem = [std(L_vec) / sqrt(size(L_vec,1)),...
+            std(S_vec) / sqrt(size(S_vec,1)),...
+            std(C_vec) / sqrt(size(C_vec,1))]
     
-    barwitherr(types_sem, types_m, 0.5);
+    f = figure(1);
+    set(f, 'Position', [100 300 400 300]);
+    barwitherr(types_sem, types_m, 0.5, 'b');
+    ylabel('Memory Score');
     Labels = {'Long','Short','Control'};
     set(gca, 'XTick', 1:3, 'XTickLabel', Labels);
     axis([0.5 3.5 0 5]);
@@ -52,7 +55,7 @@ function anal_ltm()
     end
     
     %% Classify and count
-    labels = {'Alert', 'Successive', 'Stationary', 'Contrast', 'Tilting', 'Unclassified'};
+    labels = {'Alert', 'Successive', 'Stationary', 'Contrast', 'Tilting', 'Zoom', 'Unclassified'};
     elements = cell(size(labels, 2),1);
     for i = 1:size(labels, 2)
         [row,col]=find(strcmp(types, labels{i}));
@@ -61,20 +64,47 @@ function anal_ltm()
         end
     end
     
+    %% Sequeeze 3 least classes as Unclassfied.
+    elements = {elements{1};elements{2};elements{3};[elements{4};elements{5};elements{6};elements{7}]};
+    
     m = zeros(size(elements));
     sem = zeros(size(elements));
     n = zeros(size(elements));
-    p = zeros(size(elements));
-    h = zeros(size(elements));
+    r = zeros(size(elements));
     for i = 1:size(elements)
         m(i) = mean(elements{i});
         sem(i) = std(elements{i}) / size(elements{i},1);
         n(i) = size(elements{i},1);
-        [h(i), p(i)] = ztest(mean(elements{i}), types_m(1), types_sem(1));
+        r(i) = n(i) / size(L_vec,1);
     end
     
-    [m,sem,n,h,p]
+    [m,sem,n,r]
     
-    %barwitherr(sem, m, 0.5);
+    f = figure(2);
+    set(f, 'Position', [600 300 400 300]);
+    barwitherr(sem, m, 0.5, 'b');
+    ylabel('Memory Score');
+    Labels = {'Alert', 'Successive', 'Stationary', 'Unclassified'};
+    set(gca, 'XTick', 1:4, 'XTickLabel', Labels);
+    axis([0.5 4.5 0 5]);
+    hold on
+    plot(get(gca,'xlim'), [types_m(1) types_m(1)]);
+    text(1.01,4.58,'*','horizontalalignment','center','FontSize', 18);
+       
+     %% Statistical significance of each category.
+     p_values = zeros(4,1);
+     for i = 1:4
+        a = elements{i};
+        b = [];
+        for j = 1:4
+            if j ~= i
+                b = [b; elements{j}];
+            end
+        end
+        diff = mean(a) - mean(b);
         
+    	[h,p,dist] = sigdiff(L_vec, size(a,1), diff, 1000);
+        p_values(i) = p;
+     end
+     p_values
 end
