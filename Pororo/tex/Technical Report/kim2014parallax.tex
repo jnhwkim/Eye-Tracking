@@ -72,7 +72,7 @@ Instructor: & Professor Byoung-Tak Zhang % Instructor/supervisor
 
 \section{Objective}
 
-To determine that the effectiveness of the parallax correction as the post calibration procedure. 
+To determine that the effectiveness of the parallax correction as a post calibration procedure. 
 
 % If you have more than one objective, uncomment the below:
 %\begin{description}
@@ -87,19 +87,19 @@ To determine that the effectiveness of the parallax correction as the post calib
 \begin{description}
 
 \item[Calibration]
-The calibration procedure manually moved the calibration point for the acquirement of the accurate gaze points. This internal calibration point is only valid while the glasses are not removed from the participant's head. Accuracy depends on the variety factors, which are right distance, exact points and light conditions, during the calibration procedure.
+The calibration procedure manually moves the calibration point for the acquirement of the accurate gaze points. This internal calibration point is only valid while the glasses are fixed on the participant's head. Accuracy depends on the variety factors, which are right distance, exact points and light conditions, during the calibration procedure.
 
 \item[Recalibration]
-Tobii Glasses eye tracker, which is used by our experiment, provides the post calibration which can be conducted the calibration procedure after the eye movement recording. This is called as \textit{Post calibration} or \textit{recalibration}. In this technical report, we particularly describe the \textit{Post calibration} or \textit{recalibration} as the procedure for the parallax correction.
+Tobii Glasses eye tracker, which is used by our experiment, provides the post calibration which additionally calibrates after the eye movement recording. This is called as \textit{Post calibration} or \textit{recalibration}. In this technical report, we particularly describe the \textit{Post calibration} or \textit{recalibration} as the procedure for the parallax correction.
 
 \item[Gaze Point]
-Gaze point means literally the location that the participant gazes.
+Gaze point literally means the location that the participant gazes.
 
 \item[Fixation Point]
 Fixation point means the location that the participant fixes his or her gaze point for some time. Because the gaze points are always changing subtly even in the voluntary fixation state, the definition of the fixation is defined by the fixation filtering method. We used the system default fixation filter, I-VT fixation filter \citep{Salvucci2000}.
 
 \item[Parallax Correction]
-The displacement of the locations of the eye and the camera of the eye tracker induces the error of the measured gaze point. The changes in the distance to the target make the parallax, the more closer the target is causes the larger error. For details, refer to the \textit{Tobii Glasses User Manual} \citep{tobii_manual}.
+The displacement of the locations of the eye and the camera of the eye tracker induces the error of the measured gaze point. The changes in the distance to the target make the parallax, the more closer the target is causes the larger error. So, we need to adjust this effect by explicitly assigning of the distance to the target plane. By default, the system assumes that the gazing distance is 1 meter. For details, refer to the \textit{Tobii Glasses User Manual} \citep{tobii_manual}.
 
 \end{description} 
  
@@ -112,10 +112,12 @@ The displacement of the locations of the eye and the camera of the eye tracker i
 To verify the improvement of the measurement of gaze points after the parallax correction, we used the Gaze Accuracy Test (GAT) in advance of the watching the video. The gaze accuracy test will show us how much accurate before and after the recalibration.
 
 \subsection{Gaze Accuracy Test}
-For the measurement of the accuracy of the gaze point, we prepared the test video which has the moving dot on the lattice background. Participants are instructed to patiently fixate on the dot while it is stationary. You can check the video on YouTube at \citet{GAT}.
+For the measurement of the accuracy of the gaze point, we prepared the test video which represents the moving dot on the lattice background. Participants are instructed to patiently fixate on the dot while it is stationary. You can check the video on YouTube at \citet{GAT}.
 
 \subsection{Method}
-Before the recording of the participant's eye movements, we took the snapshot from the eye tracker. This snapshot (actually, the set of internal files) contains the information of the IR makers' location and its identities via the function of the device. For this, we can obtain coordinates of gaze points on the snapshot image. After applying the affine transformation featured by the snapshot, we get the media coordinates, which represents the positions on the video screen. The coordinates on the snapshot image $\mathbf{x}$ is transformed to the coordinates on the video screen $\mathbf{x^\ast}$ via the affine transformation matrix $\mathbf{A}$ is defined as the algebraic equation, 
+Unfortunately, \textit{Tobii Glasses} does not have the automatic process to get the media coordinates, which are the coordinates based on the video screen watched by a participant, not on the recording, because it records based on the head orientation of a participant. However, we can have the media coordinates through some of linear algebra.
+
+Before the recording of the participant's eye movements, we took the snapshot from the eye tracker. This snapshot (actually, the set of internal files) contains the information of the IR makers' location and its identities via the function of the device. For this, we can obtain coordinates of gaze points on the snapshot image. After applying the affine transformation defined by the configuration of the snapshot, we get the media coordinates, which represents the positions on the video screen. The coordinates on the snapshot image $\mathbf{x}$ is transformed to the coordinates on the video screen $\mathbf{x^\ast}$ via the affine transformation matrix $\mathbf{A}$ is defined as the algebraic equation, 
 
 \begin{center}
 $\mathbf{x^\ast} = \mathbf{Ax},$\\
@@ -149,9 +151,11 @@ We recorded eye movements during 45 seconds for the Gaze Accuracy Test. All five
 
 \section{Discussion of Other Possible Solutions}
 
-The parallax correction affects on the x-axis bias of the locations of eye movements. Because the displacement of the locations of the eye and the camera of the eye tracker induces the error of the measured gaze point (the camera of the eye tracker is placed in the right of the glass, horizontally.), for the changes in the distance to the target make the parallax. Therefore, the measurement error after the parallax correction may attribute to the calibration error. For the very accurate measurement of eye movements we have to conduct the verification procedure, however, considering of the range of foveal or central vision is around 2-5$^{\circ}$ (baseline) \citep{mcmorris2014acquisition}, it means that the perfect calibrated measurement may produce 2-5$^{\circ}$ error in free-viewing task, this procedure can be a burden.
+The parallax correction affects on the x-axis bias of the locations of eye movements. Because the displacement of the locations of the eye and the camera of the eye tracker induces the error of the measured gaze point (the camera of the eye tracker is placed in the right of the glass, horizontally.), for the changes in the distance to the target make the parallax. Though, if a participant rolls his or her head, this adjustment effects the y-axis of the measurement.
 
-\cite{tatler2007central} shows the central fixation bias in scene viewing task. According to Tatler's work, the possible explanations are three, which are expectancy, efficiency, and habitual re-centering. It makes the assumption of that the median of fixation positions is the center of the screen is plausible. Though we do not include the results in this report, the median-to-center adjustment dramatically corrects the poor calibrated measurements for watching video task, though it is not perfect with 6-7$^{\circ}$ error. We assume that the non-symmetric distribution of salient features in a video sequence raises the additional error to the baseline. Partly, the high-level interpretation of the given features also contributes to this influence \citep{tatler2005visual}.
+However, we still observed the measurement errors on some of recordings after the parallax correction. These measurement errors may attribute to the calibration error. For the very accurate measurement of eye movements we have to conduct the verification procedure, however, considering of the range of foveal or central vision is around 2-5$^{\circ}$ (baseline) \citep{mcmorris2014acquisition}, it means that the perfect calibrated measurement may produce 2-5$^{\circ}$ error in free-viewing task, this procedure can be a burden.
+
+\cite{tatler2007central} shows the central fixation bias in scene viewing task. According to Tatler's work, the possible explanations are three, which are expectancy, efficiency, and habitual re-centering. It makes the assumption of that the median of fixation positions is the center of the screen is plausible. Though we do not include the results in this report, the median-to-center adjustment dramatically corrects the poor calibrated measurements for watching video task, though it is not perfect with around 6-7$^{\circ}$ error. We assume that the non-symmetric distribution of salient features in a video sequence raises the additional error to the baseline. Partly, the high-level interpretation of the given features also contributes to this influence \citep{tatler2005visual}.
 
 
 %----------------------------------------------------------------------------------------
