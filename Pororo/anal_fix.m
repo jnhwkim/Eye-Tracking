@@ -34,6 +34,7 @@ else
     load(DURA_FILENAME);
 end
 
+figure(1);
 durations_in_bins = round(durations_all(:,2) ./ 33.33);
 bin_size = max(durations_in_bins);
 bin_offset = min(durations_in_bins);
@@ -50,3 +51,12 @@ xlabel_pos = get(get(gca,'xlabel'),'position');
 ylimits = get(gca,'ylim');
 xlabel_pos(2) = ylimits(1) - y_offset;
 set(get(gca,'xlabel'), 'position', xlabel_pos);
+
+% Predicted Modeling
+figure(2);
+sample_mean = mean(durations_in_bins);
+sample_size = size(durations_in_bins, 1);
+samples = exprnd(sample_mean, [sample_size,1]);
+samples = [samples; 105];
+h = hist(samples, 200);
+plot(log(h));
