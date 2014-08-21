@@ -31,7 +31,7 @@
 %
 % show fixation points on the image.
 %
-function showFixation(I, time, fixations, threshold)
+function show_fix(I, time, fixations, threshold)
 
 if ~isnumeric(time)
     time = str2num(time);
@@ -50,19 +50,19 @@ end
 N = size(timely_fixations,1);
 hold on;
 
-for i=1:N
-   cm = colormap(jet(N));
-   plot(timely_fixations(i,1), timely_fixations(i,2), 'o', ...
-       'MarkerSize', 3, ...
-       'MarkerFaceColor', cm(i,:));
-end
-
 % for i=1:N
-%    %cm = colormap(jet(N));
-%    cm = colormap(jet(17));
+%    cm = colormap(jet(N));
 %    plot(timely_fixations(i,1), timely_fixations(i,2), 'o', ...
-%        'MarkerSize', 8, ...
-%        'MarkerFaceColor', cm(mod(timely_fixations(i,3)-1,17)+1,:));
+%        'MarkerSize', 3, ...
+%        'MarkerFaceColor', cm(i,:));
 % end
+
+for i=1:N
+   %cm = colormap(jet(N));
+   cm = colormap(jet(17));
+   plot(timely_fixations(i,1), timely_fixations(i,2), 'o', ...
+       'MarkerSize', 8, ...
+       'MarkerFaceColor', cm(mod(timely_fixations(i,3)-1,17)+1,:));
+end
 
 end
