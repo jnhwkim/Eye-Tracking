@@ -12,7 +12,7 @@ function period_table = show_period(fixations, seconds, period_table, unit)
     if ispc
         PATH_TO_PORORO_VIDEO = 'd:\Movies/pororo_1.avi';
     else
-        PATH_TO_PORORO_VIDEO = '/Users/calvin/Desktop/Pororo/pororo_1.avi';
+        PATH_TO_PORORO_VIDEO = '/Users/calvin/Desktop/Movies/pororo_3_1.avi';
     end
     
     % The periods those're over the threshold and longer than 2 seconds.
