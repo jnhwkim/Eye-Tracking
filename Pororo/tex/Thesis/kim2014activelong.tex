@@ -55,6 +55,7 @@ In comparison with the reading eye movement, which are relatively well studied b
 In this study, we investigate the characteristics of eye movements toward the video stimuli. The basic elements of the eye movements can be segregated into the fixation duration and the saccade vector, which consists of the saccade direction and the length of the saccadic movement \cite{Findlay1999,Feng2006}. In this study, we focus on the characteristics of the fixation duration as the evidence of the cognitive process.
 
 \section{Materials and Methods}
+\label{sec:material-and-methods}
 
 \subsection{Experiment 1}
 
@@ -95,9 +96,15 @@ Fixation durations which are longer than about 2 seconds are getting more unpred
 
 \begin{figure*}
   \centerline{\includegraphics[width=120mm]{./eps/long_fixations_types.png}}
-  \caption{The sequences of frames which receive more than 2 seconds of the fixation duration from at least 3 participants. Each row means the independent sequence and each column means the single frame. The time interval between the frames is 500 ms. The colored dots mean the fixation positions, whose durations are longer than 2 seconds. The same color means that which is from the same participant. First 3 sequences show the \textit{Alert} type, then next 3 sequences show the \textit{Successive} type, then next 3 sequences show the \textit{Stationary} type, and then the last sequence shows the \textit{Unclassified} type of visual constraints for the review. For the description of those sequences, see the text in subsection~\textit{\nameref{subsec:Long-Fixation-Durations}}.}
+  \caption{The sequences of frames which receive more than 2 seconds of the fixation duration from at least 3 participants. Each row means the independent sequence and each column means the single frame. The time interval between the frames is 500 ms. The colored dots mean the fixation positions, whose durations are longer than 2 seconds. The same color means that which is from the same participant. First 3 sequences show the \textit{Alert Focus} type, then next 3 sequences show the \textit{Successive Focus} type, then next 3 sequences show the \textit{Stationary Focus} type, and then the last sequence shows the \textit{Unclassified} type of visual constraints for the review. For the description of those sequences, see the text in subsection~\textit{\nameref{subsec:Long-Fixation-Durations}}.}
   \label{fig:long-fixations}
 \end{figure*}
+
+\begin{figure}
+  \centerline{\includegraphics[width=60mm,height=54mm,trim=9mm 3mm 12mm 3mm]{./eps/memtest_leng}}
+  \caption{Long-term memory test result for two fixation types, one is that whose duration of fixation is longer than 2 seconds, and the other one is that whose duration of fixation is shorter than 300 ms. Each participant rates 8 long fixated sequences, 8 short fixated sequences and 4 control sequences which are not seen previously. Surprisingly, the mean of the memory scores of the short fixated sequences are slightly higher than the mean of the memory scores of the long fixated sequences, though it is not significant. Error bars indicate the standard error of the mean (SEM). For the detail of test, refer to \textit{\nameref{sec:material-and-methods}}.}
+  \label{fig:memtest-leng}
+\end{figure}
 
 \begin{table*}[!ht]
 \begin{center} 
@@ -123,7 +130,7 @@ Unclassified          &   Cinematic techniques, which are tracking, tilt,
 \subsection{Long Fixation Durations}
 \label{subsec:Long-Fixation-Durations}
 
-In Figure~\ref{fig:long-fixations} the sequences of frames which receive more than 2 seconds of the fixation duration from at least 3 different participants are shown. We set the threshold as 3 long fixations from the participants to reduce the interpersonal variation. We got 11 sequences across 1 hour 7 minutes 50 seconds length of the material. For the review, we chose 10 typical sequences. Each row means the independent sequence and each column means the single frame. The time interval between the frames is 0.5 seconds. The colored dots mean the fixation positions, whose durations are longer than 2 seconds. The same color means the same participant. Four different types of the sequences are listed as \textit{Alert} (3), \textit{Successive} (3), \textit{Stationary} (3), and \textit{Unclassified} (1) for the review. The playback times of the sequences are, from the first row to the last one, 26.4s to 29.6s; 1m 25.4s to 1m 28.4s; 3m 50.8s to 3m 53.6s; 15m 27.4s to 15m 30.6s; 34m 13.0s to 34m 16.2s; and 53m 8.0s to 53m 11.0s.
+In Figure~\ref{fig:long-fixations} the sequences of frames which receive more than 2 seconds of the fixation duration from at least 3 different participants are shown. We set the threshold as 3 long fixations from the participants to reduce the interpersonal variation. We got all 41 sequences across 1 hour 7 minutes 50 seconds length of the material. For the review, we chose 10 typical sequences. Each row means the independent sequence and each column means the single frame. The time interval between the frames is 0.5 seconds. The colored dots mean the fixation positions, whose durations are longer than 2 seconds. The same color means the same participant. Four different types of the sequences are listed as \textit{Alert} (3), \textit{Successive} (3), \textit{Stationary} (3), and \textit{Unclassified} (1) for the review.
 
 The sequences of the \textit{Alert Focus} type are classified as the scene implies an unusual or potentially dangerous or difficult situation, which may introduce a mental arousal. The sequence of first row demonstrates an urgent moment that a huge snowball is about to roll down back the hill, which was previously rolled up by the robot \textit{Rody}. Second shows that \textit{Pororo} was fishing at the ice hole, but what he caught was \textit{Shark}, a naughty character. Third shows that \textit{Eddy} rolled his eyes to kick his ball avoiding the opponent \textit{Pororo}.
 
@@ -134,6 +141,19 @@ The \textit{Stationary Focus} type most clearly shows the characteristics that t
 The sequences of the \textit{Unclassified} type have various forms. The tenth sequence shows that \textit{Pororo} and \textit{Crong} just jumped out of the shoulder of the magician dragon \textit{Tongtong} who was flying in the sky. Two sunflowers spring \textit{Pororo} and \textit{Crong} into the sky in multiple times. But due to the perspective of the camera, the location of the two characters in the scene is almost fixed. Participants fixated their eye gaze on the middle of two characters while the background shifting up and down. In other cases, though not included in Figure~\ref{fig:long-fixations}, few cinematic techniques, tracking, tilt, zoom-in and zoom-out, are examples. But the number of these cases is so small compared to the other types, hence we classified all of them into the \textit{Unclassified Focus}.
 
 These various types of the long fixated sequences show that a naive approach to the predict the visual constraint which induces the long fixation using a single analytical method, like the salient feature detectors \cite{marr1980,canny1986} or the optic flow \cite{koenderink1986} would fail. The \textit{Successive Focus} and \textit{Stationary Focus} types can be estimated by using the combination of the appropriate feature detectors and the optic flow, and the temporal modeling of the attention. However, the \textit{Alert Focus} cannot be solved without the cognitive modeling for the scene comprehension, which is related to the emotion-based reaction. 
+
+\begin{figure}
+  \centerline{\includegraphics[width=60mm,height=54mm,trim=9mm 3mm 12mm 3mm]{./eps/memtest_long}}
+  \caption{Long-term memory test result for the long fixation types, Alert Focus, Successive Focus, Stationary Focus, and Unclassified. The number of cases are 18, 39, 30 and 9, respectively, from 12 participants. The significance test result of the \textit{Alert Focus} type is 0.044 ($<$ 0.05), but the others are far from that, 0.360, 0.187, and 0.073, respectively. The blue horizontal line indicates the mean of the memory scores of the long fixated sequences.}
+  \label{fig:memtest-long}
+\end{figure}
+
+
+\section{Long-Term Memory Formation}
+
+Figure~\ref{fig:memtest-leng} shows the long-term memory test result for two fixation types, one is that whose duration of fixation is longer than 2 seconds, and the other one is that whose duration of fixation is shorter than 300 ms. Each participant rates 8 long fixated sequences, 8 short fixated sequences and 4 control sequences which are not seen previously. Surprisingly, the mean of the memory scores of the short fixated sequences are slightly higher than the mean of the memory scores of the long fixated sequences, though it is not significant. Error bars indicate the standard error of the mean (SEM).
+
+Figure~\ref{fig:memtest-long} shows the long-term memory test result for the long fixation types, Alert Focus, Successive Focus, Stationary Focus, and Unclassified. The number of cases are 18, 39, 30 and 9, respectively, from 12 participants. The significance test result of the \textit{Alert Focus} type is 0.044 ($<$ 0.05), but the others are far from that, 0.360, 0.187, and 0.073, respectively. The blue horizontal line indicates the mean of the memory scores of the long fixated sequences.
 
 
 \section{Discussions}
