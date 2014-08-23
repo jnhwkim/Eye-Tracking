@@ -41,7 +41,7 @@ function anal_ltm()
     set(f, 'Position', [100 300 400 300]);
     barwitherr(types_sem, types_m, 0.5, 'b');
     ylabel('Memory Score');
-    Labels = {'Long','Short','Control'};
+    Labels = {'Long','Short','Not Seen'};
     set(gca, 'XTick', 1:3, 'XTickLabel', Labels);
     axis([0.5 3.5 0 5]);
     
@@ -55,18 +55,23 @@ function anal_ltm()
     end
     
     %% Classify and count
-    labels = {'Alert', 'Successive', 'Stationary', 'Contrast', 'Tilting', 'Zoom', 'Unclassified'};
+    labels = {'Alert', 'No Alert'};
     elements = cell(size(labels, 2),1);
     for i = 1:size(labels, 2)
-        [row,col]=find(strcmp(types, labels{i}));
+        if strcmp(labels{i}, 'Alert')
+            [row,col]=find(strcmp(types, 'Alert'));
+        else 
+            [row,col]=find(~strcmp(types, 'Alert'));
+        end
         for j = 1:size(row,1)
             elements{i} = [elements{i}; L(row(j),col(j))];
         end
     end
     
-    %% Sequeeze 3 least classes as Unclassfied.
-    elements = {elements{1};elements{2};elements{3};[elements{4};elements{5};elements{6};elements{7}]};
+    %% TTEST2
+    [h, p] = ttest2(elements{1}, elements{2})
     
+    %% For the second report
     m = zeros(size(elements));
     sem = zeros(size(elements));
     n = zeros(size(elements));
@@ -75,28 +80,28 @@ function anal_ltm()
         m(i) = mean(elements{i});
         sem(i) = std(elements{i}) / size(elements{i},1);
         n(i) = size(elements{i},1);
-        r(i) = n(i) / size(L_vec,1);
+        r(i) = n(i) / size([elements{1};elements{2}],1);
     end
     
     [m,sem,n,r]
     
     f = figure(2);
     set(f, 'Position', [600 300 400 300]);
-    barwitherr(sem, m, 0.5, 'b');
+    bar(m, 0.5, 'b');
     ylabel('Memory Score');
-    Labels = {'Alert', 'Successive', 'Stationary', 'Unclassified'};
-    set(gca, 'XTick', 1:4, 'XTickLabel', Labels);
-    axis([0.5 4.5 0 5]);
+    set(gca, 'XTick', 1:2, 'XTickLabel', labels);
+    axis([0.5 2.5 0 5]);
     hold on
     plot(get(gca,'xlim'), [types_m(1) types_m(1)]);
     text(1.01,4.58,'*','horizontalalignment','center','FontSize', 18);
        
      %% Statistical significance of each category.
-     p_values = zeros(4,1);
-     for i = 1:4
+     noc = size(elements, 1);
+     p_values = zeros(noc,1);
+     for i = 1:noc
         a = elements{i};
         b = [];
-        for j = 1:4
+        for j = 1:noc
             if j ~= i
                 b = [b; elements{j}];
             end
@@ -107,4 +112,5 @@ function anal_ltm()
         p_values(i) = p;
      end
      p_values
+     
 end
