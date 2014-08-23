@@ -38,7 +38,7 @@ function anal_ltm()
             std(C_vec) / sqrt(size(C_vec,1))]
     
     f = figure(1);
-    set(f, 'Position', [100 300 400 300]);
+    set(f, 'Position', [100 300 400 250]);
     barwitherr(types_sem, types_m, 0.5, 'b');
     ylabel('Memory Score');
     Labels = {'Long','Short','Not Seen'};
@@ -86,14 +86,14 @@ function anal_ltm()
     [m,sem,n,r]
     
     f = figure(2);
-    set(f, 'Position', [600 300 400 300]);
+    set(f, 'Position', [600 300 400 250]);
     bar(m, 0.5, 'b');
     ylabel('Memory Score');
     set(gca, 'XTick', 1:2, 'XTickLabel', labels);
     axis([0.5 2.5 0 5]);
     hold on
     plot(get(gca,'xlim'), [types_m(1) types_m(1)]);
-    text(1.01,4.58,'*','horizontalalignment','center','FontSize', 18);
+    text(1.01,4.68,'*','horizontalalignment','center','FontSize', 18);
        
      %% Statistical significance of each category.
      noc = size(elements, 1);
