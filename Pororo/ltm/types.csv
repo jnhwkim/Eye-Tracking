@@ -9,5 +9,4 @@ yspark,Alert,Stationary,Successive,Successive,Successive,Alert,Successive,Statio
 mhseo,Alert,Alert,Successive,Successive,Successive,Tilting,Stationary,Zoom
 yhlee,Zoom,Successive,Successive,Successive,Stationary,Successive,Stationary,Alert
 jhlee,Contrast,Stationary,Stationary,Successive,Stationary,Stationary,Successive,Successive
-bjlee,Successive,Stationary,Successive,Successive,Stationary,Successive,Alert,Alert
 cekim,Stationary,Stationary,Alert,Alert,Stationary,Stationary,Alert,Alert
