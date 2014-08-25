@@ -53,16 +53,18 @@ xlabel_pos(2) = ylimits(1) - y_offset;
 set(get(gca,'xlabel'), 'position', xlabel_pos);
 
 % Predicted Modeling
-f2 = figure(1);
-hold on;
-sample_mean = mean(durations_in_bins);
-sample_size = size(durations_in_bins, 1);
-samples = exprnd(sample_mean, [sample_size,1]);
-h = hist(samples, 200);
-plot(log(h), 'r:', 'LineWidth', 1.3);
-axis([0 200 0 12]);
-
-hold off;
+FITTING = false;
+if FITTING
+    f2 = figure(1);
+    hold on;
+    sample_mean = mean(durations_in_bins);
+    sample_size = size(durations_in_bins, 1);
+    samples = exprnd(sample_mean, [sample_size,1]);
+    h = hist(samples, 200);
+    plot(log(h), 'r:', 'LineWidth', 1.3);
+    axis([0 200 0 12]);
+    hold off;
+end
 set(f1, 'Position', [100 600 600 420]);
 
 size(durations_all, 1)
