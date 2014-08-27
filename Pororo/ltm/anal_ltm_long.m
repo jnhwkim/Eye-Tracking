@@ -46,7 +46,7 @@ function anal_ltm()
     axis([0.5 3.5 0 5]);
     
     %% Long Fixation Types
-    [participant_id,L1,L2,L3,L4,L5,L6,L7,L8] = import_types('types.csv');
+    [participant_id,L1,L2,L3,L4,L5,L6,L7,L8] = import_types('types_long.csv');
     types = [L1,L2,L3,L4,L5,L6,L7,L8];
 
     %% Clear unused variables
@@ -89,7 +89,7 @@ function anal_ltm()
     set(f, 'Position', [600 300 400 250]);
     bar(m, 0.5, 'b');
     ylabel('Memory Score');
-    set(gca, 'XTick', 1:2, 'XTickLabel', labels);
+    set(gca, 'XTick', 1:2, 'XTickLabel', {'Long, Alert', 'Long, No Alert'});
     axis([0.5 2.5 0 5]);
     hold on
     plot(get(gca,'xlim'), [types_m(1) types_m(1)]);

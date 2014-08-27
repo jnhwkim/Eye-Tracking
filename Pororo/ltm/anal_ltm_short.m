@@ -89,7 +89,7 @@ function anal_ltm_s()
     set(f, 'Position', [600 300 400 250]);
     bar(m, 0.5, 'b');
     ylabel('Memory Score');
-    set(gca, 'XTick', 1:2, 'XTickLabel', labels);
+    set(gca, 'XTick', 1:2, 'XTickLabel', {'Short, Alert', 'Short, No Alert'});
     axis([0.5 2.5 0 5]);
     hold on
     plot(get(gca,'xlim'), [types_m(2) types_m(2)]);
