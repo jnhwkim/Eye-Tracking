@@ -19,3 +19,23 @@ function [h,p,dist] = sigdiff(data, m, diff, samplings)
         h = 0;
     end
 end
+
+% Sample Code
+% 
+%      %% Statistical significance of each category.
+%      noc = size(elements, 1);
+%      p_values = zeros(noc,1);
+%      for i = 1:noc
+%         a = elements{i};
+%         b = [];
+%         for j = 1:noc
+%             if j ~= i
+%                 b = [b; elements{j}];
+%             end
+%         end
+%         diff = mean(a) - mean(b);
+%         
+%     	[h,p,dist] = sigdiff(L_vec, size(a,1), diff, 1000);
+%         p_values(i) = p;
+%      end
+%      p_values
