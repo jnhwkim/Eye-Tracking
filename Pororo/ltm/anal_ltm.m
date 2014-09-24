@@ -8,11 +8,14 @@
 % Pororo Season 3.
 
 function anal_ltm()
+    % initialize
+    close all; 
+    
     %% SEM analysis
     [participant_id,regtime,...
         L_1,L_2,L_3,L_4,L_5,L_6,L_7,L_8,...
         S_1,S_2,S_3,S_4,S_5,S_6,S_7,S_8,...
-        C_1,C_2,C_3,C_4] = import_pororo3('ratings.csv');
+        C_1,C_2,C_3,C_4] = import_ratings('ratings.csv');
     
     L = [L_1,L_2,L_3,L_4,L_5,L_6,L_7,L_8];
     S = [S_1,S_2,S_3,S_4,S_5,S_6,S_7,S_8];
@@ -96,7 +99,8 @@ function anal_ltm()
     axis([0.5 2.5 0 5]);
     hold on
     plot(get(gca,'xlim'), [types_m(1) types_m(1)]);
-    text(1.01,4.71,'*','horizontalalignment','center','FontSize', 18);
+    % text(1.01,4.71,'*','horizontalalignment','center','FontSize', 18);
+    % sigstar([1 2], [p]);
     
     %% Short Fixation Types
     [participant_id,S1,S2,S3,S4,S5,S6,S7,S8] = import_types('types_short.csv');
