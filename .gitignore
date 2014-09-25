@@ -6,3 +6,4 @@ SVHN/*.mat
 */*.avi
 Pororo/fix_bak/*
 Pororo/tmp/*
+Pororo/img/animated_gif/train
