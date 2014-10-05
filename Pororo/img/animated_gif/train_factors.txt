@@ -4,3 +4,4 @@ tension
 hurt
 trouble
 surprise
+angry
