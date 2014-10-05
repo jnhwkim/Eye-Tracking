@@ -130,7 +130,7 @@ function anal_ltm()
     [h, p] = ttest2(elements{1}, elements{2});
     fprintf('Given Short, Alert? p < %.4f\n', p);
     
-    %% For the second report
+    %% For the third report
     m = zeros(size(elements));
     sem = zeros(size(elements));
     n = zeros(size(elements));
@@ -159,7 +159,7 @@ function anal_ltm()
         elements_ALL{i} = [elements_L{i}; elements_S{i}];
     end
     
-    %% For the third report
+    %% For the forth report
     m = zeros(size(elements));
     sem = zeros(size(elements));
     n = zeros(size(elements));

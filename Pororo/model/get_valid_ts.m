@@ -11,8 +11,8 @@ function ts = get_valid_ts
     PID_PREFIX = 'Participant ID:';
     pids = {'hhkim', 'jkim', 'swlee', 'jhryu', 'dsbaek', 'kwpark', ...
             'yspark', 'mhseo', 'yhlee', 'jhlee', 'cekim'};
-    log_paths = {'../img/animated_gif/gen_short_seq.log', ...
-                 '../img/animated_gif/gen_long_seq.log'};
+    log_paths = {'../img/animated_gif/gen_long_seq.log', ...
+                 '../img/animated_gif/gen_short_seq.log'};
     ts = zeros(size(pids,2), 16);
     for path_idx = 1:size(log_paths,2)
         path = log_paths(path_idx);
