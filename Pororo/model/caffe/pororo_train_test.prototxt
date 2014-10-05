@@ -1,0 +1,89 @@
+name: "PororoNet"
+layers {
+  name: "pororo"
+  type: DATA
+  top: "data"
+  top: "label"
+  data_param {
+    source: "train_gray_ldb"
+    backend: LEVELDB
+    batch_size: 64
+  }
+  transform_param {
+    scale: 0.00390625
+  }
+  include: { phase: TRAIN }
+}
+layers {
+  name: "pororo"
+  type: DATA
+  top: "data"
+  top: "label"
+  data_param {
+    source: "train_gray_ldb"
+    backend: LEVELDB
+    batch_size: 64
+  }
+  transform_param {
+    scale: 0.00390625
+  }
+  include: { phase: TRAIN }
+}
+layers {
+  name: "pororo"
+  type: DATA
+  top: "data"
+  top: "label"
+  data_param {
+    source: "test1_mfcc_ldb"
+    backend: LEVELDB
+    batch_size: 100
+  }
+  transform_param {
+    scale: 0.00390625
+  }
+  include: { phase: TEST }
+}
+layers {
+  name: "ip1"
+  type: INNER_PRODUCT
+  bottom: "data"
+  top: "ip1"
+  blobs_lr: 1
+  blobs_lr: 2
+  inner_product_param {
+    num_output: 2
+  }
+}
+layers {
+  name: "relu1"
+  type: SIGMOID
+  bottom: "ip1"
+  top: "ip1"
+}
+layers {
+  name: "ip5"
+  type: INNER_PRODUCT
+  bottom: "ip1"
+  top: "ip5"
+  blobs_lr: 1
+  blobs_lr: 2
+  inner_product_param {
+    num_output: 2
+  }
+}
+layers {
+  name: "accuracy"
+  type: ACCURACY
+  bottom: "ip5"
+  bottom: "label"
+  top: "accuracy"
+  include: { phase: TEST }
+}
+layers {
+  name: "loss"
+  type: SOFTMAX_LOSS
+  bottom: "ip5"
+  bottom: "label"
+  top: "loss"
+}

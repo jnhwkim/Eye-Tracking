@@ -1,0 +1,109 @@
+name: "PororoAutoencoder"
+layers {
+  top: "data"
+  name: "data"
+  type: DATA
+  data_param {
+    source: "train_gs_even_ldb"
+    backend: LEVELDB
+    batch_size: 100
+  }
+  transform_param {
+    scale: 0.0039215684
+  }
+  include: { phase: TRAIN }
+}
+layers {
+  top: "data"
+  name: "data"
+  type: DATA
+  data_param {
+    source: "train_gs_test0_ldb"
+    backend: LEVELDB
+    batch_size: 100
+  }
+  transform_param {
+    scale: 0.0039215684
+  }
+  include: {
+    phase: TEST
+    stage: 'test-on-test0'
+  }
+}
+layers {
+  top: "data"
+  name: "data"
+  type: DATA
+  data_param {
+    source: "train_gs_test1_ldb"
+    backend: LEVELDB
+    batch_size: 100
+  }
+  transform_param {
+    scale: 0.0039215684
+  }
+  include: {
+    phase: TEST
+    stage: 'test-on-test1'
+  }
+}
+layers {
+  bottom: "data"
+  top: "flatdata"
+  name: "flatdata"
+  type: FLATTEN
+}
+layers {
+  bottom: "data"
+  top: "encode1"
+  name: "encode1"
+  type: INNER_PRODUCT
+  blobs_lr: 1
+  blobs_lr: 1
+  weight_decay: 1
+  weight_decay: 0
+  inner_product_param {
+    num_output: 100
+  }
+}
+layers {
+  bottom: "encode1"
+  top: "encode1neuron"
+  name: "encode1neuron"
+  type: SIGMOID
+}
+layers {
+  bottom: "encode1neuron"
+  top: "decode1"
+  name: "decode1"
+  type: INNER_PRODUCT
+  blobs_lr: 1
+  blobs_lr: 1
+  weight_decay: 1
+  weight_decay: 0
+  inner_product_param {
+    num_output: 748
+  }
+}
+layers {
+  bottom: "decode1"
+  bottom: "flatdata"
+  top: "cross_entropy_loss"
+  name: "loss"
+  type: SIGMOID_CROSS_ENTROPY_LOSS
+  loss_weight: 1
+}
+layers {
+  bottom: "decode1"
+  top: "decode1neuron"
+  name: "decode1neuron"
+  type: SIGMOID
+}
+layers {
+  bottom: "decode1neuron"
+  bottom: "flatdata"
+  top: "l2_error"
+  name: "loss"
+  type: EUCLIDEAN_LOSS
+  loss_weight: 0
+}
