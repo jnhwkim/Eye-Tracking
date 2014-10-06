@@ -50,6 +50,11 @@ function anal_ltm()
     set(gca, 'XTick', 1:3, 'XTickLabel', Labels);
     axis([0.5 3.5 0 5]);
     
+    % Print figure to pdf and png files
+    set(gcf,'PaperPositionMode','auto');
+    print('-dpdf', sprintf('%s.pdf', 'out/memtest_leng')); 
+    print('-dpng', sprintf('%s.png', 'out/memtest_leng'));
+    
     %% Long Fixation Types
     [participant_id,L1,L2,L3,L4,L5,L6,L7,L8] = import_types('types_long.csv');
     types = [L1,L2,L3,L4,L5,L6,L7,L8];
@@ -102,6 +107,11 @@ function anal_ltm()
     % text(1.01,4.71,'*','horizontalalignment','center','FontSize', 18);
     % sigstar([1 2], [p]);
     
+    % Print figure to pdf and png files
+    set(gcf,'PaperPositionMode','auto');
+    print('-dpdf', sprintf('%s.pdf', 'out/memtest_long')); 
+    print('-dpng', sprintf('%s.png', 'out/memtest_long')); 
+    
     %% Short Fixation Types
     [participant_id,S1,S2,S3,S4,S5,S6,S7,S8] = import_types('types_short.csv');
     types = [S1,S2,S3,S4,S5,S6,S7,S8];
@@ -152,6 +162,11 @@ function anal_ltm()
     hold on;
     plot(get(gca,'xlim'), [types_m(2) types_m(2)]);
     
+    % Print figure to pdf and png files
+    set(gcf,'PaperPositionMode','auto');
+    print('-dpdf', sprintf('%s.pdf', 'out/memtest_short')); 
+    print('-dpng', sprintf('%s.png', 'out/memtest_short')); 
+    
     %% Alert Effect
     num_types = size(elements_S, 1);
     elements_ALL = cell(num_types,1);
@@ -182,6 +197,11 @@ function anal_ltm()
     Labels = {'Alert','No Alert','Not Seen'};
     set(gca, 'XTick', 1:3, 'XTickLabel', Labels);
     axis([0.5 3.5 0 5]);
+    
+    % Print figure to pdf and png files
+    set(gcf,'PaperPositionMode','auto');
+    print('-dpdf', sprintf('%s.pdf', 'out/memtest_alert')); 
+    print('-dpng', sprintf('%s.png', 'out/memtest_alert')); 
     
     %% Two-sample T-Test
     [h, p] = ttest2(elements_ALL{1}, elements_ALL{2});
