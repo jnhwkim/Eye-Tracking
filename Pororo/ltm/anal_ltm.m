@@ -48,6 +48,10 @@ function anal_ltm()
     types_sem = [std(L_vec) / sqrt(size(L_vec,1)),...
                  std(S_vec) / sqrt(size(S_vec,1)),...
                  std(C_vec) / sqrt(size(C_vec,1))];
+             
+    %% Two-sample T-Test
+    [h, p] = ttest2(L_vec, S_vec);
+    fprintf('Given Length? p < %.4f\n', p);
     
     %% Figure 1
     f = figure(1);
