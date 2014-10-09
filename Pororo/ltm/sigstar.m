@@ -245,20 +245,21 @@ else
 end
 		
 x=repmat(x,2,1);
-y=repmat(y,4,1);
-H(1)=plot(x(:),y,'-k','LineWidth',1.5);
+y=repmat(y,4,1);y(1)=y(1)-0.05; y(4)=y(1);
+H(1)=plot(x(:),y,'-k','LineWidth',1);
 
 %Increase offset between line and text if we will print "n.s."
 %instead of a star. 
 if ~isnan(p)
-    offset=0.005;
+    offset=0.02;
 else
     offset=0.02;
 end
 
 H(2)=text(mean(x(:)),mean(y)+myRange(ylim)*offset,stars,...
    	'HorizontalAlignment','Center',...
-   	'BackGroundColor','none');
+   	'BackGroundColor','none',...
+    'FontSize', 18);
 
 
 

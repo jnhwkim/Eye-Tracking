@@ -11,6 +11,14 @@ function anal_ltm()
     % initialize
     close all; 
     
+    % Change default axes fonts.
+    set(0,'DefaultAxesFontName', 'Palatino')
+    set(0,'DefaultAxesFontSize', 13)
+
+    % Change default text fonts.
+    set(0,'DefaultTextFontname', 'Palatino')
+    set(0,'DefaultTextFontSize', 13)
+    
     %% SEM analysis
     [participant_id,regtime,...
         L_1,L_2,L_3,L_4,L_5,L_6,L_7,L_8,...
@@ -43,14 +51,15 @@ function anal_ltm()
     
     %% Figure 1
     f = figure(1);
-    set(f, 'Position', [100 300 400 250]);
+    set(f, 'Position', [100 300 300 250]);
     barwitherr(2*types_sem, types_m, 0.5, 'b');
-    ylabel('Recall Score');
+    ylabel('Recall Score', 'FontSize', 13);
     Labels = {'Long','Short','Not Seen'};
     set(gca, 'XTick', 1:3, 'XTickLabel', Labels);
+    set(gca, 'FontSize', 13);
     axis([0.5 3.5 0 5]);
+    box off;
     
-    % Print figure to pdf and png files
     set(gcf,'PaperPositionMode','auto');
     print('-dpdf', sprintf('%s.pdf', 'out/memtest_leng')); 
     print('-dpng', sprintf('%s.png', 'out/memtest_leng'));
@@ -97,15 +106,17 @@ function anal_ltm()
     
     %% Figure 2
     f = figure(2);
-    set(f, 'Position', [500 300 400 250]);
+    set(f, 'Position', [500 300 300 250]);
     barwitherr(2*sem, m, 0.5, 'b');
-    ylabel('Recall Score');
+    ylabel('Recall Score', 'FontSize', 13);
     set(gca, 'XTick', 1:2, 'XTickLabel', {'Long, Alert', 'Long, No Alert'});
+    set(gca, 'FontSize', 13);
     axis([0.5 2.5 0 5]);
+    box off;
     hold on
     plot(get(gca,'xlim'), [types_m(1) types_m(1)]);
     % text(1.01,4.71,'*','horizontalalignment','center','FontSize', 18);
-    % sigstar([1 2], [p]);
+    sigstar([1 2], [p]);
     
     % Print figure to pdf and png files
     set(gcf,'PaperPositionMode','auto');
@@ -154,11 +165,13 @@ function anal_ltm()
     
     %% Figure 3
     f = figure(3);
-    set(f, 'Position', [500 620 400 250]);
+    set(f, 'Position', [500 620 300 250]);
     barwitherr(2*sem, m, 0.5, 'b');
-    ylabel('Recall Score');
+    ylabel('Recall Score', 'FontSize', 13);
     set(gca, 'XTick', 1:2, 'XTickLabel', {'Short, Alert', 'Short, No Alert'});
+    set(gca, 'FontSize', 13);
     axis([0.5 2.5 0 5]);
+    box off;
     hold on;
     plot(get(gca,'xlim'), [types_m(2) types_m(2)]);
     
@@ -173,6 +186,10 @@ function anal_ltm()
     for i = 1 : num_types
         elements_ALL{i} = [elements_L{i}; elements_S{i}];
     end
+    
+    %% Two-sample T-Test
+    [h, p] = ttest2(elements_ALL{1}, elements_ALL{2});
+    fprintf('Alert? p < %.4f\n', p);
     
     %% For the forth report
     m = zeros(size(elements));
@@ -191,20 +208,19 @@ function anal_ltm()
     
     %% Figure 4
     f = figure(4);
-    set(f, 'Position', [100 620 400 250]);
+    set(f, 'Position', [100 620 300 250]);
     barwitherr(2*sem, m, 0.5, 'b');
-    ylabel('Recall Score');
+    ylabel('Recall Score', 'FontSize', 13);
     Labels = {'Alert','No Alert','Not Seen'};
     set(gca, 'XTick', 1:3, 'XTickLabel', Labels);
+    set(gca, 'FontSize', 13);
     axis([0.5 3.5 0 5]);
+    sigstar([1 2], [p]);
+    box off;
     
     % Print figure to pdf and png files
     set(gcf,'PaperPositionMode','auto');
     print('-dpdf', sprintf('%s.pdf', 'out/memtest_alert')); 
     print('-dpng', sprintf('%s.png', 'out/memtest_alert')); 
-    
-    %% Two-sample T-Test
-    [h, p] = ttest2(elements_ALL{1}, elements_ALL{2});
-    fprintf('Alert? p < %.4f\n', p);
      
 end
