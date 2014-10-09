@@ -5,33 +5,11 @@
 %
 % Generate training data of animated-gif.
 
+%% Add path to referene
 addpath('../');
 
-UNIT = 30; VERBOSE = true; FRAME_PER_SEC = 10;
-
-TRAIN_DATA_SIZE = 1000;
-INTERVAL = 4;
-WINDOW_SIZE = 2;
-SKIP = 1;
-
-%% Video Inforamtion
-if ispc
-    PATH_TO_PORORO3_VIDEO = 'd:\Movies\pororo_1.avi';
-    PATH_TO_PORORO2_VIDEO = 'd:\Movies\Pororo_ENGLISH2_1.avi';
-else
-    PATH_TO_PORORO3_VIDEO = '/Users/Calvin/Documents/Projects/Pororo/Movies/pororo_3_1.avi';
-    PATH_TO_PORORO2_VIDEO = '/Users/Calvin/Documents/Projects/Pororo/Movies/Pororo_2_1.avi';
-end
-
-%% Reading the whole video is very slow. 
-
-if ~exist('movie', 'var')
-    disp('Reading a video..');
-    movie = VideoReader(PATH_TO_PORORO3_VIDEO);
-    disp('doen.');
-else
-    disp('Reuse movie variable.');
-end
+%% Configure the default parameters
+configure;
 
 %% Main
 if ~exist('../img/animated_gif/train', 'dir')
@@ -46,7 +24,7 @@ for j = 1 : TRAIN_DATA_SIZE
     if VERBOSE
         fprintf('\t%.3f => %.3f\n', start_ts, end_ts);
     end
-    frames = get_interval_frame(movie, start_ts, end_ts, FRAME_PER_SEC);
+    frames = get_interval_frame(M, start_ts, end_ts, FRAME_PER_SEC);
     out = strcat('../img/animated_gif/train/T_', ...
                   int2str(j), '.gif');
 

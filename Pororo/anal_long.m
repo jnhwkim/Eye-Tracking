@@ -3,6 +3,11 @@
 % Author: Jin-Hwa Kim (jhkim@bi.snu.ac.kr)
 % Created: July 28 2014
 %
+
+%% Configure the default parameters
+configure;
+
+%% Analyse the long fixations 
 % For all data, 
 filenames = dir('data/pororo_s03p0*.tsv');
 % three participants commonly fix on the same sequences 
@@ -13,7 +18,7 @@ seconds = 2000;
 unit = 30;
 
 % Find the period for the given constrants.
-[period_table, fixations] = get_long(filenames, seconds, threshold, unit, false);
+[period_table, fixations] = get_long(filenames, seconds, threshold, unit, true);
 
 % Filter the periods shorter than 2 seconds.
 min_period = 2000;
@@ -42,3 +47,21 @@ filtered_table = filtered_table(selected_idx, :);
 f = figure(1);
 set(f, 'Position', [100 100 800 1200]);
 show_period(fixations, seconds, filtered_table, unit);
+
+%% Export the animated gifs.
+if true
+    target_dir = 'slide/animated_gif';
+    if ~exist(target_dir, 'dir')
+        mkdir(target_dir);
+    end
+    showcase_idx = [1];
+    for i = 1 : size(showcase_idx, 1)
+        idx = showcase_idx(i,1);
+        out = sprintf('%s/LF_%d.gif', target_dir, idx);
+        frames = get_interval_frame(M, ...
+                    filtered_table(idx,1) / unit * SECOND_UNIT - 1000, ...
+                    filtered_table(idx,2) / unit * SECOND_UNIT + 1000, ...
+                    FRAME_PER_SEC);
+        gen_anigif(frames, FRAME_PER_SEC, out);
+    end
+end

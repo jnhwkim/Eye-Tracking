@@ -7,13 +7,11 @@
 
 function period_table = show_period(fixations, seconds, period_table, unit)
 
-    SECOND_UNIT = 1000;
+    %% Configure the default parameters
+    configure;
+    
+    %% Set parameters
     FRAME_PER_SEC = 2;
-    if ispc
-        PATH_TO_PORORO_VIDEO = 'd:\Movies/pororo_1.avi';
-    else
-        PATH_TO_PORORO_VIDEO = '/Users/calvin/Desktop/Movies/pororo_3_1.avi';
-    end
     
     % The periods those're over the threshold and longer than 2 seconds.
     % [start_sec, end_sec; ...]
@@ -25,9 +23,6 @@ function period_table = show_period(fixations, seconds, period_table, unit)
     COL = round(MAX_INTERVAL * FRAME_PER_SEC + 1);
     ROW = size(period,1);
     
-    if ~exist('M', 'var')
-        M = VideoReader(PATH_TO_PORORO_VIDEO);
-    end
     fixations = fixations(fixations(:,2) >= seconds, 3:6);
     threshold = SECOND_UNIT / unit / 2;
 
