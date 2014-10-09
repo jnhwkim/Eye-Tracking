@@ -245,15 +245,20 @@ else
 end
 		
 x=repmat(x,2,1);
-y=repmat(y,4,1);y(1)=y(1)-0.05; y(4)=y(1);
+y=repmat(y,4,1);
+y(1)=y(1)-0.05; y(4)=y(1);
+y = y - 0.04;
+if max(y) > 5
+    y = y - max(y) + 4.98;
+end
 H(1)=plot(x(:),y,'-k','LineWidth',1);
 
 %Increase offset between line and text if we will print "n.s."
 %instead of a star. 
 if ~isnan(p)
-    offset=0.02;
+    offset=0.03;
 else
-    offset=0.02;
+    offset=0.03;
 end
 
 H(2)=text(mean(x(:)),mean(y)+myRange(ylim)*offset,stars,...

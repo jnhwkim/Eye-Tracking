@@ -92,8 +92,8 @@ function anal_ltm()
     end
     
     %% Two-sample T-Test
-    [h, p] = ttest2(elements{1}, elements{2});
-    fprintf('Given Long, Alert? p < %.4f\n', p);
+    [h, p1] = ttest2(elements{1}, elements{2});
+    fprintf('Given Long, Alert? p < %.4f\n', p1);
     
     %% For the second report
     m = zeros(size(elements));
@@ -120,7 +120,7 @@ function anal_ltm()
     hold on
     plot(get(gca,'xlim'), [types_m(1) types_m(1)]);
     % text(1.01,4.71,'*','horizontalalignment','center','FontSize', 18);
-    sigstar([1 2], [p]);
+    sigstar([1 2], [p1]);
     
     % Print figure to pdf and png files
     set(gcf,'PaperPositionMode','auto');
@@ -192,8 +192,21 @@ function anal_ltm()
     end
     
     %% Two-sample T-Test
-    [h, p] = ttest2(elements_ALL{1}, elements_ALL{2});
+    [h, p2] = ttest2(elements_ALL{1}, elements_ALL{2});
     fprintf('Alert? p < %.4f\n', p);
+    
+    [h, p] = ttest2(elements_L{1}, elements_S{1});
+    fprintf('Alert, Length? p < %.4f\n', p2);
+    
+    [h, p] = ttest2(elements_L{2}, elements_S{2});
+    fprintf('No Alert, Length? p < %.4f\n', p);
+    
+    [h, p3] = ttest2(elements_L{1}, elements_S{2});
+    fprintf('Long, Alert vs Short, No Alert? p < %.4f\n', p3);
+    
+    [h, p4] = ttest2(elements_L{2}, elements_S{1});
+    fprintf('Long, No Alert vs Short, Alert? p < %.4f\n', p4);
+    
     
     %% For the forth report
     m = zeros(size(elements));
@@ -219,12 +232,38 @@ function anal_ltm()
     set(gca, 'XTick', 1:3, 'XTickLabel', Labels);
     set(gca, 'FontSize', 13);
     axis([0.5 3.5 0 5]);
-    sigstar([1 2], [p]);
+    sigstar([1 2], [p2]);
     box off;
     
     % Print figure to pdf and png files
     set(gcf,'PaperPositionMode','auto');
     print('-dpdf', sprintf('%s.pdf', 'out/memtest_alert')); 
     print('-dpng', sprintf('%s.png', 'out/memtest_alert')); 
-     
+    
+    %% For the fifth report
+    m = [mean(elements_L{1});
+         mean(elements_L{2});
+         mean(elements_S{1});
+         mean(elements_S{2})];
+    sem = [std(elements_L{1}) / size(elements_L{1},1);
+           std(elements_L{2}) / size(elements_L{2},1);
+           std(elements_S{1}) / size(elements_S{1},1);
+           std(elements_S{2}) / size(elements_S{2},1);];
+    
+    %% Figure 5
+    f = figure(5);
+    set(f, 'Position', [500 300 400 250]);
+    barwitherr(2*sem, m, 0.5, 'b');
+    ylabel('Recall Score', 'FontSize', 13);
+    Labels = {'LA','LN','SA','SN'};
+    set(gca, 'XTick', 1:5, 'XTickLabel', Labels);
+    set(gca, 'FontSize', 13);
+    axis([0.5 4.5 0 5]);
+    sigstar({[1 2], [1 4]}, [p1, p3]);
+    box off;
+    
+    % Print figure to pdf and png files
+    set(gcf,'PaperPositionMode','auto');
+    print('-dpdf', sprintf('%s.pdf', 'out/memtest_perm')); 
+    print('-dpng', sprintf('%s.png', 'out/memtest_perm')); 
 end
