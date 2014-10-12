@@ -1,4 +1,5 @@
-function results = simpletest
+function [results, labels] = simpletest
+    figurestyle;
     NKNOTS = 10;
     REPEAT = 3;
     results = zeros(3, NKNOTS);
@@ -12,11 +13,25 @@ function results = simpletest
     end
     
     % Visualization
-    plot(results');
-    % ylabel('Recall Score', 'FontSize', 13);
-    set(gca, 'XTick', 1:3, 'XTickLabel', labels);
+    f = figure(1);
+    set(f, 'Position', [100 300 450 350]);
+    s = {'-go', '-r+', '-b*'};
+    for i = 1 : 3
+        hold on;
+        plot(transpose(results(i,:)), s{i});
+    end
+    xlabel('Lazyness', 'FontSize', 13);
+    ylabel('%', 'FontSize', 13);
+    set(gca, 'XTick', 1:NKNOTS, 'XTickLabel', (0:NKNOTS-1)/10);
     set(gca, 'FontSize', 13);
+    legend(labels);
+    axis([1 10 0 1]);
     box off;
+    
+    % Print
+    set(gcf,'PaperPositionMode','auto');
+    print('-dpdf', sprintf('%s.pdf', 'lazyness')); 
+    print('-dpng', sprintf('%s.png', 'lazyness'));
 end
 
 function [X, labels] = do_simpletest(lazy_on_neutral)
@@ -166,7 +181,7 @@ end
 labels = {'Sensitivity', 'Alert Learning', 'Saccadic Cost'};
 % long_ratio_on_alert = size(LA, 1) / nA;
 sensitivity = nA / size(find(sali~=-1), 1);
-alert_lr = score_mean(1) / score_mean(2);
+alert_lr = score_mean(1) / (score_mean(1) + score_mean(2));
 if 2 <= VERBOSE
     fprintf('Alert Score: %.4f, Neutral Score: %.4f\n', ...
         score_mean(1), score_mean(2));
