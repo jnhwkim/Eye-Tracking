@@ -259,7 +259,7 @@ function anal_ltm()
     set(gca, 'XTick', 1:5, 'XTickLabel', Labels);
     set(gca, 'FontSize', 13);
     axis([0.5 4.5 0 5]);
-    sigstar({[1 2], [1 4]}, [p1, p3]);
+    sigstar({[1 2]}, [p1]);
     box off;
     
     % Print figure to pdf and png files
