@@ -5,7 +5,7 @@
 %
 % Get the timestamp list for validation sequences in milliseconds.
 
-function ts = get_valid_ts
+function [ts, pids] = get_valid_ts
     %% Criteria
     VERBOSE = false;
     PID_PREFIX = 'Participant ID:';

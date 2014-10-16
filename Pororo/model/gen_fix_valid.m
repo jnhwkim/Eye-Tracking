@@ -5,14 +5,13 @@
 %
 % Get the timestamp list for validation sequences in milliseconds.
 
-function LF = gen_fix_valid()
+function [LF, S] = gen_fix_valid()
     %% Criteria
     VERBOSE = false;
     addpath('..');
-    pids = {'hhkim', 'jkim', 'swlee', 'jhryu', 'dsbaek', 'kwpark', ...
-            'yspark', 'mhseo', 'yhlee', 'jhlee', 'cekim'};
+    [ts, pids] = get_valid_ts();
     LF = zeros(size(pids, 2), 16);
-    ts = get_valid_ts();
+    S = zeros(size(pids, 2), 16, 2);
     
     for i = 1 : size(pids, 2)
         filenames = dir(sprintf('../data/pororo_s03*_%s.tsv', pids{i}));
@@ -32,18 +31,26 @@ function LF = gen_fix_valid()
                 GazePointXMCSpx, GazePointYMCSpx    ] = ...
                     import_data(strcat('../data/', filename));
                 
-                durations_raw = [RecordingTimestamp FixationIndex GazeEventDuration];
+                durations_raw = [RecordingTimestamp, ...
+                                 FixationIndex, GazeEventDuration, ...
+                                 GazePointXADCSpx, GazePointYADCSpx];
                 durations_dup = durations_raw(~isnan(durations_raw(:,2)),:);
-                durations = unique(durations_dup, 'rows');
+                durations = durations_dup;
                 durations_all = [durations_all; durations];
         end
         for k = 1 : size(ts, 2)
-            criterion = find(durations_all(:,1) >= ts(i, k) + 500 & ...
-                             durations_all(:,1) < ts(i, k) + 2500);
-            if 0 == size(criterion, 1)
+            criteria = find(durations_all(:,1) >= ts(i, k) + 0 & ...
+                             durations_all(:,1) < ts(i, k) + 3000);
+            if 0 == size(criteria, 1) % can't find the criteria
                 LF(i, k) = 0;
+                S(i, k) = 0;
             else
-                LF(i, k) = max(durations_all(criterion,3), [], 1);    
+                LF(i, k) = max(durations_all(criteria,3), [], 1);
+                gaze_x_raw = durations_all(criteria, 4);
+                gaze_x_vld = gaze_x_raw(~isnan(gaze_x_raw),:);
+                gaze_y_raw = durations_all(criteria, 5);
+                gaze_y_vld = gaze_y_raw(~isnan(gaze_y_raw),:);
+                S(i, k, :) = [var(gaze_x_vld), var(gaze_y_vld)];
             end
         end
     end
