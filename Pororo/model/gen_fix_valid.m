@@ -38,19 +38,40 @@ function [LF, S] = gen_fix_valid()
                 durations = durations_dup;
                 durations_all = [durations_all; durations];
         end
-        for k = 1 : size(ts, 2)
-            criteria = find(durations_all(:,1) >= ts(i, k) + 0 & ...
-                             durations_all(:,1) < ts(i, k) + 3000);
+        for j = 1 : size(ts, 2)
+            criteria = find(durations_all(:,1) >= ts(i, j) + 0 & ...
+                             durations_all(:,1) < ts(i, j) + 3000);
             if 0 == size(criteria, 1) % can't find the criteria
-                LF(i, k) = 0;
-                S(i, k) = 0;
+                LF(i, j) = 0;
+                S(i, j) = 0;
             else
-                LF(i, k) = max(durations_all(criteria,3), [], 1);
+                % Fixation Duration
+                LF(i, j) = max(durations_all(criteria,3), [], 1);
+
+                % Recalculate the criteria
+                criteria = find( ...
+                    durations_all(:,1) >= ts(i, j) + (3000 - LF(i,j))/2 & ...
+                    durations_all(:,1) <  ts(i, j) + 1500 + LF(i,j)/2);
+                
                 gaze_x_raw = durations_all(criteria, 4);
-                gaze_x_vld = gaze_x_raw(~isnan(gaze_x_raw),:);
                 gaze_y_raw = durations_all(criteria, 5);
+                gaze_x_vld = gaze_x_raw(~isnan(gaze_x_raw),:);
                 gaze_y_vld = gaze_y_raw(~isnan(gaze_y_raw),:);
-                S(i, k, :) = [var(gaze_x_vld), var(gaze_y_vld)];
+                
+                % Use the sliding window technique to avoid smooth pursuit
+                WINDOW_SIZE = 5;
+                
+                if WINDOW_SIZE < size(gaze_x_vld, 1)
+                    S_sub = zeros(size(gaze_x_vld, 1) - WINDOW_SIZE + 1, 2);
+                    for k = 1 : size(gaze_x_vld, 1) - WINDOW_SIZE + 1
+                       gaze_x_sel = gaze_x_vld(k:k+WINDOW_SIZE-1,1);
+                       gaze_y_sel = gaze_y_vld(k:k+WINDOW_SIZE-1,1);
+                       S_sub(k, :) = [var(gaze_x_sel), var(gaze_y_sel)];
+                    end
+                    S(i, j, :) = median(S_sub);
+                else
+                    S(i, j, :) = [var(gaze_x_vld), var(gaze_y_vld)];
+                end
             end
         end
     end

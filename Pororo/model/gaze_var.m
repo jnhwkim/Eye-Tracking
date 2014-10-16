@@ -31,5 +31,6 @@ N_var = variance_types{2};
 median(A_var)
 median(N_var)
 
-[h, p] = ttest2(A_var(:,1,1), N_var(:,1,1))
-[h, p] = ttest2(A_var(:,1,2), N_var(:,1,2))
+% Total variance
+[h, p] = ttest2(A_var(:,1,1)+A_var(:,1,2), ...
+                N_var(:,1,1)+N_var(:,1,2))
