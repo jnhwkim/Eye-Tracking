@@ -18,6 +18,8 @@
 % for compact section title spacing
 % \usepackage[compact]{titlesec}
 
+% nameref
+\usepackage{nameref}
 
 % mathmetical presentation
 \usepackage{gensymb}
@@ -85,21 +87,48 @@ Brain Science Program$^{3}$, Bioinformatics Program$^{4}$, Seoul National Univer
 
 따라서 시청 환경에서의 안구 운동 분석은 읽기 환경과 비교할 때 연구의 복잡성 증가와 방법론적 어려움 때문에 충분히 연구되지 못하고 있었다 \cite{Tatler2011}. 하지만 최근에는 구글 글래스와 같은 웨어러블 장비의 개발과 휴대용 안구 운동 측정기의 보급은 보다 자유로운 환경에서의 실험을 가능하게 했고 안구 운동 연구 주제 범위를 넓혔으며 시각 자극의 현저점 분석 기법\cite{itti1998model}은 다양한 응용 기술 개발을 촉진시켰다. 
 
-본 논문에서는 시청 환경에서 안구 운동을 장기 기억 형성과 관련하여 분석하였다. 안구 운동을 응시와 도약 운동으로 분류한 후 \cite{Findlay1999,Feng2003,Feng2006}, 응시 기간과 장기 기억 형성이 서로 상관 관계가 있는지 분석하여 시청 환경에서도 응시 기간이 장기 기억와 관련된 인지 처리의 지표로 볼 수 있는지 확인하였다. 또한 감정적 유발 영상이 장기 기억 형성과 관련되어 있다는 선행 연구 \cite{Cahill1996amyg,Cahill1998baso}를 바탕으로 응시 기간이 감정적 유발 영상에 대한 장기 기억 형성을 나타내는 지표가 될 수 있는지 확인하였다. 
+본 논문에서는 시청 환경에서 안구 운동을 장기 기억 형성과 관련하여 분석하였다. 안구 운동을 응시와 도약 운동으로 분류한 후 \cite{Findlay1999,Feng2003,Feng2006}, 응시 기간과 장기 기억 형성이 서로 상관 관계가 있는지 분석하여 시청 환경에서도 응시 기간이 장기 기억와 관련된 인지 처리의 지표로 볼 수 있는지 확인하였다. 또한 감정적 유발 영상이 장기 기억 형성과 관련되어 있다는 선행 연구 \cite{Cahill1996amyg,Cahill1998baso}를 바탕으로 응시 기간이 감정적 유발 영상에 대한 장기 기억 형성을 나타내는 지표가 될 수 있는 지 확인하였다. 
 
 \section{실험 설계}
 
 \subsection{실험 1}
-본 연구를 위하여 국제적으로 유명한 아동용 애니메이션인 뽀로로 시즌 3 DVD 1을 사용하였다. 모든 캐릭터는 3D 렌더링 되어있고 단순하지만 각각 독특한 형태적 특징을 가지고 있다.
+본 연구를 위하여 국제적으로 유명한 아동용 애니메이션인 뽀로로 시즌 3의 에피소드 1 부터 에피소드 13을 사용하였다. 특히 이 에피소드에는 새로운 네 명의 캐릭터가 순차적으로 에피소드 1에서 두 명의 로봇 외계인, 에피소드 3에서 로봇, 에피소드 6에서 용이 등장한다.
+
+우리는 18명의 뽀로로 시즌 3을 처음 접하는 정상 시력을 가진 참여자 (남자 11명, 여자 6명; 나이의 중간값은 25 세)를 모집하였다. 본 연구의 실험은 서울대학교 생명윤리 심의 위원회의 동의를 얻어 진행하였고 모든 참여자는 연구 참여 동의서를 작성한 후 실험에 참여하였다.
+
+참여자는 차광막으로 둘러쌓인 약 3 평의 공간에서 40 인치 와이드 스크린 HDTV를 시선 거리 1.7 m 앞의 쇼파에 앉아 시청하였다. 안구 운동과 참여자 시야는 \textit{Tobii Glasses} 안구 운동 측정기의 적외선 카메라와 일반 카메라를 이용하여 각각 녹화 하였다. 녹화 샘플링은 30 Hz 이다. 안구 운동 중 응시를 구분하기 위해 초당 30 도 미만의 이동을 응시로 구분하는 \textit{I-VT} 알고리즘을 사용하였다 (시스템 기본값). 안구 운동의 일반적인 움직임은 초당 100 도 이하의 낮은 속도와 초당 300도 이상의 높은 속도로 분별할 수 있기 때문에 속도 기반 분류는 간단하지만 높은 성능을 보인다 \cite{Salvucci2000}. 우리는 이렇게 측정된 안구 운동을 응시와 도약 운동 두 종류로 분류하였는데 측정 오류로 인한 분류가 되지 않는 값은 사용되지 않았다. 
 
 
 \subsection{실험 2}
+\label{subsec:experiment2}
+실험 1을 참여했던 11명의 참여자를 대상으로 실험 1의 안구 운동 측정 데이터를 바탕으로 각 참여자를 위해 준비한 기억 능력 시험을 준비하였다. 실험 2는 실험 1의 3 개월에서 4 개월 후에 실시하였다 (실험 일정 조정으로 인해 수 일의 차이가 존재).
 
+기억 능력 시험은 총 20 개의 3 초 가량의 짧은 동영상으로 구성되어 있다. 8개의 동영상은 300 ms 미만의 응시 기간을 가지는 (또는 응시가 없는) \textit{짧은 응시} 동영상이고, 다른 8개의 동영상은 1400 ms 이상의 응시 기간을 가지는 \textit{긴 응시} 동영상이다. 나머지 4개의 동영상은 같은 뽀로로 시리즈의 다른 시즌 영상에서 추출한 짧은 동영상으로 참여자가 실험 1에서 보지 않았던 내용이다.
 
+각 참여자는 20 개의 짧은 동영상이 무작위로 정렬된 기억 능력 시험을 응하게 된다. 각 동영상은 실험 1에서 본 동영상인지 아닌지 1 점에서 5 점의 확신 정도를 점수로 매기게 된다. 
 
-\subsection{논문 구성}
-아래 순서대로 작성하며, ①∼⑧항목은 1 단 ⑨∼⑪항목은 2 단으로 구성
+\section{결 과}
+그림~\ref{fig:memtest-leng}는 긴 응시와 짧은 응시에 대한 기억 능력 테스트 결과를 나타낸다. 긴 응시와 짧은 응시에 대한 자세한 설명은 ~\nameref{subsec:experiment2} 소절을 참조한다. 긴 응시와 짧은 응시에 대한 기억력 점수는 통계적으로 유의미 하지 않았는데 시청 환경에서의 긴 응시에는 인지적 처리 외에도 다른 요인이 있다는 것을 나타낸다. 이를 분석하기 위해 시각 자극의 종류를 고려하였다.
 
+감정적 유발 영상이 장기 기억 형성과 관련되어 있다는 선행 연구 \cite{Cahill1996amyg,Cahill1998baso}를 바탕으로 응시 기간이 감정적 유발 영상에 대한 장기 기억 형성을 나타내는 지표가 될 수 있는 지에 대해 분석하였다. 
+
+\begin{figure}
+  \centerline{\includegraphics[width=60mm,height=54mm,trim=65mm 103mm 68mm 100mm]{./eps/memtest_leng}}
+  \caption{긴 응시와 짧은 응시에 대한 장기 기억 능력 시험 결과 이다. 긴 응시와 짧은 응시에 대한 기억력 점수는 통계적으로 유의미 하지 않았다 (p $=$ 0.5051). 오차 막대는 $\pm$ 2 표준 오차를 뜻 한다. 실험에 대한 자세한 설명은 ~\nameref{subsec:experiment2} 소절을 참조한다.}
+  \label{fig:memtest-leng}
+\end{figure}
+
+\begin{figure}
+  \centerline{\includegraphics[width=60mm,height=54mm,trim=65mm 103mm 68mm 100mm]{./eps/memtest_long.pdf}}
+  \caption{The memory test result for the \textit{long} fixation which is on the \textit{Alert} sequence or the \textit{No Alert} sequence. The number of cases from 11 participants are 19 and 69, respectively. The difference between two means is statistically significant, the p-value of two-sample t-test for the \textit{Alert} type is 0.0104 ($<$ 0.05). The blue horizontal line indicates the mean scores of the \textit{long} fixated sequences. Error bars indicate $\pm$ 2 SEMs.}
+  \label{fig:memtest-long}
+\end{figure}
+
+\begin{figure}
+  \centerline{\includegraphics[width=60mm,height=54mm,trim=65mm 103mm 68mm 100mm]{./eps/memtest_short.pdf}}
+  \caption{The memory test result for the \textit{short} fixation types which is on the \textit{Alert} sequence or the \textit{No Alert} sequence. The number of cases from 11 participants are 21 and 67, respectively. The p-value of two-sample t-test for the \textit{Alert} type is 0.2484 ($>$ 0.05). The blue horizontal line indicates the mean scores of the \textit{short} fixated sequences. Error bars indicate $\pm$ 2 SEMs.}
+  \label{fig:memtest-short}
+\end{figure}
 
 \begin{enumerate}[itemsep=0pt,parsep=0pt]
 	\renewcommand{\theenumi}{\arabic{enumi}}
