@@ -15,6 +15,7 @@
 
 
 % set default font and hangul packages
+\usepackage[T1]{fontenc}
 \usepackage{times}
 \usepackage{dhucs-cmap}
 \usepackage[hangul,nonfrench,finemath]{kotex}
