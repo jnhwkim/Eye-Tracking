@@ -244,7 +244,7 @@ function anal_ltm()
     m = [mean(elements_L{1});
          mean(elements_L{2});
          mean(elements_S{1});
-         mean(elements_S{2})];
+         mean(elements_S{2})]
     sem = [std(elements_L{1}) / size(elements_L{1},1);
            std(elements_L{2}) / size(elements_L{2},1);
            std(elements_S{1}) / size(elements_S{1},1);
@@ -261,9 +261,12 @@ function anal_ltm()
     axis([0.5 4.5 0 5]);
     sigstar({[1 2]}, [p1]);
     box off;
+    hold on;
+    mean_LS = types_m(1) / 2 + types_m(2) / 2;
+    plot(get(gca,'xlim'), [mean_LS mean_LS]);
     
     % Print figure to pdf and png files
     set(gcf,'PaperPositionMode','auto');
-    print('-dpdf', sprintf('%s.pdf', 'out/memtest_perm')); 
-    print('-dpng', sprintf('%s.png', 'out/memtest_perm')); 
+    print('-dpdf', sprintf('%s.pdf', 'out/memtest_nested')); 
+    print('-dpng', sprintf('%s.png', 'out/memtest_nested')); 
 end
