@@ -60,10 +60,11 @@ function [LF, S] = gen_fix_valid()
                 
                 % Use the sliding window technique to avoid smooth pursuit
                 WINDOW_SIZE = 5;
+                K = size(gaze_x_vld, 1) - WINDOW_SIZE + 1;
                 
                 if WINDOW_SIZE < size(gaze_x_vld, 1)
-                    S_sub = zeros(size(gaze_x_vld, 1) - WINDOW_SIZE + 1, 2);
-                    for k = 1 : size(gaze_x_vld, 1) - WINDOW_SIZE + 1
+                    S_sub = zeros(K, 2);
+                    for k = 1 : K
                        gaze_x_sel = gaze_x_vld(k:k+WINDOW_SIZE-1,1);
                        gaze_y_sel = gaze_y_vld(k:k+WINDOW_SIZE-1,1);
                        S_sub(k, :) = [var(gaze_x_sel), var(gaze_y_sel)];

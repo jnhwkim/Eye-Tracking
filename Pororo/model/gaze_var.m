@@ -28,9 +28,25 @@ end
 A_var = variance_types{1};
 N_var = variance_types{2};
 
-median(A_var)
-median(N_var)
+m_Avar = median(squeeze(A_var));
+m_Nvar = median(squeeze(N_var));
+
+fprintf('Median of variances for Alert = %.2f + %.2f\n', m_Avar(1), m_Avar(2));
+fprintf('Median of variances for Neutral = %.2f + %.2f\n', m_Nvar(1), m_Nvar(2));
 
 % Total variance
 [h, p] = ttest2(A_var(:,1,1)+A_var(:,1,2), ...
-                N_var(:,1,1)+N_var(:,1,2))
+                N_var(:,1,1)+N_var(:,1,2));
+
+fprintf('Statistical Significance,  p = %.4f\n', p);
+            
+% Ratings
+ratings = get_ratings();
+
+% Sum of Variance X, Y
+SS = S(:,:,1) + S(:,:,2);
+
+A_Var = squeeze(A_var(:,1,1)+A_var(:,1,2));
+N_Var = squeeze(N_var(:,1,1)+N_var(:,1,2));
+
+boxplot([A_Var;N_Var], [ones(19,1);zeros(69,1)])
