@@ -5,13 +5,14 @@
 %
 % Get the timestamp list for validation sequences in milliseconds.
 
-function [LF, S] = gen_fix_valid()
+function [LF, S, GZ] = gen_fix_valid()
     %% Criteria
     VERBOSE = false;
     addpath('..');
     [ts, pids] = get_valid_ts();
     LF = zeros(size(pids, 2), 16);
     S = zeros(size(pids, 2), 16, 2);
+    GZ = cell(size(pids, 2), 16);
     
     for i = 1 : size(pids, 2)
         filenames = dir(sprintf('../data/pororo_s03*_%s.tsv', pids{i}));
@@ -52,11 +53,20 @@ function [LF, S] = gen_fix_valid()
                 criteria = find( ...
                     durations_all(:,1) >= ts(i, j) + (3000 - LF(i,j))/2 & ...
                     durations_all(:,1) <  ts(i, j) + (3000 + LF(i,j))/2);
-                
+                       
                 gaze_x_raw = durations_all(criteria, 4);
                 gaze_y_raw = durations_all(criteria, 5);
+         
                 gaze_x_vld = gaze_x_raw(~isnan(gaze_x_raw),:);
                 gaze_y_vld = gaze_y_raw(~isnan(gaze_y_raw),:);
+                
+                rowall_raw = durations_all(criteria, :);
+                rowall_vld = rowall_raw(~isnan(gaze_x_raw),:);
+                GZ{i, j} = rowall_vld;
+                    
+                if size(gaze_x_vld) ~= size(gaze_y_vld)
+                    disp('Warning: valid gaze x, y are not the same size!');
+                end
                 
                 % Use the sliding window technique to avoid smooth pursuit
                 WINDOW_SIZE = 5;
