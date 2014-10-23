@@ -51,7 +51,7 @@ function [LF, S] = gen_fix_valid()
                 % Recalculate the criteria
                 criteria = find( ...
                     durations_all(:,1) >= ts(i, j) + (3000 - LF(i,j))/2 & ...
-                    durations_all(:,1) <  ts(i, j) + 1500 + LF(i,j)/2);
+                    durations_all(:,1) <  ts(i, j) + (3000 + LF(i,j))/2);
                 
                 gaze_x_raw = durations_all(criteria, 4);
                 gaze_y_raw = durations_all(criteria, 5);
