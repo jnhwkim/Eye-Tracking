@@ -24,7 +24,7 @@ end
 if ~exist('M', 'var')
     disp('Reading a video..');
     M = VideoReader(PATH_TO_PORORO3_VIDEO);
-    disp('doen.');
+    disp('done.');
 else
     disp('Reuse movie variable.');
 end
