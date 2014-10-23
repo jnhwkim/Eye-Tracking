@@ -37,13 +37,15 @@ function [LF, S, GZ] = gen_fix_valid()
                                  GazePointXADCSpx, GazePointYADCSpx, ...
                                  FixationPointXMCSpx, FixationPointYMCSpx, ...
                                  GazePointXMCSpx, GazePointYMCSpx];
-                durations_dup = durations_raw(~isnan(durations_raw(:,2)),:);
+                durations_dup = durations_raw;
                 durations = durations_dup;
                 durations_all = [durations_all; durations];
         end
         for j = 1 : size(ts, 2)
             criteria = find(durations_all(:,1) >= ts(i, j) + 0 & ...
-                             durations_all(:,1) < ts(i, j) + 3000);
+                             durations_all(:,1) < ts(i, j) + 3000 & ...
+                             ~isnan(durations_all(:,2)));
+    
             if 0 == size(criteria, 1) % can't find the criteria
                 LF(i, j) = 0;
                 S(i, j) = 0;
@@ -82,8 +84,10 @@ function [LF, S, GZ] = gen_fix_valid()
                        S_sub(k, :) = [var(gaze_x_sel), var(gaze_y_sel)];
                     end
                     S(i, j, :) = median(S_sub);
-                else
+                elseif 2 < size(gaze_x_vld, 1)
                     S(i, j, :) = [var(gaze_x_vld), var(gaze_y_vld)];
+                else
+                    S(i, j, :) = 500;
                 end
             end
         end
