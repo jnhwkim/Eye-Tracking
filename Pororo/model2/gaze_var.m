@@ -1,5 +1,7 @@
 function [v, p] = gaze_var(w_size, verbose)
 
+addpath('../model');
+
 %% Defaults
 if nargin < 2
     verbose = false;
