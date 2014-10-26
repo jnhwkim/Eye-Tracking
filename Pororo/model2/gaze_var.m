@@ -1,12 +1,14 @@
-%% Study on variation of gaze of two tpyes of long fixation,
-%%  one is for alerted sequences and the other is for neutral 
-%%  sequences.
+function [v, p] = gaze_var(w_size, verbose)
 
-%% Path to reference
-addpath('../ltm');
+%% Defaults
+if nargin < 2
+    verbose = false;
+elseif nargin < 1
+    w_size = 5;
+end
 
 %% Get the duration of fixation and variance of gaze points.
-[LF, S] = gen_fix_valid();
+[LF, S] = gen_fix_valid(w_size);
 
 %% Long Fixation Types
 [participant_id,L1,L2,L3,L4,L5,L6,L7,L8] = import_types('types_long.csv');
@@ -31,8 +33,12 @@ N_var = variance_types{2};
 m_Avar = median(squeeze(A_var));
 m_Nvar = median(squeeze(N_var));
 
-fprintf('Median of variances for Alert = %.2f + %.2f\n', m_Avar(1), m_Avar(2));
-fprintf('Median of variances for Neutral = %.2f + %.2f\n', m_Nvar(1), m_Nvar(2));
+v = [m_Avar, m_Nvar];
+
+fprintf('Median of variances for Alert = %.2f = %.2f + %.2f\n', ...
+    m_Avar(1) + m_Avar(2), m_Avar(1), m_Avar(2));
+fprintf('Median of variances for Neutral = %.2f = %.2f + %.2f\n', ...
+    m_Nvar(1) + m_Nvar(2), m_Nvar(1), m_Nvar(2));
 
 % Total variance
 [h, p] = ttest2(A_var(:,1,1)+A_var(:,1,2), ...
@@ -49,4 +55,8 @@ SS = S(:,:,1) + S(:,:,2);
 A_Var = squeeze(A_var(:,1,1)+A_var(:,1,2));
 N_Var = squeeze(N_var(:,1,1)+N_var(:,1,2));
 
-boxplot([A_Var;N_Var], [ones(19,1);zeros(69,1)])
+if verbose
+    boxplot([A_Var;N_Var], [ones(19,1);zeros(69,1)]);
+end
+
+end

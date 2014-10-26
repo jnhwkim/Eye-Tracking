@@ -5,8 +5,13 @@
 %
 % Get the timestamp list for validation sequences in milliseconds.
 
-function [LF, S, GZ] = gen_fix_valid()
+function [LF, S, GZ] = gen_fix_valid(w_size)
     %% Criteria
+    if nargin < 1
+        WINDOW_SIZE = 5;
+    else
+        WINDOW_SIZE = w_size;
+    end
     VERBOSE = false;
     addpath('..');
     [ts, pids] = get_valid_ts();
@@ -19,7 +24,9 @@ function [LF, S, GZ] = gen_fix_valid()
         durations_all = [];
         for j = 1 : size(filenames, 1)
             filename = filenames(j).name;
-            disp(filename);
+            if VERBOSE
+                disp(filename);
+            end
             warning('off','MATLAB:iofun:UnsupportedEncoding');
             [   RecordingTimestamp, ...
                 FixationIndex, ...
@@ -73,7 +80,6 @@ function [LF, S, GZ] = gen_fix_valid()
                 end
                 
                 % Use the sliding window technique to avoid smooth pursuit
-                WINDOW_SIZE = 5;
                 K = size(gaze_x_vld, 1) - WINDOW_SIZE + 1;
                 
                 if WINDOW_SIZE < size(gaze_x_vld, 1)
