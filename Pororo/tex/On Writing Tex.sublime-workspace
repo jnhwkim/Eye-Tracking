@@ -27,14 +27,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "/Users/Calvin/Github/Eye-Tracking/Pororo/tex/KCC 2015 Winter/kim2014eyeproc.tex",
-			"settings":
-			{
-				"buffer_size": 7496,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -43,11 +35,11 @@
 		"selected_items":
 		[
 			[
-				"dele",
+				"del",
 				"LaTexTools: Delete temporary files"
 			],
 			[
-				"del",
+				"dele",
 				"LaTexTools: Delete temporary files"
 			],
 			[
@@ -84,6 +76,13 @@
 	},
 	"file_history":
 	[
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/kim2014activelong.bib",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/kim2014activelong.tex",
+		"/Users/Calvin/Downloads/Snuthesis-kor/snuthesis-kor.cls",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/KCC 2015 Winter/kim2014eyeproc.tex",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/KCC 2015 Winter/kim2014eyeproc_review.tex",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/KCC 2015 Winter/kcc.cls",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/KCC 2015 Winter/kim2014eyeproc.bbl",
 		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/KCC 2015 Winter/kim2014eyeproc.pdf",
 		"/Users/Calvin/Dropbox/SNU-Dropbox/MS 4/Multivariate Analysis/Assign2014_1/assign1_9.out",
 		"/Users/Calvin/Dropbox/SNU-Dropbox/MS 4/Multivariate Analysis/Assign2014_1/assign1_10.out",
@@ -92,7 +91,6 @@
 		"/Users/Calvin/Dropbox/SNU-Dropbox/MS 4/Multivariate Analysis/Assign2014_1/assign1_11.out",
 		"/Users/Calvin/Library/Mobile Documents/com~apple~CloudDocs/NACSI/tutorial2.html",
 		"/Users/Calvin/Library/Mobile Documents/com~apple~CloudDocs/NACSI/tutorial.css",
-		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/kim2014activelong.tex",
 		"/Users/Calvin/Dropbox/SNU-Dropbox/Lab/Conferences/KCC 2014 W/kim2014eyeproc.tex",
 		"/Users/Calvin/Downloads/dbpia_metadata_20141015211205.txt",
 		"/Users/Calvin/Documents/Computer Science/IR/elp.frequencies.v2.txt",
@@ -153,7 +151,6 @@
 		"/Users/Calvin/Github/ARW/nn/fmincg.m",
 		"/Users/Calvin/Library/Application Support/Sublime Text 2/Packages/LastEdit/Default (OSX).sublime-keymap",
 		"/Users/Calvin/Github/Luceo/index.php",
-		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/kim2014activelong.bib",
 		"/Users/Calvin/Github/Luceo/templates/assignment.php",
 		"/Users/Calvin/Github/Luceo/js/jquery.fileupload-main.js",
 		"/Users/Calvin/Github/Luceo/sftp-config.json",
@@ -194,6 +191,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"분별",
+			"natbib",
+			"choe",
+			"ptm",
+			"title",
 			"lable",
 			" width=\"100\"",
 			"programs",
@@ -334,42 +336,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "/Users/Calvin/Github/Eye-Tracking/Pororo/tex/KCC 2015 Winter/kim2014eyeproc.tex",
-					"settings":
-					{
-						"buffer_size": 7496,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/base16-ocean.dark.tmTheme",
-							"incomplete_sync": null,
-							"origin_encoding": "UTF-8",
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
