@@ -9,7 +9,7 @@ addpath('../ltm');
 addpath('../model');
 addpath('..');
 
-figurestyle(13);
+figurestyle(15);
 
 scope = 3 : 30;
 
@@ -36,14 +36,16 @@ hold on;
 plot(get(gca,'xlim'), [0.05 0.05], 'Color', 'b');
 xlabel('Window Size (ms)');
 ylabel('p-value');
+set(get(gca,'ylabel'),'FontSize',18)
 set(gca, 'XTick', 3:3:30, 'XTickLabel', 100:100:1000);
 
 % Adjust xlabel y-position
-y_offset = 0.035;
+y_offset = 0.04;
 xlabel_pos = get(get(gca,'xlabel'),'position');
 ylimits = get(gca,'ylim');
 xlabel_pos(2) = ylimits(1) - y_offset;
 set(get(gca,'xlabel'), 'position', xlabel_pos);
+set(get(gca,'xlabel'),'FontSize',18)
 
 figuresave('gaze_var');
         
