@@ -4,6 +4,7 @@ SVHN/*.mat
 *.pyc
 */screenshots/*
 */*.avi
+*.sublime-workspace
 Pororo/fix_bak/*
 Pororo/tmp/*
 Pororo/img/animated_gif/train
@@ -11,3 +12,4 @@ Pororo/model/caffe/test*
 Pororo/model/caffe/train*
 Pororo/model/caffe/*.caffemodel
 Pororo/model/caffe/*.solverstate
+

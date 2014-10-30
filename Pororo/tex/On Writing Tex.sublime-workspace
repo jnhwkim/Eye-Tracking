@@ -27,6 +27,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "Thesis/kim2014activelong.tex",
+			"settings":
+			{
+				"buffer_size": 29917,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -76,6 +84,9 @@
 	},
 	"file_history":
 	[
+		"/Users/Calvin/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/apacite.sty",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/cogsci.sty",
 		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/kim2014activelong.bib",
 		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/kim2014activelong.tex",
 		"/Users/Calvin/Downloads/Snuthesis-kor/snuthesis-kor.cls",
@@ -162,7 +173,6 @@
 		"/Users/Calvin/Github/Luceo/js/jquery.fileupload-ui.js",
 		"/Users/Calvin/Github/Luceo/js/jquery.fileupload-jquery-ui.js",
 		"/Users/Calvin/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
-		"/Users/Calvin/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/usr/local/texlive/2014/texmf-dist/tex/latex/apacite/english.apc",
 		"/Users/Calvin/Dropbox/SNU-Dropbox/MS 4/Exp Psy/week2_submit.txt",
 		"/Users/Calvin/Library/Application Support/Sublime Text 2/Packages/User/SFTP.sublime-settings",
@@ -191,6 +201,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"classification",
+			"potentially dangerous",
+			"in subse",
+			"subsec:",
+			" as ",
+			"font",
 			"분별",
 			"natbib",
 			"choe",
@@ -336,8 +352,42 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "Thesis/kim2014activelong.tex",
+					"settings":
+					{
+						"buffer_size": 29917,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								865,
+								865
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"origin_encoding": "ASCII",
+							"remote_loading": false,
+							"spell_check": true,
+							"synced": false,
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 96.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -401,10 +451,10 @@
 		],
 		"width": 380.0
 	},
-	"show_minimap": true,
+	"show_minimap": false,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 236.0,
 	"status_bar_visible": true
 }
