@@ -4,7 +4,6 @@ SVHN/*.mat
 *.pyc
 */screenshots/*
 */*.avi
-*.sublime-workspace
 Pororo/fix_bak/*
 Pororo/tmp/*
 Pororo/img/animated_gif/train
