@@ -28,18 +28,18 @@
 	"buffers":
 	[
 		{
-			"file": "On Writing Tex.sublime-project",
+			"file": "Thesis/kim2014activelong.tex",
 			"settings":
 			{
-				"buffer_size": 211,
-				"line_ending": "Unix"
+				"buffer_size": 31195,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "On Writing Tex.sublime-workspace",
+			"file": "/C/Users/jhkim/AppData/Roaming/Sublime Text 3/Packages/User/LaTeXTools.sublime-settings",
 			"settings":
 			{
-				"buffer_size": 11280,
+				"buffer_size": 6312,
 				"line_ending": "Unix"
 			}
 		}
@@ -51,11 +51,23 @@
 		"selected_items":
 		[
 			[
-				"dele",
-				"LaTexTools: Delete temporary files"
+				"pdf",
+				"LaTeXTools: View PDF"
+			],
+			[
+				"lat",
+				"LaTeXTools: Jump to PDF"
+			],
+			[
+				"latex",
+				"LaTeXTools: View PDF"
 			],
 			[
 				"del",
+				"LaTexTools: Delete temporary files"
+			],
+			[
+				"dele",
 				"LaTexTools: Delete temporary files"
 			],
 			[
@@ -75,7 +87,7 @@
 				"Package Syncing: Define Sync Folder"
 			]
 		],
-		"width": 457.0
+		"width": 408.0
 	},
 	"console":
 	{
@@ -95,10 +107,17 @@
 	},
 	"expanded_folders":
 	[
-		"/E/GitHub/Eye-Tracking/Pororo/tex/KCC 2015 Winter"
+		"/E/GitHub/Eye-Tracking/Pororo/tex/Thesis"
 	],
 	"file_history":
 	[
+		"/E/GitHub/Eye-Tracking/Pororo/model2/gaze_var.m",
+		"/C/Users/jhkim/Desktop/gaze_var.m",
+		"/E/GitHub/Eye-Tracking/Pororo/tex/Thesis/kim2014activelong.tex",
+		"/C/Users/jhkim/AppData/Roaming/Sublime Text 3/Packages/User/LaTeXTools.sublime-settings",
+		"/E/GitHub/Eye-Tracking/Pororo/tex/Technical Report/kim2014parallax.tex",
+		"/E/GitHub/Eye-Tracking/Pororo/tex/On Writing Tex.sublime-project",
+		"/E/GitHub/Eye-Tracking/Pororo/tex/On Writing Tex.sublime-workspace",
 		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/KCC 2015 Winter/kim2014eyeproc.tex",
 		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/KCC 2015 Winter/kim2014eyeproc.pdf",
 		"/Users/Calvin/Dropbox/SNU-Dropbox/MS 4/Multivariate Analysis/Assign2014_1/assign1_9.out",
@@ -194,7 +213,7 @@
 	],
 	"find":
 	{
-		"height": 32.0
+		"height": 44.0
 	},
 	"find_in_files":
 	{
@@ -210,6 +229,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"pdf",
+			"Technical Report",
 			"lable",
 			" width=\"100\"",
 			"programs",
@@ -355,31 +376,33 @@
 			[
 				{
 					"buffer": 0,
-					"file": "On Writing Tex.sublime-project",
+					"file": "Thesis/kim2014activelong.tex",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 211,
+						"buffer_size": 31195,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								473,
+								473
 							]
 						],
 						"settings":
 						{
+							"incomplete_sync": null,
 							"origin_encoding": "ASCII",
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 576.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -387,31 +410,32 @@
 				},
 				{
 					"buffer": 1,
-					"file": "On Writing Tex.sublime-workspace",
+					"file": "/C/Users/jhkim/AppData/Roaming/Sublime Text 3/Packages/User/LaTeXTools.sublime-settings",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11280,
+						"buffer_size": 6312,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								669,
+								669
 							]
 						],
 						"settings":
 						{
-							"origin_encoding": "UTF-8",
+							"incomplete_sync": null,
+							"origin_encoding": "ASCII",
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 504.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -482,6 +506,10 @@
 		"height": 500.0,
 		"selected_items":
 		[
+			[
+				"",
+				"E:\\GitHub\\Eye-Tracking\\Pororo\\tex\\On Writing Tex (Windows).sublime-project"
+			]
 		],
 		"width": 380.0
 	},
