@@ -1,0 +1,509 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"brand-",
+				"brand-primary"
+			],
+			[
+				"init",
+				"initial_nn_params"
+			],
+			[
+				"sigmo",
+				"sigmoidGradient"
+			],
+			[
+				"num_",
+				"num_hidden_layers"
+			],
+			[
+				"hidden",
+				"hidden_layer_size"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "On Writing Tex.sublime-project",
+			"settings":
+			{
+				"buffer_size": 211,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "On Writing Tex.sublime-workspace",
+			"settings":
+			{
+				"buffer_size": 11280,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 400.0,
+		"selected_items":
+		[
+			[
+				"dele",
+				"LaTexTools: Delete temporary files"
+			],
+			[
+				"del",
+				"LaTexTools: Delete temporary files"
+			],
+			[
+				"print",
+				"Print to HTML: print as HTML via browser"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"delete",
+				"LaTexTools: Delete temporary files"
+			],
+			[
+				"syncing",
+				"Package Syncing: Define Sync Folder"
+			]
+		],
+		"width": 457.0
+	},
+	"console":
+	{
+		"height": 125.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/E/GitHub/Eye-Tracking/Pororo/tex/KCC 2015 Winter"
+	],
+	"file_history":
+	[
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/KCC 2015 Winter/kim2014eyeproc.tex",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/KCC 2015 Winter/kim2014eyeproc.pdf",
+		"/Users/Calvin/Dropbox/SNU-Dropbox/MS 4/Multivariate Analysis/Assign2014_1/assign1_9.out",
+		"/Users/Calvin/Dropbox/SNU-Dropbox/MS 4/Multivariate Analysis/Assign2014_1/assign1_10.out",
+		"/Users/Calvin/Library/Mobile Documents/com~apple~CloudDocs/NACSI/css/bootstrap-theme.css",
+		"/Users/Calvin/Dropbox/SNU-Dropbox/MS 4/Multivariate Analysis/Assign2014_1/assign1_9.r",
+		"/Users/Calvin/Dropbox/SNU-Dropbox/MS 4/Multivariate Analysis/Assign2014_1/assign1_11.out",
+		"/Users/Calvin/Library/Mobile Documents/com~apple~CloudDocs/NACSI/tutorial2.html",
+		"/Users/Calvin/Library/Mobile Documents/com~apple~CloudDocs/NACSI/tutorial.css",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/kim2014activelong.tex",
+		"/Users/Calvin/Dropbox/SNU-Dropbox/Lab/Conferences/KCC 2014 W/kim2014eyeproc.tex",
+		"/Users/Calvin/Downloads/dbpia_metadata_20141015211205.txt",
+		"/Users/Calvin/Documents/Computer Science/IR/elp.frequencies.v2.txt",
+		"/Users/Calvin/Dropbox/SNU-Dropbox/MS 4/Experimental Psychology/submit/week6_questions.txt",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Technical Report/kim2014parallax.tex",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/ltm/anal_ltm.m",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/ltm/types_long.csv",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/img/animated_gif/train_label.txt",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/img/animated_gif/train_factors.txt",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/ltm/types_short.csv",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/ltm/ratings.csv",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/data/pororo_s03p01_hhkim.tsv",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/ltm/import_ratings.m",
+		"/Users/Calvin/Github/caffe-master/examples/mnist/mnist_autoencoder.prototxt",
+		"/Users/Calvin/Github/caffe-master/examples/mnist/mnist_autoencoder_solver.prototxt",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/model/caffe/pororo_solver.prototxt",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/model/caffe/pororo_ae.prototxt",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/model/caffe/pororo_ae_solver.prototxt",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/model/caffe/pororo_autoencoder.prototxt",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/model/caffe/pororo_train_test.prototxt",
+		"/Users/Calvin/Dropbox/SNU-Dropbox/MS 4/Experimental Psychology/submit/week5_questions.txt",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/img/animated_gif/train_label_s.txt",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/model/gen_mfcc.m",
+		"/Users/Calvin/Github/matlab-leveldb/+leveldb/private/LevelDB_.mexmaci64",
+		"/Users/Calvin/Downloads/macx-video-converter-pro-thanksgiving-edition/License Key.txt",
+		"/Users/Calvin/Library/Preferences/Adobe/Adobe Media Encoder/6.0/AMEEncodingErrorLog.txt",
+		"/Users/Calvin/Library/Preferences/Adobe/Adobe Media Encoder/6.0/AMEEncodingLog.txt",
+		"/Users/Calvin/Downloads/HMMall/HMM/README.txt",
+		"/usr/local/lib/node_modules/lev/lib/ui/editor.js",
+		"/Users/Calvin/Github/protobuf-matlab/protobuflib/pblib_generic_serialize_to_string.m",
+		"/Users/Calvin/Downloads/caffe-master/examples/mnist/create_mnist.sh",
+		"/Users/Calvin/Downloads/caffe-master/src/caffe/layers/data_layer.cpp",
+		"/Users/Calvin/Downloads/caffe-master/examples/mnist/convert_mnist_data.cpp",
+		"/Users/Calvin/Github/protobuf/src/google/protobuf/message.cc",
+		"/Users/Calvin/Github/protobuf/COPYING.txt",
+		"/Users/Calvin/Github/protobuf/src/google/protobuf/message_lite.cc",
+		"/Users/Calvin/Downloads/caffe-master/examples/mnist/mnist_train_leveldb/000003.log",
+		"/Users/Calvin/Downloads/caffe-master/examples/mnist/mnist_train_leveldb/LOG",
+		"/Users/Calvin/Downloads/caffe-master/examples/mnist/mnist_train_leveldb/MANIFEST-000002",
+		"/usr/local/lib/node_modules/lev/lib/ui/values.js",
+		"/usr/local/lib/node_modules/lev/lib/utils.js",
+		"/Users/Calvin/Downloads/caffe-master/src/caffe/proto/caffe.proto",
+		"/Users/Calvin/Downloads/caffe-master/LICENSE",
+		"/Users/Calvin/Downloads/caffe-master/.build_release/src/caffe/proto/caffe.pb.h",
+		"/Users/Calvin/Github/protobuf/configure.ac",
+		"/Users/Calvin/Downloads/caffe-master/examples/mnist/lenet_solver.prototxt",
+		"/Users/Calvin/Downloads/caffe-master/examples/mnist/train_lenet.sh",
+		"/Users/Calvin/Downloads/caffe-master/examples/mnist/lenet_train_test.prototxt",
+		"/Users/Calvin/.matlab/R2014a/mex_C++_maci64.xml",
+		"/Users/Calvin/Github/ARW/nn/history/iter300/300x300drop.log",
+		"/Users/Calvin/Dropbox/SNU-Dropbox/MS 4/Experimental Psychology/submit/week4_questions.txt",
+		"/Users/Calvin/Desktop/untitled",
+		"/Users/Calvin/Github/ARW/README.md",
+		"/Users/Calvin/Dropbox/SNU-Dropbox/MS 4/Experimental Psychology/submit/week3_questions.txt",
+		"/Users/Calvin/Github/ARW/nn/checkNNGradients.m",
+		"/Users/Calvin/Github/ARW/nn/nnCostFunction.m",
+		"/Users/Calvin/Github/ARW/nn/randInitializeWeights.m",
+		"/Users/Calvin/Github/ARW/nn/fmincg.m",
+		"/Users/Calvin/Library/Application Support/Sublime Text 2/Packages/LastEdit/Default (OSX).sublime-keymap",
+		"/Users/Calvin/Github/Luceo/index.php",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/kim2014activelong.bib",
+		"/Users/Calvin/Github/Luceo/templates/assignment.php",
+		"/Users/Calvin/Github/Luceo/js/jquery.fileupload-main.js",
+		"/Users/Calvin/Github/Luceo/sftp-config.json",
+		"/Users/Calvin/Github/Luceo/fileupload/UploadHandler.php",
+		"/Users/Calvin/Github/Luceo/templates/upload.php",
+		"/Users/Calvin/Github/Luceo/css/jquery.fileupload.css",
+		"/Users/Calvin/Github/Luceo/css/jquery.fileupload-ui.css",
+		"/Users/Calvin/Github/Luceo/js/jquery.fileupload.js",
+		"/Users/Calvin/Github/Luceo/js/jquery.fileupload-ui.js",
+		"/Users/Calvin/Github/Luceo/js/jquery.fileupload-jquery-ui.js",
+		"/Users/Calvin/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/Calvin/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/usr/local/texlive/2014/texmf-dist/tex/latex/apacite/english.apc",
+		"/Users/Calvin/Dropbox/SNU-Dropbox/MS 4/Exp Psy/week2_submit.txt",
+		"/Users/Calvin/Library/Application Support/Sublime Text 2/Packages/User/SFTP.sublime-settings",
+		"/Users/Calvin/Library/Application Support/Sublime Text 2/Packages/SFTP/SFTP.sublime-settings",
+		"/Users/Calvin/Desktop/Sublime/Package Control.sublime-settings",
+		"/Users/Calvin/Dropbox/Settings/Sublime/Package Control.sublime-settings",
+		"/Users/Calvin/Library/Application Support/Sublime Text 2/Packages/User/Package Syncing.sublime-settings",
+		"/Users/Calvin/Library/Application Support/Sublime Text 2/Packages/Package Syncing/Package Syncing.sublime-settings",
+		"/Users/Calvin/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 32.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			".",
+			"/"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"lable",
+			" width=\"100\"",
+			"programs",
+			"lable",
+			"summary",
+			"8",
+			"9",
+			"8",
+			"4",
+			"dddddd",
+			"f0f0f0",
+			"efefef",
+			"eeeeee",
+			"efefef",
+			"2d6ca2",
+			"428bca",
+			"btn",
+			"border-radius",
+			"nav-pills",
+			"\\citeA",
+			"cite",
+			"bib",
+			"table",
+			"the mean of ",
+			"the mean",
+			"0.05",
+			"memory score",
+			"standard error",
+			"$\\pm$2SEM",
+			"\\pm",
+			" Attention",
+			"attention",
+			"Alert",
+			"Alert ",
+			"Focus",
+			"linguis",
+			"Focus",
+			"linguis",
+			"month",
+			"number",
+			"month",
+			"Duffy",
+			"Rayne",
+			"2 se",
+			"69",
+			"16 and 72",
+			" sample",
+			" 199",
+			"19 ",
+			"19",
+			"2367",
+			"0232",
+			"SEM",
+			"stand",
+			"0",
+			"1",
+			"784",
+			"test-on-train",
+			"accuracy = ",
+			"', '",
+			".*solver.cpp:298] .*#0: ",
+			".*loss .*\\n",
+			".*Iteration.*\\n",
+			".*Iteration.*",
+			"\".\"",
+			"SerializeToString",
+			"::SerializeToString",
+			"SerializeToString",
+			"28",
+			"NOT OK!",
+			"NOT",
+			"decode",
+			"no method",
+			"NOT OK!",
+			"class Datum",
+			"SerializeToString",
+			"class Datum",
+			"Datum",
+			"undefine",
+			"CXX",
+			"['hhkim', 'jkim', 'swlee', 'jhryu', 'dsbaek', 'kwpark', 'yspark', 'mhseo', 'yhlee', 'jhlee', 'cekim']",
+			"\\n",
+			"\\d participants",
+			"12",
+			"output_size",
+			"z(i)",
+			"a(i)",
+			"d(i)",
+			"initial_Theta",
+			"Theta(i)",
+			"Theta",
+			"hidden_layer_size",
+			"_attachmentToFiles",
+			"삭제",
+			"updateAttachments",
+			"_attachmentToFiles",
+			"attachment",
+			"scandir",
+			"scan",
+			"http://blueimp.github.io",
+			"load-image.min.js",
+			"Tatler",
+			"tatler",
+			"arousal",
+			"Note",
+			"note",
+			"however",
+			"but"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"recall score",
+			"$\\pm$ 2 SEMs",
+			"$\\pm$",
+			"",
+			"19 and 69",
+			"2484",
+			"0104",
+			"",
+			"', '",
+			"",
+			"', '",
+			"z{i}",
+			"a{i}",
+			"d{i}",
+			"Theta{i}"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "On Writing Tex.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 211,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "ASCII",
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "On Writing Tex.sublime-workspace",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11280,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "UTF-8",
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 32.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 140.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 140.0
+	},
+	"project": "On Writing Tex (Windows).sublime-project",
+	"replace":
+	{
+		"height": 60.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 236.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

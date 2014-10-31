@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "Technical Report"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "Thesis"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "KCC 2015 Winter"
+		}
+	]
+}
