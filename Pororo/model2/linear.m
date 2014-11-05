@@ -74,12 +74,6 @@ for i = 1 : NUM_PARTICIPANTS
         saltrc = [];
         salmap = salMaps{i,j};
         
-        % gaussian filtering
-        %h = fspecial('gaussian', [3 3], 0.5);
-        %salmap = imfilter(salmap, h, 'replicate');
-        
-        salmap = salmap / sum(salmap(:)); % normalized
-        
         for k = 1 : size(gaze, 1)
             rts = gaze(k, 1);
             if rts < start_ts || rts > end_ts
@@ -106,7 +100,7 @@ X = [LF(1:88)', SS(1:88)', salsum(1:88)']; % Long fixations
 y = types(1:88)';
 
 % linear model fitting for alert
-mdl = fitlm(X(:,2), y)
+mdl = fitlm(X(:,:), y)
 [h,p] = ttest2(X(y==1,2),X(y==0,2))
 %anova(mdl)
 
@@ -114,6 +108,6 @@ X = [LF(:), SS(:), salsum(:)];
 y = ratings(:);
 
 % linear model fitting for recall
-mdl = fitlm(X(:,[1,3]), y)
+mdl = fitlm(X(:,[1,2,3]), y)
 [h,p] = ttest2(X(y>4,3),X(y<=4,3))
 %anova(mdl)

@@ -1,0 +1,22 @@
+%% Saliency Toolbox Default Parameters
+
+               foaSize: -1
+           pyramidType: 'dyadic'
+              features: {'Color'  'Intensities'  'Orientations'}
+               weights: [1 1 1]
+               IORtype: 'shape'
+             shapeMode: 'shapeFM'
+           levelParams: [1x1 struct]
+              normtype: 'Iterative'
+               numIter: 3
+             useRandom: 1
+    segmentComputeType: 'Fast'
+              IORdecay: 0.9999
+         smOutputRange: 1.0000e-09
+             noiseAmpl: 1.0000e-17
+            noiseConst: 1.0000e-14
+           gaborParams: [1x1 struct]
+             oriAngles: [0 45 90 135]
+        oriComputeMode: 'efficient'
+    visualizationStyle: 'Contour'
+         exclusionMask: []
