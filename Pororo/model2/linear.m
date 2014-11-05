@@ -2,6 +2,7 @@
 
 %% Preambles
 addpath('..');
+addpath('../ltm');
 addpath('../model');
 addpath('../../SaliencyToolbox/');
 configure;
