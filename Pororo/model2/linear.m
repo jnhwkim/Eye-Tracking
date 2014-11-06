@@ -100,7 +100,7 @@ X = [LF(1:88)', SS(1:88)', salsum(1:88)']; % Long fixations
 y = types(1:88)';
 
 % linear model fitting for alert
-mdl = fitlm(X(:,:), y)
+mdl = fitlm(X(:,2), y)
 [h,p] = ttest2(X(y==1,2),X(y==0,2))
 %anova(mdl)
 
@@ -108,6 +108,6 @@ X = [LF(:), SS(:), salsum(:)];
 y = ratings(:);
 
 % linear model fitting for recall
-mdl = fitlm(X(:,[1,2,3]), y)
+mdl = fitlm([X(:,1)/1000,X(:,3)], y)
 [h,p] = ttest2(X(y>4,3),X(y<=4,3))
 %anova(mdl)
