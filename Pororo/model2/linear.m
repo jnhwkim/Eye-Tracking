@@ -104,10 +104,22 @@ mdl = fitlm(X(:,2), y)
 [h,p] = ttest2(X(y==1,2),X(y==0,2))
 %anova(mdl)
 
-X = [LF(:), SS(:), salsum(:)];
-y = ratings(:);
+%% Linear Model for LTM
+X = [LF(1:88)', SS(1:88)', salsum(1:88)'];
+y = ratings(1:88)';
 
 % linear model fitting for recall
 mdl = fitlm([X(:,1)/1000,X(:,3)], y)
-[h,p] = ttest2(X(y>4,3),X(y<=4,3))
+%plotResiduals(mdl, 'fitted')
+%[h,p] = ttest2(X(y>4,3),X(y<=4,3))
 %anova(mdl)
+
+%% Logistic Model for LTM
+mdl = fitglm(X,[y 5*ones(88,1)],'linear','Distribution','binomial')
+
+%% Nonlinear Model for LTM
+X = [LF(:), SS(:), salsum(:)];
+y = ratings(:);
+modelfun = @(b,x)b(1) + b(2)*x(:,1).^b(3) + b(4)*x(:,3).^b(5);
+beta0 = [4 -.0001 1 .04 1];
+mdl = fitnlm(X,y,modelfun,beta0)

@@ -208,18 +208,54 @@ To get the variation of the gazes excluding the variation from the smooth pursui
   \label{fig:gaze-variation}
 \end{figure}
 
+\begin{table*}[!ht]
+\begin{center} 
+\caption{Estimated coefficients of the linear regression model for the prediction of the recall score.} 
+\vskip 0.12in
+\label{tab:lr-coef} 
+\begin{tabular}{lllll} 
+\hline
+Coefficient & Estimate & SE & tStat & pValue \\ 
+\hline
+$\mathcal{B}_{0}$    &  4.8241   &  0.48622  &  9.9217 &  7.3904e-16  \\
+$\mathcal{B}_{duration}$ & -0.42214  &  0.18627  & -2.2663 &  0.025974    \\
+$\mathcal{B}_{saliency}$ &  0.032642 &  0.015957 &  2.0455 &  0.043893    \\
+\hline
+\end{tabular} 
+\end{center} 
+\end{table*}
 
 \subsection{Computational Model}
 
 Based on the study of bottom-up attention \cite{koch1985shifts}, the computational model is implemented by the saliency map-based approach \cite{itti1998model}. This model uses the visual information, i.e., intensities, color opponencies and orientations, as a source to measure a conspicuity. While reflecting some physiological evidence for the basis mechanism of visual information processing, it has processing efficiency and robustness to noises. It takes an image as input, and it returns one saliency map, the matrix, note that, whose elements are normalized iteratively and nonlinearly \cite{itti2000saliency}.
 
-Using the saliency map from the computational bottom-up attention model, we examine the association between the gaze fitness to the model and the recall score. The fitness function is described below. We align the gaze coordination to the saliency map, which has a smaller size after sub-sampling, and we use the SaliencyToolbox with default parameters for getting the saliency map to analyze \cite{Walther2006}.
+Using the saliency map from the computational bottom-up attention model, we examine the association between the gaze fitness to the model and the recall score. The fitness function is described below. We use the SaliencyToolbox with default parameters for getting the saliency map to analyze, and align the gaze coordination to the area of the saliency map, which has a smaller size after sub-sampling \cite{Walther2006}.
 
 \begin{equation}\label{eq:salsum}
-f_{score} = \sum_{t=1}^{T} \mathcal{S}_{x_{t},y_{t}}^{(t)}
+X_{saliency}^{(i,j)} = \sum_{t=1}^{T} \mathcal{S}_{x_{t},y_{t}}^{(i,j,t)}
 \end{equation}
 
-In Equation~\ref{eq:salsum}, $x_{t}$ and $y_{t}$ represent the mapped gaze coordination at $t$ time in a fixation duration. $\mathcal{S}^{(t)}$ is a saliency map which is the result of the model for a given screenshot at $t$ time in the duration of a movie clip, which was given to the participant for the recall test.
+In Equation~\ref{eq:salsum}, $x_{t}$ and $y_{t}$ represent the mapped gaze coordination at $t$ time in a fixation duration. $\mathcal{S}^{(i,j,t)}$ is a saliency map which is the output of the model for a given screenshot at $t$ time in the duration of a movie clip, which was given to the participant $i$ for the $j$-th sequence of the recall test.
+
+\begin{table}[!ht]
+\begin{center} 
+\caption{Assessment of the linear regression model.} 
+\vskip 0.12in
+\label{tab:lr-goodness} 
+\begin{tabular}{ll} 
+\hline
+Attribute   & Value \\ 
+\hline
+\# of observations & 88 \\
+Error degree of freedom & 85 \\
+RMSE & 1.34 \\
+$R^{2}$ & 0.106 \\
+Adjusted $R^{2}$ & 0.0847 \\
+F-statistics vs. constant model & 5.02 (p-value = 0.00866) \\
+\hline
+\end{tabular} 
+\end{center} 
+\end{table}
 
 \section{Discussions}
 
