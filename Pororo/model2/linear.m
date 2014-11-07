@@ -19,7 +19,7 @@ NUM_PARTICIPANTS = size(ts, 1);
 NUM_TRIALS = size(ts, 2);
 
 %% Get Saliency Map
-if ~exist('salMaps', 'var')
+if ~exist('tmp/salMaps.mat', 'file')
     salMaps = cell(size(ts, 1), size(ts, 2));
     for i = 1 : NUM_PARTICIPANTS
         for j = 1 : NUM_TRIALS
