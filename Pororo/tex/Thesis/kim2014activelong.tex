@@ -237,6 +237,24 @@ X_{saliency}^{(i,j)} = \sum_{t=1}^{T} \mathcal{S}_{x_{t},y_{t}}^{(i,j,t)}
 
 In Equation~\ref{eq:salsum}, $x_{t}$ and $y_{t}$ represent the mapped gaze coordination at $t$ time in a fixation duration. $\mathcal{S}^{(i,j,t)}$ is a saliency map which is the output of the model for a given screenshot at $t$ time in the duration of a movie clip, which was given to the participant $i$ for the $j$-th sequence of the recall test.
 
+We fit the recall scores to the linear regression model defined by Equation~\ref{eq:lm},
+
+\begin{equation}\label{eq:lm}
+Y_{score} = \mathcal{B}_{0} + \sum_{l \in \mathcal{L}} \mathcal{B}_{l} \cdot X_{l}
+\end{equation}
+
+, $\mathcal{B}$s are the coefficients of the model, and $\mathcal{L}$ is defined as 
+
+\begin{equation}\label{eq:l}
+\mathcal{L} = \{duration, saliency\}.
+\end{equation}
+
+$X_{duration}$ is the fixation duration in second. We use only the data of the long fixations, because the short fixated sequences do not show the significant differences on the recall scores for the duration or the gaze fitness to the saliency map.
+
+Table~\ref{tab:lr-coef} shows the estimated coefficients of the linear regression model for the prediction. All shown parameters are statistically significant, though the gaze variation is excluded for the fitting due to its unexplainable. The gaze fitness reasonably explain the recall score with the p-value 0.043893. The estimated value for the gaze fitness is positive, which means the recall score positively correlates with the gaze fitness. Interestingly, the fixation duration, which is longer than 1400 ms, negatively correlates with the recall score, though the standard error of that is relatively high. The assessment of the model is shown in Table~\ref{tab:lr-goodness}. The number of observation is 88 for each of 11 participants rates 8 long fixated sequences, respectively. The other models, like logistic regression and non-linear regression, also examined, but they do not explain better than the linear model.
+
+
+
 \begin{table}[!ht]
 \begin{center} 
 \caption{Assessment of the linear regression model.} 
