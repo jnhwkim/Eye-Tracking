@@ -213,7 +213,7 @@ Figure~\ref{fig:memtest-short} shows the memory test result for the short fixati
 
 \begin{figure}
   \centerline{\includegraphics[width=60mm,height=65mm,trim=48mm 85mm 48mm 86mm]{./eps/gaze_var.pdf}}
-  \caption{The significant levels with regard to the window sizes. When the window size is narrower than 200 ms, the medians of gaze variations for the \textit{Alert} sequences are significantly different from those for the \textit{No Alert} sequences (p $<$ 0.05).}
+  \caption{The significant levels with regard to the window sizes. When the window size is narrower than 200 ms, the medians of gaze variations for the \textit{Alert} sequences are significantly different from those for the \textit{No Alert} sequences (p $<$ 0.05). The blue horizontal line shows the 5\% significant level.}
   \label{fig:gaze-variation}
 \end{figure}
 
@@ -221,26 +221,26 @@ The difference of the eye movements between the \textit{Alert} sequences and the
 
 To get the variation of the gazes excluding the variation from the smooth pursuit, we can use the window sliding technique. Varying the size of a time window, we move the time window on the time series by 1/30 second in every steps, and take the median of the variations. Figure~\ref{fig:gaze-variation} shows the significant level changes according to the change of the window size. When the window size is smaller than 200 ms, p-values are lower than 0.05. In the long fixated group, the \textit{Alert} sequences tend to have smaller gaze variations than the \textit{No Alert} sequences have, whereas the short fixated group does not show this difference.
 
-\begin{table*}[!ht]
+\begin{table}[!ht]
 \begin{center} 
 \caption{Estimated coefficients of the linear regression model for the prediction of the recall score.} 
 \vskip 0.12in
 \label{tab:lr-coef} 
 \begin{tabular}{lllll} 
 \hline
-Coefficient & Estimate & SE & tStat & pValue \\ 
+Coef. & Estimate & SE & tStat & pValue \\ 
 \hline
-$\mathcal{B}_{0}$    &  4.8241   &  0.48622  &  9.9217 &  7.3904e-16  \\
+$\mathcal{B}_{0}$    &  4.8241   &  0.48622  &  9.9217 &  7.39e-16  \\
 $\mathcal{B}_{duration}$ & -0.42214  &  0.18627  & -2.2663 &  0.025974    \\
 $\mathcal{B}_{saliency}$ &  0.032642 &  0.015957 &  2.0455 &  0.043893    \\
 \hline
 \end{tabular} 
 \end{center} 
-\end{table*}
+\end{table}
 
 \subsection{Computational Model}
 
-Based on the study of bottom-up attention \cite{koch1985shifts}, the computational model is implemented by the saliency map-based approach \cite{itti1998model}. This model uses the visual information, i.e., intensities, color opponencies and orientations, as a source to measure a conspicuity. While reflecting some physiological evidence for the basis mechanism of visual information processing, it has processing efficiency and robustness to noises. It takes an image as input, and it returns one saliency map, the matrix, note that, whose elements are normalized iteratively and nonlinearly \cite{itti2000saliency}.
+Based on the study of bottom-up attention \cite{koch1985shifts}, the computational model is implemented by the saliency map-based approach \cite{itti1998model}. This model uses the visual information, i.e., intensities, color opponencies and orientations, as a source to measure the conspicuity. While reflecting some physiological evidences for the basis mechanism of visual information processing, the implement has both processing efficiency and robustness to noises. It takes an image as input, and it returns one saliency map, the matrix, note that, whose elements are normalized iteratively and nonlinearly \cite{itti2000saliency}.
 
 Using the saliency map from the computational bottom-up attention model, we examine the association between the gaze fitness to the model and the recall score. The fitness function is described below. We use the SaliencyToolbox with default parameters for getting the saliency map to analyze, and align the gaze coordination to the area of the saliency map, which has a smaller size after sub-sampling \cite{Walther2006}.
 
@@ -250,21 +250,21 @@ X_{saliency}^{(i,j)} = \sum_{t=1}^{T} \mathcal{S}_{x_{t},y_{t}}^{(i,j,t)}
 
 In Equation~\ref{eq:salsum}, $x_{t}$ and $y_{t}$ represent the mapped gaze coordination at $t$ time in a fixation duration. $\mathcal{S}^{(i,j,t)}$ is a saliency map which is the output of the model for a given screenshot at $t$ time in the duration of a movie clip, which was given to the participant $i$ for the $j$-th sequence of the recall test.
 
-We fit the recall scores to the linear regression model defined by Equation~\ref{eq:lm},
+We fit the parameters for the linear regression model for the recall scores, which is defined by Equation~\ref{eq:lm},
 
 \begin{equation}\label{eq:lm}
 Y_{score} = \mathcal{B}_{0} + \sum_{l \in \mathcal{L}} \mathcal{B}_{l} \cdot X_{l}
 \end{equation}
 
-\noindent, $\mathcal{B}$s are the coefficients of the model, and $\mathcal{L}$ is defined as 
+\noindent, $\mathcal{B}$s are the coefficients of the model, and $\mathcal{L}$ is a set of features as  
 
 \begin{equation}\label{eq:l}
 \mathcal{L} = \{duration, saliency\}.
 \end{equation}
 
-$X_{duration}$ is the fixation duration in second. We use only the data of the long fixations, because the short fixated sequences do not show the significant differences on the recall scores for the duration or the gaze fitness to the saliency map.
+$X_{duration}$ is the fixation duration in second, and $X_{saliency}$ is defined by Equation~\ref{eq:salsum}. We use only the data of the long fixations, because the short fixated sequences do not show the significant differences on the recall scores for the duration and the gaze fitness to the saliency map.
 
-Table~\ref{tab:lr-coef} shows the estimated coefficients of the linear regression model for the prediction. All shown parameters are statistically significant, though the gaze variation is excluded for the fitting due to its unexplainable. The gaze fitness reasonably explain the recall score with the p-value 0.043893. The estimated value for the gaze fitness is positive, which means the recall score positively correlates with the gaze fitness. Interestingly, the fixation duration, which is longer than 1400 ms, negatively correlates with the recall score, though the standard error of that is relatively high. The assessment of the model is shown in Table~\ref{tab:lr-goodness}. The number of observation is 88 for each of 11 participants rates 8 long fixated sequences, respectively. The other models, like logistic regression and non-linear regression, also examined, but they do not explain better than the linear model.
+Table~\ref{tab:lr-coef} shows the estimated coefficients of the linear regression model for the prediction. All shown parameters are statistically significant, though the gaze variation is excluded for the fitting due to its unexplainable for the recall scores. The gaze fitness reasonably explains the recall score with the p-value 0.043893. The estimated value for the gaze fitness is positive, which means the recall score positively correlates with the gaze fitness in the model. Interestingly, the fixation duration, which is longer than 1400 ms, negatively correlates with the recall score, though the standard error of that is relatively high. The assessment of the model is shown in Table~\ref{tab:lr-goodness}. The number of observation is 88 for each of 11 participants rates 8 long fixated sequences, respectively. The other models, like logistic regression and non-linear regression, also examined, but they do not explain better than the linear model.
 
 
 
@@ -290,9 +290,11 @@ F-statistics vs. constant model & 5.02 (p-value = 0.00866) \\
 
 \section{Discussions}
 
-The marginal distribution of the fixation duration shows the characteristics of the response toward the visual stimuli. The shape of the marginal distribution of fixation duration can be estimated as the exponential function though the marginal distribution of the reading fixation durations is illustrated as a left-skewed normal distribution, peaking at 180 ms. Then why reading and watching are so different from each other in this property? The first to think is the difference of the cognitive process during the fixation. Simply put, reading involves the visual processing in addition to the lexical processing. The visual process captures the letters through the retina, Lateral Geniculate Nucleus (LGN) and the primary visual cortex. Then the information of the letters is directed to the distributed lexical processing areas. Though skipping is occasionally occurred while reading, those serial processes spend some latency time. Since reading is an active task, the subject decides when and where to move to a next word, those latencies tend to be preserved. By the way, watching the video has a different condition. The lexical processes are typically not needed, which are heavy tasks in time. Also the video stimuli are passive in regard to the temporal aspect. Therefore the generation of the long fixation duration is sufficiently constrained by the duration of the stimulus, at the same time, the content of the stimulus. 
+The marginal distribution of the fixation duration shows the characteristics of the response toward the visual stimuli. The shape of the marginal distribution of fixation duration can be estimated as the exponential function though the marginal distribution of the reading fixation durations is illustrated as a left-skewed normal distribution, peaking at 180 ms. Then why reading and watching are so different from each other in this property? The first to think is the difference of the cognitive process during the fixation. Simply put, reading involves the visual processing in addition to the lexical processing. The visual process captures the letters through the retina, Lateral Geniculate Nucleus (LGN) and the primary visual cortex. Then the information of the letters is directed to the distributed lexical processing areas. Though skipping is occasionally occurred while reading, those serial processes spend some latency time. Since reading is an active task, the decision that when to move and where to move to a next word, is actively and consciously made comparing to watching task, those latencies tend to be preserved the normative shape. By the way, watching the video has a different condition. The lexical processes are typically not needed, which are heavy tasks in time. Also the video stimuli are passive in regard to the temporal aspect. Therefore the generation of the long fixation duration is sufficiently constrained by the duration of the stimulus, at the same time, the content of the stimulus. 
 
 We recap the visual constraints which trigger the long fixation durations as three types in Table~\ref{tab:long-fixation-types}. The \textit{Alerted} is an ongoing urgent situation that makes the eyes fixates an object which is thought to be a cause or a factor. This type potentially induces the emotional arousal. The second type is the \textit{Successive}. It looks like the successive appearing of the objects keeps the fixation longer, however, the interpretation that the successive absence of the other attracting elements just lets the fixation persist is also possible. The \textit{Stationary} shows indifferent sequences and there is no significant change. Many sequences show calm and relaxed or depressed situation. Emotionally, the opposite of \textit{Alerted}. After all, what is the meaning of the long fixation durations on the video stimuli? Despite of the fact that it could be a latency time to process the cognitive information of the visual stimuli, in the other perspective, it is an waiting time to the potentially salient moment on that eye position. The waiting on the prospective location for a dramatic change or a new event is an efficient way of information processing.
+
+
 
 These various types of the long fixated sequences show that a naive approach to the predict the visual constraint which induces the long fixation using a single analytical method, like the salient feature detectors \cite{marr1980,canny1986} or the optic flow \cite{koenderink1986} would fail. The \textit{Successive} and \textit{Stationary} types can be estimated by using the combination of the appropriate feature detectors and the optic flow, and the temporal modeling of these. However, the \textit{Alerted} cannot be solved without the cognitive modeling for the scene comprehension, which is related to the emotion-based reaction. 
 
