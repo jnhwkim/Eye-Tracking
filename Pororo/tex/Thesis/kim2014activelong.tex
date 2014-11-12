@@ -210,6 +210,7 @@ Figure~\ref{fig:memtest-short} shows the memory test result for the short fixati
 
 
 \subsection{Gaze Variations}
+\label{subsec:gaze-variations}
 
 \begin{figure}
   \centerline{\includegraphics[width=60mm,height=65mm,trim=48mm 85mm 48mm 86mm]{./eps/gaze_var.pdf}}
@@ -296,14 +297,19 @@ We recap the visual constraints which trigger the long fixation durations as thr
 
 Though the long fixation itself does not describe the presence of the cognitive process to memorize, in the condition of the long fixation, the arousal effect is remarkable than the others in the condition of the short fixation. As we discuss before, the long fixation is induced by active taking or passive exposure. For the cause of the long fixation is relatively well established by those two factors, the arousal effect on the long fixation is noticeable, but for the cause of the short fixation is complex and vague, the arousal effect on the short fixation is not observable.
 
-The characteristics of the eye movement on the arousal effect are probed by the statistical method and the computational attention model. 
+The characteristics of the eye movement on the arousal effect are probed by the statistical method and the computational attention model. First of all, we hypothesize on that the variation of gaze points indicates the observable response of the arousal effect in the condition of the long fixation. As we report in Subsection~\nameref{subsec:gaze-variations}, the gaze variation on the alerted sequences are smaller than those on the other case, when the window size is shorter than 200 ms, to minimize the variation from the slow pursuit. Yet, the gaze variation does not have a statistical power to predict on the recall score, which is the measurement for the long-term memory. Though the arousal stimuli associate with the long-term memory \cite{Cahill1996amyg,Cahill1998baso}, we conclude that the gaze variation explains only the arousal effect, not until the further cognitive process. 
+
+Second, we establish the linear model to predict the recall score using the computational attention model by \citep{itti1998model} in addition to the fixation duration. Also, for the short fixated sequences, we cannot find the variables, so we assert to use the observed data of the long fixated sequences. Although we formulate the simple summation of saliency scores for the prediction, it shows the significant level of prediction. And, when the fixation duration is longer than 1400 ms, the longer fixate, the less memorize. Though for the standard error is bit high, we have to be cautious enough to it. 
+
+The low value of the adjusted $R^{2}$ for the model reminds us that the indication of the eye movement should not use as the confirmatory signal to estimate the cognitive process. As well as, there is the limitation of the analysis coverage, for the majority of the eye movement is the short fixated ones. 
+
+However, the investigation is not complete, we look forward to have more distinct features. A temporal modeling using the optic flow \cite{koenderink1986} may the option. Moreover, the cognitive modeling for the scene comprehension, which is related to the emotion-based reaction guides us into the whole diffent level of a methodological stage.
 
 
 
 
 
 
-These various types of the long fixated sequences show that a naive approach to the predict the visual constraint which induces the long fixation using a single analytical method, like the salient feature detectors \cite{marr1980,canny1986} or the optic flow \cite{koenderink1986} would fail. The \textit{Successive} and \textit{Stationary} types can be estimated by using the combination of the appropriate feature detectors and the optic flow, and the temporal modeling of these. However, the \textit{Alerted} cannot be solved without the cognitive modeling for the scene comprehension, which is related to the emotion-based reaction. 
 
 The computational modeling of the long fixation durations is worth to discuss. As we discussed, the long fixations are constrained by the visual content of the video stimuli \cite{zhang2013}, the probabilistic modeling of that would be unsuccessful to compatible with the unprecedented stimuli. The first possible attempt is the composition of the salient detectors \cite{marr1980,canny1986} and the optic flow \cite{koenderink1986} accompanying the tentative cognitive modeling of that. As there are the types of the long fixation durations, the cognitive modeling can be projected to the lower dimension of the search space. Additionally, the estimation of the eye tracking is viable on top of the model. The serial information of the fixation positions enables us to intelligently select the portion of the visual features on the scene, like a human, it can be a breakthrough for the cognitive modeling on the endless stream of the visual information.
 
