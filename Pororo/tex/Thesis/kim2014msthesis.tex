@@ -54,8 +54,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{lipsum} % lorem ipsum
-
-\usepackage{apacite}
 \usepackage{nameref}
 \usepackage{graphicx}
 
@@ -165,19 +163,7 @@ Participants watched the kids video in the room which has the experimental setti
 
 Concurrently, the eye movements and the user-perspective scenes are recorded by \textit{Tobii Glasses eye tracker}, the corneal reflection based system with a sampling rate of 30 Hz. We used the \textit{I-VT algorithm} as the fixation filter (system default), which classifies fixations with the velocity threshold, 30 degree per second. Usually, the saccadic eye movements are discriminated with low velocities (less than 100 degree/second) and high velocities (higher than 300 degree/second), so the velocity-based classification is simple but reasonable approach \cite{Salvucci2000}.
 
-We classified the event types of the eye movements into three categories; fixation, saccade and unclassified. The unclassified data is discarded and not used in this study.
-
-\begin{figure}
-  \centerline{\includegraphics[width=86mm,trim=10mm 3mm 10mm 3mm]{./eps/marginal_fixation_duration.pdf}}
-  \caption[The marginal distribution of fixation durations]{The marginal distribution of fixation durations. All of the 158,643 fixation durations of 18 participants is used. The x-axis represents the number of time unit, 1/30 sec., therefore, 30 indicates 1 second. The y-axis represents the logarithm of the number of fixation which have the same time length with regard to the time unit of x-axis.}
-  \label{fig:marginal-fixation-duration}
-\end{figure}
-
-\begin{figure}
-  \centerline{\includegraphics[width=86mm,trim=10mm 3mm 10mm 3mm]{./eps/individual_fixation_duration.pdf}}
-  \caption[The distribution of fixation durations for individuals]{The distribution of fixation durations for the randomly selected 8 participants. We find the interpersonal differences among all 18 participants, the median of fixation durations varies from 133 ms to 267 ms (mean=183.3, std=41.7).}
-  \label{fig:individual-fixation-duration}
-\end{figure}
+We classify the event types of the eye movements into three categories; fixation, saccade and unclassified. The unclassified data is discarded and not used in this study.
 
 
 \section{Experiment 2}
@@ -185,28 +171,6 @@ We classified the event types of the eye movements into three categories; fixati
 For 11 participants who have participated in \textit{Experiment 1}, we prepared the controlled memory test for each participant. We conducted this experiment 3-4 months later after \textit{Experiment 1} (the intervals are not consistent due to schedule conflicts). A memory test consists of total 20 video sequences; 8 sequences for long fixations, another 8 sequences for short fixations, and the remaining 4 sequences for the control, which are not seen in the previous experiment. In detail, the lengths of all video sequences are the same as 3 seconds. \textit{The long fixation sequences} are randomly picked from each participant's data containing the fixation longer than 1400 ms in the middle of the sequence. \textit{The short fixation sequences} are randomly picked from each participant's data containing the fixation shorter than 300 ms. The 4 control sequences are randomly picked from the other season of \textit{Pororo} series, \textit{Pororo Season 2}.
 
 Each participant identifies 20 sequences randomly sorted. Each participant gives a sequence 1 to 5 score depending on the assurance of whether he or she saw the sequence before or not. 
-
-\begin{table*}[!ht]
-\begin{center} 
-\caption{Long Fixation Types.} 
-\label{tab:long-fixation-types} 
-\vskip 0.12in
-\begin{tabular}{ll} 
-\hline
-Long fixation type    &  Description \\
-\hline
-Alerted         &   An urgent situation happens with an object, 
-                      which can be easily targeted as a cause. \\
-Successive      &   Successive changes to keep attracting. \\
-Stationary      &   The scene is the same while the target object(s)
-                      moves a little or even does not move. \\
-Unclassified    &   Cinematic techniques, which are tracking, tilt, 
-                      zoom-in and out, and others. \\
-\hline
-\end{tabular} 
-\end{center} 
-\end{table*}
-
 
 
 \chapter{Fixation Duration}
@@ -219,6 +183,12 @@ Fixation duration takes a important position in the reading literature for the d
 
 Figure~\ref{fig:marginal-fixation-duration} shows the marginal distribution of fixation durations, which includes all of the 158,643 fixation durations of 18 participants. The x-axis represents the duration time, and the y-axis represents the log scale of the number of fixations across the whole data.
 
+\begin{figure}
+  \centerline{\includegraphics[width=150mm]{./eps/marginal_fixation_duration.pdf}}
+  \caption[The marginal distribution of fixation durations]{The marginal distribution of fixation durations. All of the 158,643 fixation durations of 18 participants is used. The x-axis represents the number of time unit, 1/30 sec., therefore, 30 indicates 1 second. The y-axis represents the logarithm of the number of fixation which have the same time length with regard to the time unit of x-axis.}
+  \label{fig:marginal-fixation-duration}
+\end{figure}
+
 The shape of the marginal distribution of fixation durations (Figure~\ref{fig:marginal-fixation-duration}) is roughly illustrated as an exponential function. While the distribution of the \textit{reading} fixation durations has a quiet different shape \cite{Feng2006}, segmented into three parts, slow-rising ones for short fixations, fast-rising period until around 180 ms, and following a long tail for long fixation durations. These facts allow us to think that 180 ms of the fixation duration for reading is the most general case, but obviously not for watching the video.
 
 Fixation durations which are longer than about 2 seconds are getting more unpredictable along with increasing the fixation duration. Though it is due to the logarithm increasing the sampling variance, occasionally the content of the video stimuli determines how long the eye gaze is fixated. In other words, the fixation more tends to maintain the gaze position when the visual constraint imposes. The visual constraints have various forms, we will discuss it in Section~\nameref{subsec:Long-Fixation-Durations}.
@@ -229,11 +199,11 @@ Fixation durations which are longer than about 2 seconds are getting more unpred
 Interpersonal differences are also examined. The individual distributions of fixation durations are shown in Figure~\ref{fig:individual-fixation-duration}. For the analysis, it only shows randomly selected 8 participants' data. The medians of fixation durations from all 18 participants varies from 133 ms to 267 ms with the mean is 183.3 and the standard deviation is 41.7.
 
 
-\begin{figure*}
-  \centerline{\includegraphics[width=120mm]{./eps/long_fixations_types.png}}
-  \caption[The samples of sequence types]{The sequences of frames which receive more than 2 seconds of fixation duration from at least 3 participants. Each row means an independent sequence and each column means a single frame. The time interval between frames is 500 ms. The colored dots mean the fixation positions, whose durations are longer than 2 seconds. The same color means what is from the same participant. First 3 sequences show the \textit{Alerted} type, then next 3 sequences show the \textit{Successive} type, then next 3 sequences show the \textit{Stationary} type, and then the last sequence shows the \textit{Unclassified} type of visual constraints for the review. For the description of those sequences, see the text in Section~\textit{\nameref{subsec:Long-Fixation-Durations}}.}
-  \label{fig:long-fixations}
-\end{figure*}
+\begin{figure}
+  \centerline{\includegraphics[width=150mm]{./eps/individual_fixation_duration.pdf}}
+  \caption[The distribution of fixation durations for individuals]{The distribution of fixation durations for the randomly selected 8 participants. We find the interpersonal differences among all 18 participants, the median of fixation durations varies from 133 ms to 267 ms (mean=183.3, std=41.7).}
+  \label{fig:individual-fixation-duration}
+\end{figure}
 
 
 \section{Long Fixation Durations}
@@ -241,13 +211,41 @@ Interpersonal differences are also examined. The individual distributions of fix
 
 In Figure~\ref{fig:long-fixations} the sequences of frames which receive more than 2 seconds of the fixation duration from at least 3 different participants are shown. We set the threshold to reduce the interpersonal variation. We got all 41 sequences across 1 hour 7 minutes 50 seconds length of the material. For the review, we chose 10 typical sequences. Each row means an independent sequence and each column means a single frame. The time interval between the frames is 0.5 seconds. The colored dots mean the fixation positions, whose durations are longer than 2 seconds. The same color means the same participant. Four different types of the sequences are listed as \textit{Alerted} (3), \textit{Successive} (3), \textit{Stationary} (3), and \textit{Unclassified} (1) for the review.
 
+\begin{figure*}
+  \centerline{\includegraphics[width=76mm]{./eps/long_fixations_types.png}}
+  \caption[The samples of sequence types]{The sequences of frames which receive more than 2 seconds of fixation duration from at least 3 participants. Each row means an independent sequence and each column means a single frame. The time interval between frames is 500 ms. The colored dots mean the fixation positions, whose durations are longer than 2 seconds. The same color means what is from the same participant. First 3 sequences show the \textit{Alerted} type, then next 3 sequences show the \textit{Successive} type, then next 3 sequences show the \textit{Stationary} type, and then the last sequence shows the \textit{Unclassified} type of visual constraints for the review. For the description of those sequences, see the text in Section~\textit{\nameref{subsec:Long-Fixation-Durations}}.}
+  \label{fig:long-fixations}
+\end{figure*}
+
 The sequence of the \textit{Alerted} type is classified as the scene implies an unusual and, potentially dangerous or difficult situation, which may introduce a mental arousal. The sequence of the first row demonstrates an urgent moment that a huge snowball is about to roll down back on the hill, which was previously rolled up by the robot, \textit{Rody}. Second shows that \textit{Pororo} has been fishing at the ice hole, but what he caught is \textit{Shark}, a naughty character. Third shows that \textit{Eddy} rolled his eyes to kick his ball avoiding the opponent \textit{Pororo}.
 
 The \textit{Successive} type shows that the fixation duration extends across more than 2 different scenes. Because the location of the target object is not changed or changed within the range of a foveal or central vision, 2-5$^{\circ}$, the fixation holds its position \cite{mcmorris2014acquisition}. The fourth sequence shows the closed-up characters are serially shown up in the center of the screen. The fixations duration of the fifth and sixth sequences extends across different scenes have different visual configurations.
 
 The \textit{Stationary} type most clearly shows the characteristics that the indifferent scene maintains while the target object moves a little bit or even does not move. For there is not a particular event or a change of the scene, the participants tend to fixate their gazes. See the seventh through ninth sequences.
 
-The sequence of the \textit{Unclassified} type takes various forms. The tenth sequence shows that \textit{Pororo} and \textit{Crong} just jumped out of the shoulder of the magician dragon, \textit{Tongtong} who is flying in the sky. Two sunflowers spring \textit{Pororo} and \textit{Crong} into the sky in multiple times. But due to the perspective of the camera, the location of the two characters in the scene is almost fixed. Participants fixated their eye gazes on the center of two characters while the background shifting up and down. In other cases, though not reported in Figure~\ref{fig:long-fixations}, there are cinematic techniques, i.e., tracking, tilt, zoom-in and zoom-out, and other uncertain ones. The number of these cases is relatively so small compared to the other types, hence we classified all of them into the \textit{Unclassified}.
+The sequence of the \textit{Unclassified} type takes various forms. The tenth sequence shows that \textit{Pororo} and \textit{Crong} just jumped out of the shoulder of the magician dragon, \textit{Tongtong} who is flying in the sky. Two sunflowers spring \textit{Pororo} and \textit{Crong} into the sky in multiple times. But due to the perspective of the camera, the location of the two characters in the scene is almost fixed. Participants fixated their eye gazes on the center of two characters while the background shifting up and down. In other cases, though not reported in Figure~\ref{fig:long-fixations}, there are cinematic techniques, i.e., tracking, tilt, zoom-in and zoom-out, and other uncertain ones. The number of these cases is relatively so small compared to the other types, hence we classify all of them into the \textit{Unclassified}. We summarize those three typical types in Table~\ref{tab:long-fixation-types}.
+
+
+\begin{table*}[htbp]
+\begin{center} 
+\caption{Long Fixation Types.} 
+\label{tab:long-fixation-types} 
+\vskip 0.12in
+\begin{tabular}{lp{8cm}} 
+\hline
+Long fixation type    &  Description \\
+\hline
+Alerted         &   An urgent situation happens with an object, \\
+                &   \hspace{5mm} which can be easily targeted as a cause.\\
+Successive      &   Successive changes to keep attracting. \\
+Stationary      &   The scene is the same while the target object(s) \\
+                &   \hspace{5mm} moves a little or even does not move. \\
+Unclassified    &   Cinematic techniques, which are tracking, tilt, \\
+                &   \hspace{5mm} zoom-in and out, and others. \\
+\hline
+\end{tabular} 
+\end{center} 
+\end{table*}
 
 
 
@@ -269,64 +267,44 @@ Figure~\ref{fig:memtest-long} shows The memory test result for the long fixation
 Figure~\ref{fig:memtest-short} shows the memory test result for the short fixation types which is on the \textit{Alert} sequences or the \textit{No Alert} sequences. The number of cases from 11 participants are 21 and 67, respectively. The p-value of two-sample t-test is 0.2484 ($>$ 0.05). In the short fixation cases, there is no significance between two content types, \textit{Alert} type and \textit{No Alert} type. The blue horizontal line indicates the mean scores of the short fixated sequences.
 
 
-\begin{figure}
-  \begin{minipage}{.5\textwidth}\centerline{\includegraphics[width=60mm,height=54mm,trim=58mm 110mm 62mm 105mm]{./eps/memtest_leng}}
+\begin{figure*}
+  \centerline{\includegraphics[width=100mm,height=94mm,trim=48mm 100mm 52mm 95mm]{./eps/memtest_leng}}
   \caption[Long-term memory test result for two fixation duration types]{Long-term memory test result for two fixation types, one is that whose duration of fixation is longer than 1400 ms, and the other one is that whose duration of fixation is shorter than 300 ms. Each participant rates 8 long fixated sequences, 8 short fixated sequences and 4 control sequences which are not seen previously. Surprisingly, the mean scores of the short fixated sequences is indifferent to the mean scores of the long fixated sequences (p $=$ 0.5051). Error bars indicate $\pm$ 2 standard errors of means (SEMs). For the detail of test, refer to \textit{\nameref{sec:material-and-methods}}.}
   \label{fig:memtest-leng}
-  \end{minipage}
-  
-  \vskip 0.12in
+\end{figure*}
 
-  \begin{minipage}{.5\textwidth}\centerline{\includegraphics[width=60mm,height=54mm,trim=58mm 110mm 62mm 105mm]{./eps/memtest_alert}}
+\begin{figure*}
+  \centerline{\includegraphics[width=100mm,height=94mm,trim=48mm 100mm 52mm 95mm]{./eps/memtest_alert}}
   \caption[Long-term memory test result for Alert and No Alert types]{Long-term memory test result for \textit{Alert} and \textit{No Alert} types. The arousal affects on the recall test, Alert sequences significantly get higher recall scores than No Alert sequences with the p-value of 0.0077 (p $<$ 0.01). Error bars indicate $\pm$ 2 standard errors of means (SEMs).}
   \label{fig:memtest-alert}
-  \end{minipage}
+\end{figure*}
+
+\begin{figure}
+  \centerline{\includegraphics[width=100mm,height=94mm,trim=48mm 100mm 52mm 95mm]{./eps/memtest_long.pdf}}
+  \caption[The memory test result for the long fixations which are on Alert sequences or No Alert sequences]{The memory test result for the long fixations which are on the \textit{Alert} sequences or the \textit{No Alert} sequences. The number of cases from 11 participants are 19 and 69, respectively. The difference between two means is statistically significant, the p-value of two-sample t-test for the \textit{Alert} type is 0.0104 ($<$ 0.05). The blue horizontal line indicates the mean scores of the long fixated sequences. Error bars indicate $\pm$ 2 SEMs.}
+  \label{fig:memtest-long}
 \end{figure}
 
 \begin{figure}
-  \begin{minipage}{.5\textwidth}\centerline{\includegraphics[width=60mm,height=54mm,trim=58mm 110mm 62mm 105mm]{./eps/memtest_long.pdf}}
-  \caption[The memory test result for the long fixations which are on Alert sequences or No Alert sequences]{The memory test result for the long fixations which are on the \textit{Alert} sequences or the \textit{No Alert} sequences. The number of cases from 11 participants are 19 and 69, respectively. The difference between two means is statistically significant, the p-value of two-sample t-test for the \textit{Alert} type is 0.0104 ($<$ 0.05). The blue horizontal line indicates the mean scores of the long fixated sequences. Error bars indicate $\pm$ 2 SEMs.}
-  \label{fig:memtest-long}
-  \end{minipage}
-
-  \vskip 0.28in
-
-  \begin{minipage}{.5\textwidth}\centerline{\includegraphics[width=60mm,height=54mm,trim=58mm 110mm 62mm 105mm]{./eps/memtest_short.pdf}}
-  \caption[The memory test result for the short fixations which are on the \textit{Alert} sequences or the \textit{No Alert} sequences]{The memory test result for the short fixations which are on the \textit{Alert} sequences or the \textit{No Alert} sequences. The number of cases from 11 participants are 21 and 67, respectively. The p-value of two-sample t-test for the \textit{Alert} type is 0.2484. The blue horizontal line indicates the mean scores of the short fixated sequences. Error bars indicate $\pm$ 2 SEMs.}
+  \centerline{\includegraphics[width=100mm,height=94mm,trim=48mm 100mm 52mm 95mm]{./eps/memtest_short.pdf}}
+  \caption[The memory test result for the short fixations which are on the Alert sequences or the No Alert sequences]{The memory test result for the short fixations which are on the \textit{Alert} sequences or the \textit{No Alert} sequences. The number of cases from 11 participants are 21 and 67, respectively. The p-value of two-sample t-test for the \textit{Alert} type is 0.2484. The blue horizontal line indicates the mean scores of the short fixated sequences. Error bars indicate $\pm$ 2 SEMs.}
   \label{fig:memtest-short}
-  \end{minipage}
 \end{figure}
 
 
 \section{Gaze Variations}
 \label{subsec:gaze-variations}
 
-\begin{figure}
-  \centerline{\includegraphics[width=60mm,height=65mm,trim=48mm 85mm 48mm 86mm]{./eps/gaze_var.pdf}}
-  \caption[The significant levels of gaze variations with regard to the window sizes]{The significant levels of gaze variations with regard to the window sizes. When the window size is narrower than 200 ms, the medians of gaze variations for the \textit{Alert} sequences are significantly different from those for the \textit{No Alert} sequences (p $<$ 0.05). The blue horizontal line shows the 5\% significant level.}
-  \label{fig:gaze-variation}
-\end{figure}
-
 The difference of the eye movements between the \textit{Alert} sequences and the \textit{No Alert} sequences for the long fixated is observed by the variation of gazes. Actually, the gazes keep moving in the fixation state. Because eye balls are fixed by twitching extraocular muscles. However, the most contribution to that variation is a smooth pursuit. In the smooth pursuit, the eyes are following a moving object or interesting features. Because our experimental settings do not and can not precisely define the smooth pursuit, all the eye movements slower than 30 deg/sec are candidates. 
 
 To get the variation of the gazes excluding the variation from the smooth pursuit, we can use the window sliding technique. Varying the size of a time window, we move the time window on the time series by 1/30 second in every steps, and take the median of the variations. Figure~\ref{fig:gaze-variation} shows the significant level changes according to the change of the window size. When the window size is smaller than 200 ms, p-values are lower than 0.05. In the long fixated group, the \textit{Alert} sequences tend to have smaller gaze variations than the \textit{No Alert} sequences have, whereas the short fixated group does not show this difference.
 
-\begin{table}[!ht]
-\begin{center} 
-\caption{Estimated coefficients of the linear regression model for the prediction of the recall score.} 
-\vskip 0.12in
-\label{tab:lr-coef} 
-\begin{tabular}{lllll} 
-\hline
-Coef. & Estimate & SE & tStat & pValue \\ 
-\hline
-$\mathcal{B}_{0}$    &  4.8241   &  0.48622  &  9.9217 &  7.39e-16  \\
-$\mathcal{B}_{duration}$ & -0.42214  &  0.18627  & -2.2663 &  0.025974    \\
-$\mathcal{B}_{saliency}$ &  0.032642 &  0.015957 &  2.0455 &  0.043893    \\
-\hline
-\end{tabular} 
-\end{center} 
-\end{table}
+\begin{figure}
+  \centerline{\includegraphics[width=100mm,height=95mm,trim=28mm 75mm 28mm 76mm]{./eps/gaze_var.pdf}}
+  \caption[The significant levels of gaze variations with regard to the window sizes]{The significant levels of gaze variations with regard to the window sizes. When the window size is narrower than 200 ms, the medians of gaze variations for the \textit{Alert} sequences are significantly different from those for the \textit{No Alert} sequences (p $<$ 0.05). The blue horizontal line shows the 5\% significant level.}
+  \label{fig:gaze-variation}
+\end{figure}
+
 
 \section{Computational Model}
 
@@ -354,11 +332,26 @@ Y_{score} = \mathcal{B}_{0} + \sum_{l \in \mathcal{L}} \mathcal{B}_{l} \cdot X_{
 
 $X_{duration}$ is the fixation duration in second, and $X_{saliency}$ is defined by Equation~\ref{eq:salsum}. We use only the data of the long fixations, because the short fixated sequences do not show the significant differences on the recall scores for the duration and the gaze fitness to the saliency map.
 
+\begin{table}[ht]
+\begin{center} 
+\caption[Estimated coefficients of the linear regression model]{Estimated coefficients of the linear regression model.}
+\vskip 0.12in
+\label{tab:lr-coef} 
+\begin{tabular}{lllll} 
+\hline
+Coef. & Estimate & SE & tStat & pValue \\ 
+\hline
+$\mathcal{B}_{0}$    &  4.8241   &  0.48622  &  9.9217 &  7.39e-16  \\
+$\mathcal{B}_{duration}$ & -0.42214  &  0.18627  & -2.2663 &  0.025974    \\
+$\mathcal{B}_{saliency}$ &  0.032642 &  0.015957 &  2.0455 &  0.043893    \\
+\hline
+\end{tabular} 
+\end{center} 
+\end{table}
+
 Table~\ref{tab:lr-coef} shows the estimated coefficients of the linear regression model for the prediction. All shown parameters are statistically significant, though the gaze variation is excluded for the fitting due to its unexplainable for the recall scores. The gaze fitness reasonably explains the recall score with the p-value 0.043893. The estimated value for the gaze fitness is positive, which means the recall score positively correlates with the gaze fitness in the model. Interestingly, the fixation duration, which is longer than 1400 ms, negatively correlates with the recall score, though the standard error of that is relatively high. The assessment of the model is shown in Table~\ref{tab:lr-goodness}. The number of observation is 88 for each of 11 participants rates 8 long fixated sequences, respectively. The other models, like logistic regression and non-linear regression, also examined, but they do not explain better than the linear model.
 
-
-
-\begin{table}[!ht]
+\begin{table}[ht]
 \begin{center} 
 \caption{Assessment of the linear regression model.} 
 \vskip 0.12in
@@ -388,7 +381,7 @@ Though the long fixation itself does not describe the presence of the cognitive 
 
 The characteristics of the eye movement on the arousal effect are probed by the statistical method and the computational attention model. First of all, we hypothesize on that the variation of gaze points indicates the observable response of the arousal effect in the condition of the long fixation. As we report in Section~\nameref{subsec:gaze-variations}, the gaze variation on the alerted sequences are smaller than those on the other case, when the window size is shorter than 200 ms, to minimize the variation from the slow pursuit. Yet, the gaze variation does not have a statistical power to predict on the recall score, which is the measurement for the long-term memory. Though the arousal stimuli associate with the long-term memory \cite{Cahill1996amyg,Cahill1998baso}, we conclude that the gaze variation explains only the arousal effect, not until the further cognitive process. 
 
-Second, we establish the linear model to predict the recall score using the computational attention model by \citeA{itti1998model} in addition to the fixation duration. Also, for the short fixated sequences, we cannot find the variables, so we assert to use the observed data of the long fixated sequences. Although we formulate the simple summation of saliency scores for the prediction, it shows the significant level of prediction. And, when the fixation duration is longer than 1400 ms, the longer fixate, the less memorize. Though for the standard error is bit high, we have to be cautious enough to it. 
+Second, we establish the linear model to predict the recall score using the computational attention model \cite{itti1998model} in addition to the fixation duration. Also, for the short fixated sequences, we cannot find the variables, so we assert to use the observed data of the long fixated sequences. Although we formulate the simple summation of saliency scores for the prediction, it shows the significant level of prediction. And, when the fixation duration is longer than 1400 ms, the longer fixate, the less memorize. Though for the standard error is bit high, we have to be cautious enough to it. 
 
 The value of the adjusted $R^{2}$ for the model reminds us that the information of eye movement should carefully use to estimate the cognitive process. As well as, there is the limitation of the analysis coverage, for the majority of the eye movement is the short fixated ones. 
 
@@ -397,12 +390,11 @@ However, the investigation is not complete. We look forward to have more distinc
 
 \chapter{Conclusions}
 
-We studied the characteristics of the eye movements through the marginal distribution of fixation durations. We notice that the marginal distribution of fixation durations for the video stimuli has a form which is different from the marginal distribution of fixation durations for the reading materials. The behavioral basis for the difference may attribute to the lighter load for the cognitive process and the temporal and spatial constraints which are given by the video stimuli. Those constraints are summed up as three distinctive types, Alerted, Successive and Stationary. We find the arousal effect only for the long fixated sequences. The small gaze variation for the long fixation indicates an active response to the arousal stimuli. However, the gaze variation does not help to estimate for the recall score, among the long fixations, just the fixation duration and the saliency-probing activity are significant to model. The computational model partly describes the embodied cognitive framework with the perception-action cycling.
+We study the characteristics of the eye movements through the marginal distribution of fixation durations. We notice that the marginal distribution of fixation durations for the video stimuli has a form which is different from the marginal distribution of fixation durations for the reading materials. The behavioral basis for the difference may attribute to the lighter load for the cognitive process and the temporal and spatial constraints which are given by the video stimuli. Those constraints are summed up as three distinctive types, Alerted, Successive and Stationary. We find the arousal effect only for the long fixated sequences. The small gaze variation for the long fixation indicates an active response to the arousal stimuli. However, the gaze variation does not help to estimate for the recall score, among the long fixations, just the fixation duration and the saliency-probing activity are significant to model. The computational model partly describes the embodied cognitive framework with the perception-action cycling.
 
 
 
-%\addcontentsline{toc}{chapter}{\bibname}
-\bibliographystyle{apacite}
+\bibliographystyle{IEEEtran}
 \bibliography{kim2014msthesis}
 
 \keywordalt{서울대학교, 협동과정:인지과학전공, 졸업논문}
