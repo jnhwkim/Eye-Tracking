@@ -2,6 +2,8 @@
 filenames = dir('data/pororo_s03*.tsv');
 DURA_FILENAME = 'tmp/durations_all.mat';
 
+figurestyle;
+
 if ~exist(DURA_FILENAME, 'file')
 
     durations_all = [];
@@ -42,15 +44,16 @@ h = hist(durations_in_bins, bin_size-bin_offset);
 h = [zeros(1, bin_offset), h];
 plot([1:bin_size/2], log(h(1:bin_size/2)));
 % plot([1:bin_size], log(h(1:bin_size)));
-xlabel('Fixation Duration (1/30 sec)', 'FontSize', 12);
-ylabel('Logarithm of the Number of Fixations', 'FontSize', 12);
+xlabel('Fixation Duration (1/30 sec)', 'FontSize', 16);
+ylabel('Logarithm of the Number of Fixations', 'FontSize', 16);
 
 % Adjust xlabel y-position
-y_offset = 1.0;
+y_offset = 0.95;
 xlabel_pos = get(get(gca,'xlabel'),'position');
 ylimits = get(gca,'ylim');
 xlabel_pos(2) = ylimits(1) - y_offset;
 set(get(gca,'xlabel'), 'position', xlabel_pos);
+set(f1, 'Position', [100 300 620 420]);
 
 % Predicted Modeling
 FITTING = false;
@@ -65,7 +68,7 @@ if FITTING
     axis([0 200 0 12]);
     hold off;
 end
-set(f1, 'Position', [100 600 600 420]);
+set(f1, 'Position', [100 600 620 420]);
 
 size(durations_all, 1)
 size(filenames, 1)
