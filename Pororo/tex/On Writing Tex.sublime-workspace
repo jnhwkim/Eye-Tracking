@@ -28,10 +28,10 @@
 	"buffers":
 	[
 		{
-			"file": "Thesis/kim2014activelong.tex",
+			"file": "Thesis/kim2014msthesis.tex",
 			"settings":
 			{
-				"buffer_size": 29917,
+				"buffer_size": 41371,
 				"line_ending": "Unix"
 			}
 		}
@@ -84,11 +84,12 @@
 	},
 	"file_history":
 	[
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/kim2014msthesis.pdf",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/kim2014activelong.tex",
 		"/Users/Calvin/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/apacite.sty",
 		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/cogsci.sty",
 		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/kim2014activelong.bib",
-		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/kim2014activelong.tex",
 		"/Users/Calvin/Downloads/Snuthesis-kor/snuthesis-kor.cls",
 		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/KCC 2015 Winter/kim2014eyeproc.tex",
 		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/KCC 2015 Winter/kim2014eyeproc_review.tex",
@@ -357,33 +358,30 @@
 			[
 				{
 					"buffer": 0,
-					"file": "Thesis/kim2014activelong.tex",
+					"file": "Thesis/kim2014msthesis.tex",
 					"settings":
 					{
-						"buffer_size": 29917,
+						"buffer_size": 41371,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								865,
-								865
+								162,
+								162
 							]
 						],
 						"settings":
 						{
 							"incomplete_sync": null,
-							"origin_encoding": "ASCII",
+							"origin_encoding": "UTF-8",
 							"remote_loading": false,
-							"spell_check": true,
 							"synced": false,
-							"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 96.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

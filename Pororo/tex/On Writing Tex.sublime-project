@@ -2,10 +2,13 @@
 	"folders":
 	[
 		{
-			"path": "/Users/Calvin/Github/Eye-Tracking/Pororo/tex/KCC 2015 Winter"
+			"path": "KCC 2015 Winter"
 		},
 		{
-			"path": "/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis"
+			"path": "Thesis"
+		},
+		{
+			"path": "Cogsci 2014"
 		}
 	]
 }
