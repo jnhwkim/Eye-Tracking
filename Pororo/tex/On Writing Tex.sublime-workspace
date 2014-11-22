@@ -31,7 +31,23 @@
 			"file": "Thesis/kim2014msthesis.tex",
 			"settings":
 			{
-				"buffer_size": 41371,
+				"buffer_size": 42274,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/Calvin/Desktop/confliced",
+			"settings":
+			{
+				"buffer_size": 32811,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Thesis/kim2014msthesis.bib",
+			"settings":
+			{
+				"buffer_size": 45928,
 				"line_ending": "Unix"
 			}
 		}
@@ -84,6 +100,7 @@
 	},
 	"file_history":
 	[
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/kim2014msthesis.tex",
 		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/kim2014msthesis.pdf",
 		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/kim2014activelong.tex",
 		"/Users/Calvin/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
@@ -202,6 +219,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"itti2006",
+			"itti",
+			" 67",
+			"67",
 			"classification",
 			"potentially dangerous",
 			"in subse",
@@ -353,7 +374,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -361,24 +382,90 @@
 					"file": "Thesis/kim2014msthesis.tex",
 					"settings":
 					{
-						"buffer_size": 41371,
+						"buffer_size": 42274,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								162,
-								162
+								15601,
+								15601
 							]
 						],
 						"settings":
 						{
 							"incomplete_sync": null,
+							"is_preview": true,
 							"origin_encoding": "UTF-8",
 							"remote_loading": false,
 							"synced": false,
 							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 6671.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/Calvin/Desktop/confliced",
+					"settings":
+					{
+						"buffer_size": 32811,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"origin_encoding": "ASCII",
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Thesis/kim2014msthesis.bib",
+					"settings":
+					{
+						"buffer_size": 45928,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								45912,
+								45912
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"is_preview": true,
+							"origin_encoding": "UTF-8",
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/LaTeX/Bibtex.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
