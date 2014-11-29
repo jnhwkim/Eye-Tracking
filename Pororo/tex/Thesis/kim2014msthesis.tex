@@ -62,7 +62,7 @@
 \title{Active Long Fixation \\
 Correlates with the Formation of \\
 Long-Term Memory}
-\title*{능동적 장기 응시와 장기 기억 형성과의 관련성 연구}
+\title*{적극적 장기 응시와 장기 기억 형성과의 관련성 연구}
 
 %% 저자 이름 Author's(Your) name
 %\author{홍길동}
@@ -77,8 +77,8 @@ Long-Term Memory}
 %% (?) Use Korean name for Korean professor.
 %\advisor{홍길동}
 %\advisor*{홍~길~동} % Insert space for Hangul name.
-\advisor{Byoung-Tak Zhang}
-\advisor*{Byoung-Tak Zhang}
+\advisor{장~병~탁}
+\advisor*{장~병~탁}
 
 %% 학위 수여일 Graduation date
 %% 표지에 적히는 날짜.
@@ -118,7 +118,7 @@ Long-Term Memory}
 \pagenumbering{roman}
 
 \begin{abstract}
-The application of eyewear accelerates the study on the eye movement, for the eye movement is a non-invasive and convenient indicator of the brain activities. We investigate the eye movements of the subjects watching the kids video. We analyze the video sequences by classifying them into two different sequence groups have the long and short fixation duration, respectively. First, we conduct the long-term memory test of whether fixation duration correlates with long-term memory. Second, we classify its visual constraints into Alert and No Alert types. As a result of the test, the fixation duration itself is not decisive, however, the long fixations which are actively engaged with Alert type movie clips statistically have higher recall scores, while the short fixations do not. Finally, we propose a simple computational model in the embodied cognitive framework with the perception-action cycling, which may provide an explanatory way to the efficient memory mechanism for the life-long sequences.
+The application of eyewear accelerates the study on the eye movement, for the eye movement is a non-invasive and convenient indicator of the brain activities. We investigate the eye movements of the subjects watching the kids video. We analyze the video sequences by classifying them into two different sequence groups have the long and short fixation duration, respectively. First, we conduct the long-term memory test of whether fixation duration correlates with long-term memory. Second, we classify its visual constraints into Alert and No Alert types. As a result of the test, the fixation duration itself is not decisive, however, the long fixations which are actively engaged with Alert type movie clips statistically have higher recall scores, while the short fixations do not. Finally, we propose a simple computational model using the linear regression of two significant features, saliency scrutiny and fixation duration. It may provide an explanatory way to the efficient memory mechanism for the life-long sequences.
 
 \keyword{Eye movement, fixation, spatio-temporal, long-term memory, computational modeling}
 
@@ -139,15 +139,15 @@ But this notable advantage is not freely given one as it requires more delicate 
 
 There are a lot of studies on the computational modeling for the visual information, which include the visual fragment completion, the scene or object classification and recognition \cite{winn2005,lazebnik2006}, and object tracking \cite{YiWu2013}. These research topics often tend to focus on the objective for each task, not on the implementation of the method how the brain deals with. As a result, the computational approach to the modeling for the visual information processing of the brain is gradually changed to the optimization problem, which hinders the understanding of the human-level information processing abilities. 
 
-Particularly, the object tracking seems to describe how we pay attention to an interesting object, however, the eye movement mostly controlled by the oculomotor system, is more complicated how the brain works for the acquisition of the visual information \cite{Henderson2003}. For instance, in the fixation state, the human eyes only recognize the small portion of the whole sight. If you read this paper from an 8-inch distance fixing on one particular letter, you cannot read outside of next two words or about ten letters which are presented in the para-fovea. For the brain is well-known for its parallel processing on the neural circuits, this sequential notion of eye movement for the visual system would be inefficient for information processing.
+Particularly, the object tracking seems to describe how we pay attention to an interesting object, however, the eye movement, mostly controlled by the oculomotor system, is complicated with how the brain works for the acquisition of the visual information \cite{Henderson2003}. For instance, in the fixation state, the human eyes only recognize the small portion of the whole sight. If you read this paper from an 8-inch distance fixing on one particular letter, you cannot read outside of next two words or about ten letters which are presented in the para-fovea. For the brain is well-known for its parallel processing on the neural circuits, this sequential notion of eye movement for the visual system would be inefficient for information processing. Moreover, we should notice that the experimental results of covert attention and shifting receptive field are also important subject to study \cite{Zirnsak2014}.
 
 The studies on the reading eye movement, which are relatively well studied by psychologists and neuroscientists \cite{Rayner1998,Reichle1998}, reveal that fixation duration is related to the presence of the cognitive process \cite{Rayner1997}. For an instance, observing its correlation with linguistic attributes \cite{Inhoff1986,Rayner1986}.
 
 There is a different aspect in studying the eye movement for video stimuli. The duration of fixation is more constrained by the affective content, such as emotional response, including a context of that, compared to the reading materials. As well as the selection of the next fixation and the direction of a saccadic movement tend to be more liberal than the dominance of horizontal searching of reading does. 
 
-Therefore, the study of the eye movement on the video stimuli has been neglected or avoided due to the research complexities and the methodological difficulties \cite{Tatler2011}. However, the recent advancement of the sensory device, like the Google Glass and the mobile devices for eye tracking, promotes studies on the video stimuli and even natural experimental environment, to apply the research models or applications on mobile devices. 
+Therefore, the study of the eye movement on the video stimuli has been neglected due to the research complexities and the methodological difficulties \cite{Tatler2011}. However, the recent advancement of the sensory device, like the Google Glass and the mobile devices for eye tracking, promotes studies on the video stimuli and in natural experimental environment, to apply the research models or applications on mobile devices. 
 
-We investigate the characteristics of eye movements on the video stimuli. The basic elements of the eye movements are segregated into the fixation duration and the saccade vector, which consists of the saccade direction and the length of the saccadic movement \cite{Findlay1999,Feng2006}. In this study, we focus on the characteristics of the fixation duration as the evidence of the cognitive process. Moreover, as the movie clips which potentially induce emotional arousal are known to increase the recognition of the previously watched movie clips \cite{Cahill1996amyg,Cahill1998baso}, we will see if the arousal effect is asserted by the duration of fixation.
+We investigate the characteristics of eye movements on the video stimuli focusing on the formation of long-term memory using recall test. The basic elements of the eye movements are segregated into the fixation duration and the saccade vector, which consists of the saccade direction and the length of the saccadic movement \cite{Findlay1999,Feng2006}. In this study, we focus on the characteristics of the fixation duration as the evidence of the cognitive process to memorize. Moreover, as the movie clips which potentially induce emotional arousal are known to increase the recognition of the previously watched movie clips \cite{Cahill1996amyg,Cahill1998baso}, we will see if the arousal effect is asserted by the duration of fixation. Finally, we propose a linear regression model based on the active features of eye movement, saliency scrutiny and fixation duration.
 
 
 
@@ -403,9 +403,9 @@ We study the characteristics of the eye movements through the marginal distribut
 \bibliographystyle{IEEEtran}
 \bibliography{kim2014msthesis}
 
-\keywordalt{서울대학교, 협동과정:인지과학전공, 졸업논문}
+\keywordalt{안구 운동, 응시, 시공간, 장기 기억, 계산학적 모델링}
 \begin{abstractalt}
-초록
+안구 운동은 뇌 활동을 관찰할 수 있는 비침습적이면서 활용도가 높은 지표이다. 이러한 배경으로 최근 안경류 웨어러블 장비가 연구 기관을 중심으로 빠르게 보급되고 있으며 안구 운동에 대한 연구 활동과 관련 산업의 성장을 고도화 하고 있다. 우리는 아동용 비디오 시청 환경에서 안구 운동을 장기 응시와 단기 응시를 분류하여 연구해 보았다. 응시 기간에 따른 장기 기억 상관 여부를 확인해 보았지만 유의성을 발견할 수 없었다. 하지만 시청 자극을 주의 상황과 중립 상황으로 나눈 후 응시 기간에 따른 차이를 확인 하였을 때 긴 응시에서는 장기 기억 인출에서 통계적으로 유의미한 차이를 발견할 수 있었지만 짧은 응시에서는 그렇지 못하였다. 이를 바탕으로 관측된 안구 운동에 대한 계산학적인 방법인 현저점 탐색과 응시 길이를 이용한 선형 회귀 모델을 제안하고 평가하였다. 이러한 안구 운동의 특징에서 발견되는 장기 기억과 관련된 인지 처리 과정은 평생 학습 기제에서 선택적 주의를 통한 효율성 추구가 제한된 인지 처리 능력 안에서 중요한 요소로 기여함을 시사한다.
 \end{abstractalt}
 
 \acknowledgement
