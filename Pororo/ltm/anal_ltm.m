@@ -51,7 +51,7 @@ function anal_ltm()
              
     %% Two-sample T-Test
     [h, p] = ttest2(L_vec, S_vec);
-    fprintf('Given Length? p < %.4f\n', p);
+    fprintf('Given Length? p = %.4f\n', p);
     
     %% Figure 1
     f = figure(1);
@@ -93,7 +93,7 @@ function anal_ltm()
     
     %% Two-sample T-Test
     [h, p1] = ttest2(elements{1}, elements{2});
-    fprintf('Given Long, Alert? p < %.4f\n', p1);
+    fprintf('Given Long, Alert? p = %.4f\n', p1);
     
     %% For the second report
     m = zeros(size(elements));
@@ -102,7 +102,7 @@ function anal_ltm()
     r = zeros(size(elements));
     for i = 1:size(elements)
         m(i) = mean(elements{i});
-        sem(i) = std(elements{i}) / size(elements{i},1);
+        sem(i) = std(elements{i}) / sqrt(size(elements{i},1));
         n(i) = size(elements{i},1);
         r(i) = n(i) / size([elements{1};elements{2}],1);
     end
@@ -153,7 +153,7 @@ function anal_ltm()
     
     %% Two-sample T-Test
     [h, p] = ttest2(elements{1}, elements{2});
-    fprintf('Given Short, Alert? p < %.4f\n', p);
+    fprintf('Given Short, Alert? p = %.4f\n', p);
     
     %% For the third report
     m = zeros(size(elements));
@@ -162,7 +162,7 @@ function anal_ltm()
     r = zeros(size(elements));
     for i = 1:size(elements)
         m(i) = mean(elements{i});
-        sem(i) = std(elements{i}) / size(elements{i},1);
+        sem(i) = std(elements{i}) / sqrt(size(elements{i},1));
         n(i) = size(elements{i},1);
         r(i) = n(i) / size([elements{1};elements{2}],1);
     end
@@ -186,26 +186,26 @@ function anal_ltm()
     
     %% Alert Effect
     num_types = size(elements_S, 1);
-    elements_ALL = cell(num_types,1);
+    elements = cell(num_types,1);
     for i = 1 : num_types
-        elements_ALL{i} = [elements_L{i}; elements_S{i}];
+        elements{i} = [elements_L{i}; elements_S{i}];
     end
     
     %% Two-sample T-Test
-    [h, p2] = ttest2(elements_ALL{1}, elements_ALL{2});
-    fprintf('Alert? p < %.4f\n', p);
+    [h, p2] = ttest2(elements{1}, elements{2});
+    fprintf('Alert? p = %.4f\n', p);
     
     [h, p] = ttest2(elements_L{1}, elements_S{1});
-    fprintf('Alert, Length? p < %.4f\n', p2);
+    fprintf('Alert, Length? p = %.4f\n', p2);
     
     [h, p] = ttest2(elements_L{2}, elements_S{2});
-    fprintf('No Alert, Length? p < %.4f\n', p);
+    fprintf('No Alert, Length? p = %.4f\n', p);
     
     [h, p3] = ttest2(elements_L{1}, elements_S{2});
-    fprintf('Long, Alert vs Short, No Alert? p < %.4f\n', p3);
+    fprintf('Long, Alert vs Short, No Alert? p = %.4f\n', p3);
     
     [h, p4] = ttest2(elements_L{2}, elements_S{1});
-    fprintf('Long, No Alert vs Short, Alert? p < %.4f\n', p4);
+    fprintf('Long, No Alert vs Short, Alert? p = %.4f\n', p4);
     
     
     %% For the forth report
@@ -215,7 +215,7 @@ function anal_ltm()
     r = zeros(size(elements));
     for i = 1:size(elements)
         m(i) = mean(elements{i});
-        sem(i) = std(elements{i}) / size(elements{i},1);
+        sem(i) = std(elements{i}) / sqrt(size(elements{i},1));
         n(i) = size(elements{i},1);
         r(i) = n(i) / size([elements{1};elements{2}],1);
     end
@@ -244,11 +244,11 @@ function anal_ltm()
     m = [mean(elements_L{1});
          mean(elements_L{2});
          mean(elements_S{1});
-         mean(elements_S{2})]
-    sem = [std(elements_L{1}) / size(elements_L{1},1);
-           std(elements_L{2}) / size(elements_L{2},1);
-           std(elements_S{1}) / size(elements_S{1},1);
-           std(elements_S{2}) / size(elements_S{2},1);];
+         mean(elements_S{2})];
+    sem = [std(elements_L{1}) / sqrt(size(elements_L{1},1));
+           std(elements_L{2}) / sqrt(size(elements_L{2},1));
+           std(elements_S{1}) / sqrt(size(elements_S{1},1));
+           std(elements_S{2}) / sqrt(size(elements_S{2},1));];
     
     %% Figure 5
     f = figure(5);

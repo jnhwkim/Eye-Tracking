@@ -249,7 +249,7 @@ y=repmat(y,4,1);
 y(1)=y(1)-0.05; y(4)=y(1);
 y = y - 0.04;
 if max(y) > 5
-    y = y - max(y) + 4.98;
+    y = y - max(y) + 4.99;
 end
 H(1)=plot(x(:),y,'-k','LineWidth',1);
 
