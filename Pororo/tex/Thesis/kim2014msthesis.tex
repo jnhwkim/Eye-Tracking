@@ -297,9 +297,9 @@ Figure~\ref{fig:memtest-short} shows the memory test result for the short fixati
 \section{Gaze Variations}
 \label{subsec:gaze-variations}
 
-The difference of the eye movements between the \textit{Alert} movie clips and the \textit{No Alert} movie clips for the long fixated is observed by the variation of gazes. Actually, the gazes keep moving in the fixation state. Because eye balls are fixed by twitching extraocular muscles. However, the most contribution to that variation is a smooth pursuit. In the smooth pursuit, the eyes are following a moving object or interesting features. Because our experimental settings do not and can not precisely define the smooth pursuit, all the eye movements slower than 30 deg/sec are candidates. 
+The difference of the eye movements between the \textit{Alert} movie clips and the \textit{No Alert} movie clips for the long fixated was observed by the variation of gazes. Actually, the gazes keep moving in the fixation state. Because eye balls are fixed by twitching extraocular muscles. However, the most contribution to that variation was a smooth pursuit. In the smooth pursuit, the eyes were following a slowly moving object or interesting features. Because our experimental settings did not and can not precisely define the smooth pursuit, all the eye movements slower than 30 degree per second were candidates. 
 
-To get the variation of the gazes excluding the variation from the smooth pursuit, we can use the window sliding technique. Varying the size of a time window, we move the time window on the time series by 1/30 second in every steps, and take the median of the variations. Figure~\ref{fig:gaze-variation} shows the significant level changes according to the change of the window size. When the window size is smaller than 200 ms, p-values are lower than 0.05. In the long fixated group, the \textit{Alert} movie clips tend to have smaller gaze variations than the \textit{No Alert} movie clips have, whereas the short fixated group does not show this difference.
+To get the variation of the gazes excluding the variation from the smooth pursuit, we used the window sliding technique. Varying the size of a time window, we moved the time window on the time series by 1/30 second in every steps, and took the median of the variations. Figure~\ref{fig:gaze-variation} shows the significant level changes according to the change of the window size. When the window size was smaller than 200 ms, p-values were lower than 0.05. In the long fixated group, the \textit{Alert} movie clips tended to have smaller gaze variations than the \textit{No Alert} movie clips have, whereas the short fixated group did not show these differences.
 
 \begin{figure}
   \centerline{\includegraphics[width=100mm,height=95mm,trim=28mm 75mm 28mm 76mm]{./eps/gaze_var.pdf}}
@@ -310,9 +310,9 @@ To get the variation of the gazes excluding the variation from the smooth pursui
 
 \section{Computational Model}
 
-Based on the study of bottom-up attention \cite{koch1985shifts}, the computational model is implemented by the saliency map-based approach \cite{itti1998model}. This model uses the visual information, i.e., intensities, color opponencies and orientations, as a source to measure the conspicuity. While reflecting some physiological evidences for the basis mechanism of visual information processing, the implement has both processing efficiency and robustness to noises. It takes an image as input, and it returns one saliency map, the matrix, note that, whose elements are normalized iteratively and nonlinearly \cite{itti2000saliency}.
+Based on the study of bottom-up attention \cite{koch1985shifts}, the computational model was implemented by the saliency map-based approach \cite{itti1998model}. This model used the visual information, i.e., intensities, color opponencies and orientations, as a source to measure the conspicuity. While reflecting some physiological evidences for the basis mechanism of visual information processing, the implement had both processing efficiency and robustness to noises. It took an image as input, and it returns one saliency map, the matrix, note that, whose elements were normalized iteratively and nonlinearly \cite{itti2000saliency}.
 
-Using the saliency map from the computational bottom-up attention model, we examine the association between the gaze fitness to the model and the recall score. The fitness function is described below. We use the SaliencyToolbox with default parameters for getting the saliency map to analyze, and align the gaze coordination to the area of the saliency map, which has a smaller size after sub-sampling \cite{Walther2006}.
+Using the saliency map from the computational bottom-up attention model, we examined the association between the gaze fitness to the model and the recall score. The fitness function is described below. We used the SaliencyToolbox with default parameters for getting the saliency map to analyze, and aligned the gaze coordination to the area of the saliency map, which had a smaller size after sub-sampling \cite{Walther2006}.
 
 \begin{equation}\label{eq:salsum}
 X_{saliency}^{(i,j)} = \sum_{t=1}^{T} \mathcal{S}_{x_{t},y_{t}}^{(i,j,t)}
@@ -320,7 +320,7 @@ X_{saliency}^{(i,j)} = \sum_{t=1}^{T} \mathcal{S}_{x_{t},y_{t}}^{(i,j,t)}
 
 In Equation~\ref{eq:salsum}, $x_{t}$ and $y_{t}$ represent the mapped gaze coordination at $t$ time in a fixation duration. $\mathcal{S}^{(i,j,t)}$ is a saliency map which is the output of the model for a given screenshot at $t$ time in the duration of a movie clip, which was given to the participant $i$ for the $j$-th movie clip of the recall test.
 
-We fit the parameters for the linear regression model for the recall scores, which is defined by Equation~\ref{eq:lm},
+We fit the parameters for the linear regression model for the recall scores, which was defined by Equation~\ref{eq:lm},
 
 \begin{equation}\label{eq:lm}
 Y_{score} = \mathcal{B}_{0} + \sum_{l \in \mathcal{L}} \mathcal{B}_{l} \cdot X_{l}
@@ -332,7 +332,7 @@ Y_{score} = \mathcal{B}_{0} + \sum_{l \in \mathcal{L}} \mathcal{B}_{l} \cdot X_{
 \mathcal{L} = \{duration, saliency\}.
 \end{equation}
 
-$X_{duration}$ is the fixation duration in second, and $X_{saliency}$ is defined by Equation~\ref{eq:salsum}. We use only the data of the long fixations, because the short fixated movie clips do not show the significant differences on the recall scores for the duration and the gaze fitness to the saliency map.
+$X_{duration}$ is the fixation duration in second, and $X_{saliency}$ is defined by Equation~\ref{eq:salsum}. We used only the data of the long fixations, because the short fixated movie clips did not show the significant differences on the recall scores for the duration and the gaze fitness to the saliency map.
 
 \begin{table}[ht]
 \begin{center} 
@@ -351,7 +351,7 @@ $\mathcal{B}_{saliency}$ &  0.032642 &  0.015957 &  2.0455 &  0.043893    \\
 \end{center} 
 \end{table}
 
-Table~\ref{tab:lr-coef} shows the estimated coefficients of the linear regression model for the prediction. All shown parameters are statistically significant, though the gaze variation is excluded for the fitting due to its unexplainable for the recall scores. The gaze fitness reasonably explains the recall score with the p-value 0.043893. The estimated value for the gaze fitness is positive, which means the recall score positively correlates with the gaze fitness in the model. Interestingly, the fixation duration, which is longer than 1400 ms, negatively correlates with the recall score, though the standard error of that is relatively high. The assessment of the model is shown in Table~\ref{tab:lr-goodness}. The number of observation is 88 for each of 11 participants rates 8 long fixated movie clips, respectively. The other models, like logistic regression and non-linear regression, also examined, but they do not explain better than the linear model.
+Table~\ref{tab:lr-coef} shows the estimated coefficients of the linear regression model for the prediction. All shown parameters were statistically significant, though the gaze variation was excluded for the fitting due to its unexplainable for the recall scores. The gaze fitness reasonably explained the recall score with the p-value 0.043893. The estimated value for the gaze fitness was positive, which means the recall score positively correlated with the gaze fitness in the model. Interestingly, the fixation duration, which was longer than 1400 ms, negatively correlated with the recall score, though the standard error of that was relatively high. The assessment of the model is shown in Table~\ref{tab:lr-goodness}. The number of observation was 88 for each of 11 participants rates 8 long fixated movie clips, respectively. The other models, like logistic regression and non-linear regression, also examined, but they did not explain better than the linear model.
 
 \begin{table}[ht]
 \begin{center} 
