@@ -466,14 +466,14 @@
 			\vspace{4cm}\nointerlineskip
 			서울대학교~인문대학\\
 			\vspace{1cm}\nointerlineskip
-			협동과정:인지과학전공\\
+			협동과정 인지과학전공\\
 			\vspace{1cm}\nointerlineskip
 			\@authoralt
 		\else % 대학원
 			\fontsize{14pt}{14pt}\selectfont
 			\if@snu@ms
 				\@snu@koen{공학석사학위논문}%
-				{M.S. THESIS}\\
+				{공학석사학위논문}\\
 			\else
 				\@snu@koen{공학박사학위논문}%
 				{Ph.D. DISSERTATION}\\
@@ -500,15 +500,15 @@
 				서울대학교 대학원\\
 				\vspace{5mm}\nointerlineskip
 				\fontsize{14pt}{16pt}\selectfont
-				협동과정:인지과학전공\\
+				협동과정 인지과학전공\\
 				\vspace{5mm}\nointerlineskip
 				\fontsize{16pt}{16pt}\selectfont
 				\@authoralt
 			\else
 				\fontsize{14pt}{14pt}\selectfont
-				INTERDISCIPLINARY PROGRAM IN COGNITIVE SCIENCE\\
-				COLLEGE OF HUMANITIES\\
-				SEOUL NATIONAL UNIVERSITY
+				서울대학교 대학원\\
+				협동과정 인지과학전공\\
+				김~~진~~화
 			\fi
 		\fi
 	}
@@ -570,7 +570,7 @@
 			\vspace{5cm}\nointerlineskip
 			서울대학교~인문대학\\
 			\vspace{1cm}\nointerlineskip
-			협동과정:인지과학전공\\
+			협동과정 인지과학전공\\
 			\vspace{0.5cm}\nointerlineskip
 			\@authoralt\\
 			\vfill
@@ -605,7 +605,7 @@
 			서울대학교 대학원\\
 			\vspace{5mm}\nointerlineskip
 			\fontsize{14pt}{14pt}\selectfont
-			협동과정:인지과학전공\\
+			협동과정 인지과학전공\\
 			\vspace{5mm}\nointerlineskip
 			\fontsize{16pt}{16pt}\selectfont
 			\@authoralt\\
@@ -618,12 +618,12 @@
 			\@snu@approvaldate\\
 			\vfill
 			\begin{tabular}[b]{cc}
-			위 \hfill 원 \hfill 장 & \committeestyle{\@snu@committeememberA} \\
-			부위원장               & \committeestyle{\@snu@committeememberB} \\
-			위 \hfill 원           & \committeestyle{\@snu@committeememberC} \\
+			위 \hfill 원 \hfill 장 & \committeestyle{\@snu@committeememberA}(인) \\
+			부위원장               & \committeestyle{\@snu@committeememberB}(인) \\
+			위 \hfill 원           & \committeestyle{\@snu@committeememberC}(인) \\
 			\if@snu@ms\else
-			위 \hfill 원           & \committeestyle{\@snu@committeememberD} \\
-			위 \hfill 원           & \committeestyle{\@snu@committeememberE} \\
+			위 \hfill 원           & \committeestyle{\@snu@committeememberD}(인) \\
+			위 \hfill 원           & \committeestyle{\@snu@committeememberE}(인) \\
 			\fi
 			\end{tabular}
 		\fi
@@ -690,7 +690,7 @@
 			\halign{
 			## & : ## \hfill \cr
 			학\hfill위\hfill구\hfill분	& {\bfseries {\if@snu@ms 석사 \else 박사 \fi}}\cr
-			학\hfill과			& {협동과정:인지과학전공}\cr
+			학\hfill과			& {협동과정 인지과학전공}\cr
 			학\hfill번			& {\@snu@studentnumber}\cr
 			연\hfill락\hfill처		& {\@snu@phonenumber}\cr
 			저\hfill작\hfill자		& {\@author \hspace*{20mm}\small{(인)}}\cr
