@@ -474,6 +474,7 @@
 			\if@snu@ms
 				\@snu@koen{공학석사학위논문}%
 				{공학석사학위논문}\\
+				%{M.S. THESIS}\\
 			\else
 				\@snu@koen{공학박사학위논문}%
 				{Ph.D. DISSERTATION}\\
@@ -485,17 +486,17 @@
 			\fontsize{16pt}{16pt}\selectfont
 			\@titlealt\\
 			\if@snu@ko\else
-				\vspace{2cm}\nointerlineskip
-				\fontsize{14pt}{14pt}\selectfont
-				BY\\
-				\vspace{1cm}\nointerlineskip
-				\@author
+				%\vspace{2cm}\nointerlineskip
+				%\fontsize{14pt}{14pt}\selectfont
+				%BY\\
+				%\vspace{1cm}\nointerlineskip
+				%\@author
 			\fi
 			\vfill
 			\fontsize{14pt}{14pt}\selectfont
 			\@snu@graddate\\
 			\vspace{4cm}\nointerlineskip
-			\if@snu@ko
+			\if@snu@ko\else
 				\fontsize{16pt}{16pt}\selectfont
 				서울대학교 대학원\\
 				\vspace{5mm}\nointerlineskip
@@ -504,11 +505,11 @@
 				\vspace{5mm}\nointerlineskip
 				\fontsize{16pt}{16pt}\selectfont
 				\@authoralt
-			\else
-				\fontsize{14pt}{14pt}\selectfont
-				서울대학교 대학원\\
-				협동과정 인지과학전공\\
-				김~~진~~화
+			%\else
+			%	\fontsize{14pt}{14pt}\selectfont
+			%	INTERDISCIPLINARY PROGRAM IN COGNITIVE SCIENCE\\
+			%	COLLEGE OF HUMANITIES\\
+			%	SEOUL NATIONAL UNIVERSITY
 			\fi
 		\fi
 	}
