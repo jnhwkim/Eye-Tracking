@@ -31,7 +31,7 @@
 			"file": "Thesis/kim2014msthesis.tex",
 			"settings":
 			{
-				"buffer_size": 42275,
+				"buffer_size": 43342,
 				"line_ending": "Unix"
 			}
 		},
@@ -39,8 +39,16 @@
 			"file": "Thesis/kim2014msthesis.bib",
 			"settings":
 			{
-				"buffer_size": 45928,
+				"buffer_size": 47037,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/Calvin/Dropbox/Institue for Cognitive Science/[집담회]/2014년도 융복합 연구 집담회/심포지움 초록.txt",
+			"settings":
+			{
+				"buffer_size": 298,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -92,8 +100,11 @@
 	},
 	"file_history":
 	[
-		"/Users/Calvin/Desktop/confliced",
+		"/Users/Calvin/Downloads/index.html",
+		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/KCC 2014 Winter/kim2014eyeproc.tex",
+		"/Users/Calvin/Dropbox/SNU-Dropbox/MS 4/Experimental Psychology/submit/week12_questions.txt",
 		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/kim2014msthesis.tex",
+		"/Users/Calvin/Desktop/confliced",
 		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/kim2014msthesis.pdf",
 		"/Users/Calvin/Github/Eye-Tracking/Pororo/tex/Thesis/kim2014activelong.tex",
 		"/Users/Calvin/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
@@ -212,6 +223,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"take",
+			"Fixation Duration",
 			"we analysis",
 			"analysis",
 			"inhoff",
@@ -370,7 +383,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -378,27 +391,28 @@
 					"file": "Thesis/kim2014msthesis.tex",
 					"settings":
 					{
-						"buffer_size": 42275,
+						"buffer_size": 43342,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								15295,
-								15303
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"incomplete_sync": null,
+							"is_preview": true,
 							"origin_encoding": "UTF-8",
 							"remote_loading": false,
 							"synced": false,
 							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 6816.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -408,15 +422,15 @@
 					"file": "Thesis/kim2014msthesis.bib",
 					"settings":
 					{
-						"buffer_size": 45928,
+						"buffer_size": 47037,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								45912,
-								45912
+								0,
+								0
 							]
 						],
 						"settings":
@@ -429,6 +443,36 @@
 							"syntax": "Packages/LaTeX/Bibtex.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/Calvin/Dropbox/Institue for Cognitive Science/[집담회]/2014년도 융복합 연구 집담회/심포지움 초록.txt",
+					"settings":
+					{
+						"buffer_size": 298,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								28,
+								28
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"origin_encoding": "UTF-8",
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
