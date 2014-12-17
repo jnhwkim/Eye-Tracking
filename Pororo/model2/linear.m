@@ -74,6 +74,11 @@ for i = 1 : NUM_PARTICIPANTS
         saltrc = [];
         salmap = salMaps{i,j};
         
+        if i == 7 && j == 1 % best example
+           f = figure(99);
+           N = size(salmap, 3);
+        end
+        
         for k = 1 : size(gaze, 1)
             rts = gaze(k, 1);
             if rts < start_ts || rts > end_ts
@@ -88,7 +93,20 @@ for i = 1 : NUM_PARTICIPANTS
             pos = ceil(g .* SALMAP_SIZE);
             sal = salmap(pos(1), pos(2), idx);
             saltrc = [saltrc; sal]; %#ok<AGROW>
+            
+            if i == 7 && j == 1 % best example
+                if mod(idx, 3) == 0
+                    idx/3
+                    subplot(3,5,idx/3);
+                    imshow(salmap(:,:,idx)/max(max(salmap(:,:,idx)))*256, jet(32));
+                    hold on;
+                    plot(pos(2), pos(1), '+', ...
+                       'MarkerSize', 8, ...
+                       'MarkerEdgeColor', 'w');
+                end
+            end
         end
+        
         salTrace{i, j} = saltrc;
         salsum(i,j) = sum(saltrc); %sum of hit
     end
