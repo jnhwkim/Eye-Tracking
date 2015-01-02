@@ -57,7 +57,7 @@ function anal_ltm()
     f = figure(1);
     set(f, 'Position', [100 300 300 250]);
     barwitherr(2*types_sem, types_m, 0.5, 'w');
-    ylabel('Recall Score', 'FontSize', 13);
+    ylabel('Score', 'FontSize', 13);
     Labels = {'Long','Short','Not Seen'};
     set(gca, 'XTick', 1:3, 'XTickLabel', Labels);
     set(gca, 'FontSize', 13);
@@ -112,7 +112,7 @@ function anal_ltm()
     f = figure(2);
     set(f, 'Position', [500 300 300 250]);
     barwitherr(2*sem, m, 0.3, 'w');
-    ylabel('Recall Score', 'FontSize', 13);
+    ylabel('Score', 'FontSize', 13);
     set(gca, 'XTick', 1:2, 'XTickLabel', {'Long, Alert', 'Long, No Alert'});
     set(gca, 'FontSize', 13);
     axis([0.5 2.5 0 5]);
@@ -171,7 +171,7 @@ function anal_ltm()
     f = figure(3);
     set(f, 'Position', [500 620 300 250]);
     barwitherr(2*sem, m, 0.3, 'w');
-    ylabel('Recall Score', 'FontSize', 13);
+    ylabel('Score', 'FontSize', 13);
     set(gca, 'XTick', 1:2, 'XTickLabel', {'Short, Alert', 'Short, No Alert'});
     set(gca, 'FontSize', 13);
     axis([0.5 2.5 0 5]);
@@ -227,7 +227,7 @@ function anal_ltm()
     f = figure(4);
     set(f, 'Position', [100 620 300 250]);
     barwitherr(2*sem, m, 0.5, 'w');
-    ylabel('Recall Score', 'FontSize', 13);
+    ylabel('Score', 'FontSize', 13);
     Labels = {'Alert','No Alert','Not Seen'};
     set(gca, 'XTick', 1:3, 'XTickLabel', Labels);
     set(gca, 'FontSize', 13);
@@ -254,7 +254,7 @@ function anal_ltm()
     f = figure(5);
     set(f, 'Position', [500 300 400 250]);
     barwitherr(2*sem, m, 0.5, 'w');
-    ylabel('Recall Score', 'FontSize', 13);
+    ylabel('Score', 'FontSize', 13);
     Labels = {'LA','LN','SA','SN'};
     set(gca, 'XTick', 1:5, 'XTickLabel', Labels);
     set(gca, 'FontSize', 13);
