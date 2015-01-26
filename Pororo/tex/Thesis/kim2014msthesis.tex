@@ -351,7 +351,17 @@ $\mathcal{B}_{saliency}$ &  0.032642 &  0.015957 &  2.0455 &  0.043893    \\
 \end{center} 
 \end{table}
 
-Table~\ref{tab:lr-coef} shows the estimated coefficients of the linear regression model for the prediction. All shown parameters were statistically significant, though the gaze variation was excluded for the fitting due to its unexplainable for the scores. The gaze fitness reasonably explained the score with the p-value 0.043893. The estimated value for the gaze fitness was positive, which means the score positively correlated with the gaze fitness in the model. Interestingly, the fixation duration, which was longer than 1400 ms, negatively correlated with the score, though the standard error of that was relatively high. The assessment of the model is shown in Table~\ref{tab:lr-goodness}. The number of observation was 88 for each of 11 participants rates 8 long fixated movie clips, respectively. The other models, like logistic regression and non-linear regression, are also examined, but they did not explain better than the linear model.
+Table~\ref{tab:lr-coef} shows the estimated coefficients of the linear regression model for the prediction. All shown parameters were statistically significant, though the gaze variation was excluded for the fitting due to its unexplainable for the scores. Whereas, the gaze fitness reasonably explained the score with the p-value 0.043893. The estimated value for the gaze fitness was positive, which means the score positively correlated with the gaze fitness in the model. Figure~\ref{fig:probing} shows a series of saliency probing for the gaze fitness. For details, please refer to the caption of Figure~\ref{fig:probing}.
+
+\begin{figure*}
+  \centerline{\includegraphics[width=150mm]{./eps/probing.png}}
+  \caption[A series of saliency probing]{A series of saliency probing, one of those got the highest recognition score, is shown. From the left to the right, and from the top to the bottom, time goes with an interval of 100 ms (so, total length is 1500 ms). Each box represents a saliency map, the more reddish represents the higher saliency and the more bluish represents the lower saliency. The white cross represents the gaze position of the participant. As time goes, the eye gaze tracks down the highest saliency point (first row) and moves slowly in accordance with shifting of saliency map due to displacement of scene camera (second and third rows).}
+  \label{fig:probing}
+\end{figure*}
+
+Interestingly, the fixation duration, which was longer than 1400 ms, negatively correlated with the score, though the standard error of that was relatively high. This suggests the interpretative possibility of that the power of saliency probing tends to diminish as the fixation duration is behind time.
+
+The assessment of the model is shown in Table~\ref{tab:lr-goodness}. The number of observation was 88 for each of 11 participants rates 8 long fixated movie clips, respectively. The other models, like logistic regression and non-linear regression, are also examined, but they did not explain better than the linear model.
 
 \begin{table}[ht]
 \begin{center} 
