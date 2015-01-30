@@ -19,8 +19,8 @@
 \usepackage{graphicx}
 \usepackage{subfigure}
 
-\title{Active Long Fixation Correlates with the Formation \\
-of Long-Term Memory}
+\title{Active Long Fixation Correlates with the Formation of\\
+Long-Term Memory}
  
 \author{{\large \bf Jin-Hwa Kim (jhkim@bi.snu.ac.kr)} \\
   Interdisciplinary Program in Cognitive Science, Seoul National University \\
@@ -34,7 +34,7 @@ of Long-Term Memory}
 \maketitle
 
 \begin{abstract}
-The application of eyewear accelerates the study on the eye movement, for the eye movement is a non-invasive and convenient indicator of the brain activities. We investigate the eye movements of the subjects watching the kids video. We analyze the video sequences by classifying them into two different sequence groups that have the long and short fixation duration, respectively. First, we conduct the long-term memory test of whether fixation duration correlates with long-term memory. Second, we classify its visual constraints into alert and no alert types. As a result of the test, the fixation duration itself is not decisive. However, the long fixations which are actively engaged with alert type movie clips statistically have higher scores, while the short fixations do not. Finally, we propose a simple computational model using the linear regression of two significant features, saliency scrutiny and fixation duration. It may provide an explanatory way to the efficient memory mechanism for the life-long sequences.
+The application of eyewear accelerates the study on the eye movement, for the eye movement is a non-invasive and convenient indicator of the brain activities. We investigate the eye movements of the subjects watching the kids video. First, we conduct the long-term memory test of whether fixation duration correlates with long-term memory. Second, we classify its visual constraints into alert and no alert types. As a result of the test, the fixation duration itself is not decisive. However, the long fixations which are actively engaged with alert type movie clips statistically have higher scores, while the short fixations do not. Finally, we propose a simple computational model using the linear regression of two significant features, saliency scrutiny and fixation duration. It may provide an explanatory way to the efficient memory mechanism for the life-long sequences.
 
 \textbf{Keywords:} 
 Eye movement; fixation; spatio-temporal; long-term memory, computational modeling.
@@ -44,15 +44,13 @@ Eye movement; fixation; spatio-temporal; long-term memory, computational modelin
 
 \section{Introduction}
 
-The brain is the most intelligent organ in a living thing. It receives many different forms of sensory information and processes this information appropriately with regard to its survival and reproduce. Especially, the visual information takes a very special position among other kinds of sensory information as it does not need to sense a source directly but is transfered to a remote target far freely than any other types of the sense. Furthermore it gives more chances to survive in the situation of being threaten by the predators using their eyes to detect the foes in the remote place before their approaching. 
+The visual information is easily affected by the moment-to-moment environmental changes, heuristic but robust compensation strategies are required. Hence, how the brain processes the visual information provides the profound way to study the mechanism by which the brain precisely and efficiently processes the most dynamic and enormous sensory information.
 
-But this notable advantage is not freely given to one as it requires more delicate and clever way of interpreting the visual information. Because the visual information can easily be affected by the moment-to-moment environmental changes, heuristic but robust compensation strategies are required. Hence, how the brain processes the visual information provides the profound way to study the mechanism by which the brain precisely and efficiently processes the most dynamic and enormous sensory information.
-
-There are a lot of studies on the computational modeling for the visual information, which include the visual fragment completion, the scene or object classification and recognition \cite{winn2005,lazebnik2006}, and object tracking \cite{YiWu2013}. These research topics often tend to focus on the objective for each task, not on the implementation of the method how the brain deals with the visual information. As a result, the computational approach to the modeling for the visual information processing of the brain is gradually changed to the optimization problem, which hinders the understandings of the human-level information processing abilities. 
+There are a lot of studies on the computational modeling for the visual information, which include the visual fragment completion, the scene or object classification and recognition, and object tracking. These research topics often tend to focus on the objective for each task, not on the implementation of the method how the brain deals with the visual information. As a result, the computational approach to the modeling for the visual information processing of the brain is gradually changed to the optimization problem, which hinders the understandings of the human-level information processing abilities. 
 
 Particularly, the object tracking seems to describe how we pay attention to an interesting object, however, the eye movement, mostly controlled by the oculomotor system, complicates with how the brain works for the acquisition of the visual information \cite{Henderson2003}. For instance, in the fixation state, the human eyes only recognize the small portion of the whole sight. If you read this paper from an 8-inch distance fixing on one particular letter, you cannot read outside of next two words or about ten letters which are presented in the para-fovea. Since the brain is well-known for its parallel processing on the neural circuits, this sequential notion of eye movement for the visual system would be inefficient for information processing. Therefore, we should notice that the experimental results of covert attention and shifting receptive field are also the important subject to study \cite{Zirnsak2014}.
 
-The studies on the reading eye movement, which are relatively well studied by psychologists and neuroscientists \cite{Rayner1998,Reichle1998}, reveal that fixation duration is related to the presence of the cognitive process \cite{Rayner1997}, such as observing its correlation with linguistic attributes \cite{Inhoff1986,Rayner1986}.
+The studies on the reading eye movement, which are relatively well studied by psychologists and neuroscientists, reveal that fixation duration is related to the presence of the cognitive process, such as observing its correlation with linguistic attributes \cite{Inhoff1986,Rayner1986}.
 
 We investigate the characteristics of eye movements on the video stimuli focusing on the formation of long-term memory using recognition test. In this study, we focus on the characteristics of the fixation duration as the evidence of the cognitive process to memorize. Moreover, as the movie clips which potentially induce emotional arousal are known to increase the recognition of the previously watched movie clips \cite{Cahill1996amyg,Cahill1998baso}, we will see if the arousal effect is asserted by the duration of fixation. Finally, we propose a linear regression model based on the active features of eye movement, saliency scrutiny and fixation duration.
 
@@ -79,7 +77,13 @@ Each participant identified 20 movie clips that were sorted randomly. Each parti
 \label{sec:fixation-duration}
 \label{subsec:Long-Fixation-Durations}
 
-Fixation duration takes an important position in reading task, because the durations of eye fixations seems to be constrained by the linguistic features of the fixated word \cite{Rayner1986,Inhoff1986}. In the video watching task, we anticipated the characteristics of fixation duration to be different from those in the reading task. As expected, the fixation duration was changed more drastically, up to 10 seconds during watching the video. These changes were partly caused by the sequential changes of the visual stimuli and the fluctuated responses of the oculomotor system and cognitive processes.
+\begin{figure}[ht]
+  \centerline{\includegraphics[width=76mm]{./eps/long_fixations_types.png}}
+  \caption[The samples of sequence types]{The sequences of frames which received more than 2 seconds of fixation duration from at least 3 participants. First 3 sequences show the \textit{alerted} type, then next 3 sequences show the \textit{successive} type, then next 3 sequences show the \textit{stationary} type, and then the last sequence shows the \textit{unclassified} type of visual constraints for the review. For the description of those sequences, see the text in Section~\textit{\nameref{subsec:Long-Fixation-Durations}}.}
+  \label{fig:long-fixations}
+\end{figure}
+
+In the video watching task, we anticipated the characteristics of fixation duration to be different from those in the reading task. As expected, the fixation duration was changed more drastically, up to 10 seconds during watching the video. These changes were partly caused by the sequential changes of the visual stimuli and the fluctuated responses of the oculomotor system and cognitive processes.
 
 In Figure~\ref{fig:long-fixations} the sequences of frames which received more than 2 seconds of the fixation duration from at least 3 different participants are shown. We set the threshold to reduce the interpersonal variation. We got all 41 sequences across 1 hour 7 minutes 50 seconds length of the material. For the review, we chose 10 typical sequences. Each row represents an independent sequence and each column shows a single frame. The time interval between the frames is 0.5 seconds. The colored dots represent the fixation positions, whose durations are longer than 2 seconds. The same color means the same participant. Four different types of the sequences are listed as \textit{alerted} (3), \textit{successive} (3), \textit{stationary} (3), and \textit{unclassified} (1) for the review. The classification is conducted by one of authors and two other colleagues. Every sequence used by this study is classified by agreement. If there is a conflict or not fit to the major types, then the sequence is classified as \textit{unclassified}.
 
@@ -89,13 +93,19 @@ The \textit{successive} type shows that the fixation duration extends across mor
 
 The \textit{stationary} type most clearly shows the characteristics that the indifferent scene maintains while the target object moves a little bit or even does not move. For there is not a particular event or a change of the scene, the participants tend to fixate their gazes. See the seventh through ninth sequences.
 
-\begin{figure}
-  \centerline{\includegraphics[width=76mm]{./eps/long_fixations_types.png}}
-  \caption[The samples of sequence types]{The sequences of frames which received more than 2 seconds of fixation duration from at least 3 participants. First 3 sequences show the \textit{alerted} type, then next 3 sequences show the \textit{successive} type, then next 3 sequences show the \textit{stationary} type, and then the last sequence shows the \textit{unclassified} type of visual constraints for the review. For the description of those sequences, see the text in Section~\textit{\nameref{subsec:Long-Fixation-Durations}}.}
-  \label{fig:long-fixations}
+The sequence of the \textit{unclassified} type takes various forms. The tenth sequence shows that \textit{Pororo} and \textit{Crong} just jumped out of the shoulder of the magician dragon \textit{Tongtong}, who is flying in the sky. Two sunflowers spring \textit{Pororo} and \textit{Crong} into the sky in multiple times. 
+
+\begin{figure}[ht]
+  \centerline{\includegraphics[width=70mm,height=56mm,trim=54mm 100mm 54mm 98mm]{./eps/memtest_long.pdf}}
+  \caption[The memory test result for the long fixations which are on alert movie clips or no alert movie clips]{The memory test result for the long fixations which is on the \textit{alert} movie clips or the \textit{no alert} movie clips. The blue horizontal line indicates the mean scores of the long fixated movie clips. Error bars indicate $\pm$ 2 SEMs.}
+  \label{fig:memtest-long}
 \end{figure}
 
-The sequence of the \textit{unclassified} type takes various forms. The tenth sequence shows that \textit{Pororo} and \textit{Crong} just jumped out of the shoulder of the magician dragon \textit{Tongtong}, who is flying in the sky. Two sunflowers spring \textit{Pororo} and \textit{Crong} into the sky in multiple times. 
+\begin{figure}[ht]
+  \centerline{\includegraphics[width=70mm,height=56mm,trim=54mm 100mm 54mm 98mm]{./eps/memtest_short.pdf}}
+  \caption[The memory test result for the short fixations which are on the alert movie clips or no alert movie clips]{The memory test result for the short fixations which is on the \textit{alert} movie clips or the \textit{no alert} movie clips.}
+  \label{fig:memtest-short}
+\end{figure}
 
 
 
@@ -116,18 +126,6 @@ Figure~\ref{fig:memtest-long} shows the memory test result for the long fixation
 
 Figure~\ref{fig:memtest-short} shows the memory test result for the short fixation which was on the \textit{alert} movie clips or the \textit{no alert} movie clips. The numbers of cases from 11 participants were 21 and 67, respectively. The p-value of two-sample t-test was 0.2484 ($>$ 0.05). In the short fixation cases, there was no significance between the two content types, \textit{alert} type and \textit{no alert} type.
 
-\begin{figure}
-  \centerline{\includegraphics[width=80mm,height=74mm,trim=54mm 90mm 54mm 90mm]{./eps/memtest_long.pdf}}
-  \caption[The memory test result for the long fixations which are on alert movie clips or no alert movie clips]{The memory test result for the long fixations which is on the \textit{alert} movie clips or the \textit{no alert} movie clips. The blue horizontal line indicates the mean scores of the long fixated movie clips. Error bars indicate $\pm$ 2 SEMs.}
-  \label{fig:memtest-long}
-\end{figure}
-
-\begin{figure}
-  \centerline{\includegraphics[width=80mm,height=74mm,trim=54mm 90mm 54mm 90mm]{./eps/memtest_short.pdf}}
-  \caption[The memory test result for the short fixations which are on the alert movie clips or no alert movie clips]{The memory test result for the short fixations which is on the \textit{alert} movie clips or the \textit{no alert} movie clips.}
-  \label{fig:memtest-short}
-\end{figure}
-
 
 \subsection{Gaze Variations}
 \label{subsec:gaze-variations}
@@ -136,18 +134,18 @@ The difference of the eye movements between the \textit{alert} movie clips and t
 
 To get the variation of the gazes excluding the variation from the smooth pursuit, we used the window sliding technique. Varying the size of a time window, we moved the time window on the time series by 1/30 second in every step, and took the median of the variations. Figure~\ref{fig:gaze-variation} shows the significant level changes according to the change of the window size. If the window size was smaller than 200 ms, p-values were lower than 0.05. In the long fixated group, the \textit{alert} movie clips tended to have smaller gaze variations than the \textit{no alert} movie clips have, whereas the short fixated group did not show these differences.
 
-\begin{figure}
-  \centerline{\includegraphics[width=80mm,height=74mm,trim=26mm 75mm 26mm 76mm]{./eps/gaze_var.pdf}}
-  \caption[The significant levels of gaze variations with regard to the window sizes]{The significant levels of gaze variations with regard to the window sizes. When the window size is narrower than 200 ms, the medians of gaze variations for the \textit{alert} movie clips are significantly different from those for the \textit{no alert} movie clips (p $<$ 0.05). The blue horizontal line shows the 5\% significant level.}
-  \label{fig:gaze-variation}
-\end{figure}
-
 
 \subsection{Computational Model}
 
-Based on the study of bottom-up attention \cite{koch1985shifts}, the computational model was implemented by the saliency map-based approach \cite{itti1998model}. This model used the visual information, i.e., intensities, color opponencies and orientations, as a source to measure the conspicuity \cite{Parkhurst2002}. While reflecting physiological evidences for the basis mechanisms of visual information processing, active selection to increase the information gain, which is depicted as ``best question to ask'' \cite{Reinagel1999,zetzsche1998investigation}, the implement had both processing efficiency and robustness to noises. It took an image as input, and it returns one saliency map, a matrix, whose elements were normalized iteratively and nonlinearly \cite{itti2000saliency}.
+Based on the study of bottom-up attention \cite{koch1985shifts}, the computational model was implemented by the saliency map-based approach \cite{itti1998model}. This model used the visual information, i.e., intensities, color opponencies and orientations, as a source to measure the conspicuity \cite{Parkhurst2002}. While reflecting physiological evidences for the basis mechanisms of visual information processing, active selection to increase the information gain, which is depicted as ``best question to ask'' \cite{Reinagel1999,zetzsche1998investigation}, the implement had both processing efficiency and robustness to noises. It took an image as input, and it returns the saliency map.
 
-Using the saliency map from the computational bottom-up attention model, we examined the association between the gaze fitness to the model and the score. The fitness function is described below. We used the SaliencyToolbox with default parameters for getting the saliency map to analyze, and aligned the gaze coordination to the area of the saliency map, which had a smaller size after sub-sampling \cite{Walther2006}.
+\begin{figure}
+  \centerline{\includegraphics[width=70mm,height=64mm,trim=26mm 85mm 26mm 85mm]{./eps/gaze_var.pdf}}
+  \caption[The significant levels of gaze variations with regard to the window sizes]{The significant levels of gaze variations with regard to the window sizes. The blue horizontal line shows the 5\% significant level.}
+  \label{fig:gaze-variation}
+\end{figure}
+
+Using the saliency map from the computational bottom-up attention model, we examined the association between the gaze fitness to the model and the score. The fitness function is defined as below. We used the SaliencyToolbox with default parameters for getting the saliency map to analyze, and aligned the gaze coordination to the area of the saliency map, which had a smaller size after sub-sampling \cite{Walther2006}.
 
 \begin{equation}\label{eq:salsum}
 X_{saliency}^{(i,j)} = \sum_{t=1}^{T} \mathcal{S}_{x_{t},y_{t}}^{(i,j,t)}
@@ -186,13 +184,13 @@ $\mathcal{B}_{saliency}$ &  0.032642 &  0.015957 &  2.0455 &  0.043893    \\
 \end{center} 
 \end{table}
 
-Table~\ref{tab:lr-coef} shows the estimated coefficients of the linear regression model for the prediction. All shown parameters were statistically significant, though the gaze variation was excluded for the fitting due to its unexplainable for the scores. Whereas, the gaze fitness reasonably explained the score with the p-value 0.043893. The estimated value for the gaze fitness was positive, which means the score positively correlated with the gaze fitness in the model. Figure~\ref{fig:probing} shows a series of saliency probing for the gaze fitness. For details, please refer to the caption of Figure~\ref{fig:probing}.
+Table~\ref{tab:lr-coef} shows the estimated coefficients of the linear regression model for the prediction. All shown parameters were statistically significant, though the gaze variation was excluded for the fitting due to its unexplainable for the scores. Whereas, the gaze fitness reasonably explained the score with the p-value 0.043893. The estimated value for the gaze fitness was positive, which means the score positively correlated with the gaze fitness in the model. Figure~\ref{fig:probing} shows a series of saliency probing for the gaze fitness. For details, please refer to the caption of that.
 
-\begin{figure*}
-  \centerline{\includegraphics[width=150mm]{./eps/probing.png}}
-  \caption[A series of saliency probing]{A series of saliency probing, one of those got the highest recognition score, is shown. From the left to the right, and from the top to the bottom, time goes with an interval of 100 ms (so, total length is 1500 ms). Each box represents a saliency map, the more reddish represents the higher saliency and the more bluish represents the lower saliency. The white cross represents the gaze position of the participant. As time goes, the eye gaze tracks down the highest saliency point (first row) and moves slowly in accordance with shifting of saliency map due to displacement of scene camera (second and third rows).}
+\begin{figure}
+  \centerline{\includegraphics[width=86mm]{./eps/probing.png}}
+  \caption[A series of saliency probing]{A series of saliency probing, one of those got the highest recognition score, is shown. From the left to the right, and from the top to the bottom, time goes with an interval of 100 ms (total length = 1500 ms). Each box represents a saliency map, the more reddish represents the higher saliency and the more bluish represents the lower saliency. The white cross represents the gaze position of the participant. As time goes, the eye gaze tracks down the highest saliency point (first row) and moves slowly in accordance with shifting of saliency map due to displacement of scene camera (second and third rows).}
   \label{fig:probing}
-\end{figure*}
+\end{figure}
 
 Interestingly, the fixation duration, which was longer than 1400 ms, negatively correlated with the score, though the standard error of that was relatively high. 
 
@@ -220,17 +218,15 @@ F-statistics vs. constant model & 5.02 (p-value = 0.00866) \\
 
 \section{Discussions}
 
-The marginal distribution of the fixation duration shows the characteristics of the response toward the visual stimuli. The shape of the marginal distribution of fixation duration can be estimated as the exponential function though the marginal distribution of the reading fixation durations is illustrated as a left-skewed normal distribution, peaking at 180 ms. Then why are reading and watching so different from each other in this property? The first thing to consider is the difference of the cognitive process during the fixation. Simply put, reading involves the visual processing in addition to the lexical processing. The visual process captures the letters through the retina, Lateral Geniculate Nucleus (LGN) and the primary visual cortex. Then the information of the letters is directed to the distributed lexical processing areas. Though skipping is occasionally occurred while reading, those serial processes take a bit of latency time. Since reading is an active task, the decision for when to move and where to move to a next word, is actively and consciously made compared to watching task, those latencies tend to be preserved the normative shape. Whereas, watching the video has a different condition. The lexical processes are typically unnecessary, which are heavy tasks in time. Also the video stimuli are passive in regard to the temporal aspect. Therefore the generation of the long fixation duration is sufficiently constrained by the duration of the stimulus and the content of the stimulus at the same time. 
+After all, what is the meaning of the long fixation durations on the video stimuli? Despite the fact that it could be a latency time to process the cognitive information of the visual stimuli, in the other perspective, it could be waiting time to the potentially salient moment on that eye position. The waiting on the prospective location for a dramatic change or a new event is an efficient way of information processing.
 
-We recap the visual constraints which trigger the long fixation durations as three types. The \textit{alerted} is an ongoing urgent situation that makes the eyes fixates an object which is thought to be a cause or a factor. This type potentially induces the emotional arousal. The second type is the \textit{successive}. It seems that the successive appearing of the objects keeps the fixation longer. However, with regard to the interpretation of that, the successive absence of the other attracting elements just lets the persistency of fixation also possible. The \textit{stationary} shows indifferent movie clips and there is no significant change. Many movie clips show calm and relaxed or depressed situation. Emotionally, the opposite of \textit{alerted}. After all, what is the meaning of the long fixation durations on the video stimuli? Despite the fact that it could be a latency time to process the cognitive information of the visual stimuli, in the other perspective, it could be waiting time to the potentially salient moment on that eye position. The waiting on the prospective location for a dramatic change or a new event is an efficient way of information processing.
+Though the long fixation itself does not describe the presence of the cognitive process to memorize, in the condition of the long fixation, the arousal effect is remarkable compared to the others in the condition of the short fixation. The short fixation is relatively complex and vague, the arousal effect on the short fixation might be not observable.
 
-Though the long fixation itself does not describe the presence of the cognitive process to memorize, in the condition of the long fixation, the arousal effect is remarkable compared to the others in the condition of the short fixation. As discussed before, the long fixation is induced by active taking or passive exposure. Since the cause of the long fixation is relatively well established by those two factors, the arousal effect on the long fixation is noticeable, but because the cause of the short fixation is complex and vague, the arousal effect on the short fixation is not observable.
+The characteristics of the eye movement on the arousal effect are probed by the statistical method and the computational attention model. First of all, as we report in Section~\nameref{subsec:gaze-variations}, the gaze variation on the alerted movie clips is smaller than those on the other case, when the window size is shorter than 200 ms, to minimize the variation from the slow pursuit. Yet, the gaze variation does not have a statistical power to predict on the recognition score, which is the measurement for the long-term memory. We conclude that the gaze variation partly explains only for the arousal effect, not for the further cognitive process, memorization.
 
-The characteristics of the eye movement on the arousal effect are probed by the statistical method and the computational attention model. First of all, we hypothesize that the variation of gaze points indicates the observable response of the arousal effect in the condition of the long fixation. As we report in Section~\nameref{subsec:gaze-variations}, the gaze variation on the alerted movie clips is smaller than those on the other case, when the window size is shorter than 200 ms, to minimize the variation from the slow pursuit. Yet, the gaze variation does not have a statistical power to predict on the score, which is the measurement for the long-term memory. Though the arousal stimuli are associated with the long-term memory \cite{Cahill1996amyg,Cahill1998baso}, we conclude that the gaze variation partly explains only for the arousal effect, not for the further cognitive process, like memorization.
+Second, we establish the linear model to predict the score using the computational attention model in addition to the fixation duration. For the short fixated movie clips, we cannot find the predicting variables, so, only the observed data of the long fixated movie clips are used. This is the backward study of Itti (2006)’s work \cite{Itti2006}, which investigates the fitness of the model to human gaze, whereas our study uses the model to evaluate the attentiveness of human. In machine learning, Zou et al. (2012) reported that stimulated fixations help to capture the useful invariant features in the image recognition task \cite{Zou2012}. This gives a hint that how it works from a computational perspective.
 
-Second, we establish the linear model to predict the score using the computational attention model \cite{itti1998model} in addition to the fixation duration. For the short fixated movie clips, we cannot find the predicting variables, so, only the observed data of the long fixated movie clips are used. This is the backward study of Itti (2006)’s work \cite{Itti2006}, which investigates the fitness of the model to human gaze, whereas our study uses the model to evaluate the attentiveness of human. In machine learning, Zou et al. (2012) reported that stimulated fixations help to capture the useful invariant features in the image recognition task \cite{Zou2012}. This gives a hint that how it works from a computational perspective.
-
-Although we formulate the simple method via summation of saliency scores, the method shows the significant level for the prediction. The representation of saliency map is also found in the neuronal structures \cite{Fecteau2006}, which have a peak activity in the physically salient position. And, for the fixation durations longer than 1400 ms, the longer fixated movie clips are the lesser recognized. This suggests the interpretative possibility of that the power of saliency probing tends to diminish as the fixation duration is behind time.
+Although we formulate the simple method via summation of saliency scores, the method shows the significant level for the prediction. The representation of saliency map is also found in the neuronal structures \cite{Fecteau2006}, which have a peak activity in the physically salient position. And, for the fixation durations longer than 1400 ms, the longer fixated movie clips are the lesser recognized. This suggests that the power of saliency probing tends to diminish as the fixation duration is behind time.
 
 The value of the adjusted $R^{2}$ for the model reminds that the information of eye movement should be carefully used to estimate the cognitive process. There is the limitation of the analysis coverage, because the majority of the eye movement is the short fixated ones. 
 
@@ -241,7 +237,7 @@ As discussed, the long fixations are constrained by the visual content of the vi
 
 \section{Conclusions}
 
-We study the characteristics of the eye movements through the marginal distribution of fixation durations. We notice that the marginal distribution of fixation durations for the video stimuli has the form which is different from that of fixation durations for the reading materials. The behavioral basis for the difference may attribute to the lighter load for the cognitive process and the temporal and spatial constraints which are given by the video stimuli. Those constraints are summed up as three distinctive types: alerted, successive and stationary. We find the arousal effect only for the long fixated movie clips. The small gaze variation for the long fixation indicates an active response to the arousal stimuli. However, the gaze variation does not help to estimate for the score, and, among the long fixations, just the fixation duration and the saliency-probing activity are significant to model. We can appreciate this computational model within the embodied cognitive framework with the perception-action cycling.
+The visual constraints, which induce long fixations, are summed up as three distinctive types: alerted, successive and stationary. We found the arousal effect only for the long fixated movie clips of the alerted type. The small gaze variation for the long fixation indicates an active response to the arousal stimuli. Though, the gaze variation does not help to estimate for the recognition score, among long fixations, fixation duration and saliency-probing activity are significant for that. We can appreciate this computational model within the embodied cognitive framework with the perception-action cycling.
 
 
 \section{Acknowledgments}
