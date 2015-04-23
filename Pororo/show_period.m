@@ -5,10 +5,15 @@
 %
 % Show the sequence for given time intervals.
 
-function period_table = show_period(fixations, seconds, period_table, unit)
+function period_table = show_period(fixations, seconds, period_table, unit, last)
 
     %% Configure the default parameters
     configure;
+    
+    %% Include the last frame?
+    if nargin < 5
+        last = true;
+    end
     
     %% Set parameters
     FRAME_PER_SEC = 2;
@@ -31,7 +36,10 @@ function period_table = show_period(fixations, seconds, period_table, unit)
         end_ts = period(p,2) * SECOND_UNIT;
         disp(sprintf('%.3f => %.3f', start_ts, end_ts));
         frames = get_interval_frame(M, start_ts, end_ts, FRAME_PER_SEC);
-        for j = 1 : size(frames,4)
+        if ~last
+            COL = COL - 1;
+        end
+        for j = 1 : COL
             subplot('Position', [(j-1)/COL, (ROW-p)/ROW,...
                             1/COL, 1/ROW]);
             I = imresize(squeeze(frames(:,:,:,j)), 0.5);
